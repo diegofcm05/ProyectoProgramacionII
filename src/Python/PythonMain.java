@@ -4,7 +4,6 @@
  */
 package Python;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -13,7 +12,9 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 /**
@@ -53,20 +54,20 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
-        jb_colorblancoUML = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
+        jb_colortealUML = new javax.swing.JButton();
+        jb_colornegroUML = new javax.swing.JButton();
+        jb_colorgrisUML = new javax.swing.JButton();
+        jb_colorcafeUML = new javax.swing.JButton();
+        jb_colorcafeclaroUML = new javax.swing.JButton();
+        jb_colorrojoUML = new javax.swing.JButton();
+        jb_colorrosaUML = new javax.swing.JButton();
+        jb_colornaranjaUML = new javax.swing.JButton();
+        jb_coloramarilloUML = new javax.swing.JButton();
+        jb_colorverdeoscUML = new javax.swing.JButton();
+        jb_colorlimaUML = new javax.swing.JButton();
+        jb_colorazulclaroUML = new javax.swing.JButton();
+        jb_colorazulUML = new javax.swing.JButton();
+        jb_colormoradoUML = new javax.swing.JButton();
         jb_colorfusciaUML = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -184,49 +185,119 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Tipo");
 
-        jb_colorblancoUML.setBackground(new java.awt.Color(255, 255, 255));
-        jb_colorblancoUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colortealUML.setBackground(new java.awt.Color(0, 102, 102));
+        jb_colortealUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colortealUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colortealUMLMouseClicked(evt);
+            }
+        });
 
-        jButton21.setBackground(new java.awt.Color(0, 0, 0));
-        jButton21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornegroUML.setBackground(new java.awt.Color(0, 0, 0));
+        jb_colornegroUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornegroUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colornegroUMLMouseClicked(evt);
+            }
+        });
 
-        jButton22.setBackground(new java.awt.Color(153, 153, 153));
-        jButton22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorgrisUML.setBackground(new java.awt.Color(153, 153, 153));
+        jb_colorgrisUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorgrisUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorgrisUMLMouseClicked(evt);
+            }
+        });
 
-        jButton23.setBackground(new java.awt.Color(102, 51, 0));
-        jButton23.setForeground(new java.awt.Color(153, 102, 0));
-        jButton23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeUML.setBackground(new java.awt.Color(102, 51, 0));
+        jb_colorcafeUML.setForeground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorcafeUMLMouseClicked(evt);
+            }
+        });
 
-        jButton24.setBackground(new java.awt.Color(153, 102, 0));
-        jButton24.setForeground(new java.awt.Color(153, 102, 0));
-        jButton24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeclaroUML.setBackground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeclaroUML.setForeground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeclaroUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeclaroUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorcafeclaroUMLMouseClicked(evt);
+            }
+        });
 
-        jButton25.setBackground(new java.awt.Color(204, 0, 0));
-        jButton25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrojoUML.setBackground(new java.awt.Color(204, 0, 0));
+        jb_colorrojoUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrojoUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorrojoUMLMouseClicked(evt);
+            }
+        });
 
-        jButton26.setBackground(new java.awt.Color(255, 153, 255));
-        jButton26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrosaUML.setBackground(new java.awt.Color(255, 153, 255));
+        jb_colorrosaUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrosaUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorrosaUMLMouseClicked(evt);
+            }
+        });
 
-        jButton27.setBackground(new java.awt.Color(255, 153, 0));
-        jButton27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornaranjaUML.setBackground(new java.awt.Color(255, 153, 0));
+        jb_colornaranjaUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornaranjaUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colornaranjaUMLMouseClicked(evt);
+            }
+        });
 
-        jButton28.setBackground(new java.awt.Color(255, 255, 0));
-        jButton28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloramarilloUML.setBackground(new java.awt.Color(204, 204, 0));
+        jb_coloramarilloUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloramarilloUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_coloramarilloUMLMouseClicked(evt);
+            }
+        });
 
-        jButton29.setBackground(new java.awt.Color(0, 102, 0));
-        jButton29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorverdeoscUML.setBackground(new java.awt.Color(0, 102, 0));
+        jb_colorverdeoscUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorverdeoscUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorverdeoscUMLMouseClicked(evt);
+            }
+        });
 
-        jButton30.setBackground(new java.awt.Color(0, 255, 0));
-        jButton30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorlimaUML.setBackground(new java.awt.Color(51, 204, 0));
+        jb_colorlimaUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorlimaUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorlimaUMLMouseClicked(evt);
+            }
+        });
 
-        jButton31.setBackground(new java.awt.Color(0, 102, 153));
-        jButton31.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulclaroUML.setBackground(new java.awt.Color(0, 102, 153));
+        jb_colorazulclaroUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulclaroUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorazulclaroUMLMouseClicked(evt);
+            }
+        });
 
-        jButton32.setBackground(new java.awt.Color(0, 0, 204));
-        jButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulUML.setBackground(new java.awt.Color(0, 0, 204));
+        jb_colorazulUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorazulUMLMouseClicked(evt);
+            }
+        });
 
-        jButton33.setBackground(new java.awt.Color(153, 51, 255));
-        jButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colormoradoUML.setBackground(new java.awt.Color(153, 51, 255));
+        jb_colormoradoUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colormoradoUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colormoradoUMLMouseClicked(evt);
+            }
+        });
 
         jb_colorfusciaUML.setBackground(new java.awt.Color(153, 0, 153));
         jb_colorfusciaUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -272,29 +343,29 @@ public class PythonMain extends javax.swing.JFrame {
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorblancoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(116, 116, 116))
         );
         jPanel5Layout.setVerticalGroup(
@@ -303,35 +374,35 @@ public class PythonMain extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colorblancoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -362,6 +433,11 @@ public class PythonMain extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(0, 153, 255));
         jButton4.setText("Clase Abstracta");
         jButton4.setFocusable(false);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -380,7 +456,7 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 969, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,7 +501,6 @@ public class PythonMain extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -439,7 +514,7 @@ public class PythonMain extends javax.swing.JFrame {
                                 .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)))
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +528,7 @@ public class PythonMain extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,13 +536,12 @@ public class PythonMain extends javax.swing.JFrame {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel21)
-                        .addGap(12, 12, 12))
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel21))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 102, 204));
@@ -491,9 +565,7 @@ public class PythonMain extends javax.swing.JFrame {
         );
         jd_creatuUMLLayout.setVerticalGroup(
             jd_creatuUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_creatuUMLLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jd_creatuFLUJO.setTitle("Crea tu propio Diagrama de Flujo!");
@@ -1326,36 +1398,183 @@ public class PythonMain extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         System.out.println("Boton de Clase");
+        String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
+        Font f = null;
         
-        JPanel plol = new FiguraGeneral();
-        plol.setSize(80, 50);
-        plol.setBounds(340,100,200,95);
-        plol.setBackground(Color.blue);
-        plol.setVisible(true);
-        plol.setVisible(true);
-        jPanel6.add(plol);
-        JLabel x = new JLabel("Prueba");
-        
-        x.setForeground(Color.white);
-        Font boldFont = new Font(x.getFont().getName(), Font.BOLD, x.getFont().getSize());
-        x.setFont(boldFont);
-        plol.add(x);
-        plol.setLocation(0,0);
-        
-        x.setBounds(0,0,plol.getWidth(),30);
-        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        clasesUML.add(plol);
+        ClaseGnrl clase = new ClaseGnrl(f);
+        clase.getTitulo().setText(name);
+        jPanel6.add(clase);
+        clase.revalidate();
+        jPanel6.repaint();
         
         
+        clasesUML.add(clase);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jb_colorfusciaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorfusciaUMLMouseClicked
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorfusciaUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorfusciaUMLMouseClicked
+
+    private void jb_colorrojoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrojoUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorrojoUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorrojoUMLMouseClicked
+
+    private void jb_colortealUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colortealUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colortealUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colortealUMLMouseClicked
+
+    private void jb_colorcafeUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorcafeUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorcafeUMLMouseClicked
+
+    private void jb_colornegroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornegroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colornegroUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colornegroUMLMouseClicked
+
+    private void jb_colorcafeclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeclaroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorcafeclaroUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorcafeclaroUMLMouseClicked
+
+    private void jb_colornaranjaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornaranjaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colornaranjaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colornaranjaUMLMouseClicked
+
+    private void jb_colorverdeoscUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorverdeoscUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorverdeoscUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorverdeoscUMLMouseClicked
+
+    private void jb_colorazulUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorazulUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorazulUMLMouseClicked
+
+    private void jb_colormoradoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colormoradoUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colormoradoUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colormoradoUMLMouseClicked
+
+    private void jb_colorgrisUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorgrisUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorgrisUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorgrisUMLMouseClicked
+
+    private void jb_coloramarilloUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_coloramarilloUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_coloramarilloUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_coloramarilloUMLMouseClicked
+
+    private void jb_colorazulclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulclaroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorazulclaroUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorazulclaroUMLMouseClicked
+
+    private void jb_colorrosaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrosaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorrosaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorrosaUMLMouseClicked
+
+    private void jb_colorlimaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorlimaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null){
+            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorlimaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorlimaUMLMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        System.out.println("Boton de Clase Abstracta");
+        String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
+        Font f = null;
+        
+        ClaseAbstracta clase = new ClaseAbstracta(f);
+        clase.getTitulo().setText(name+ " (Abstracta)");
+        jPanel6.add(clase);
+        clase.revalidate();
+        jPanel6.repaint();
+        
+        
+        clasesUML.add(clase);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1404,20 +1623,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton37;
@@ -1508,8 +1714,21 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JButton jb_colorblancoUML;
+    private javax.swing.JButton jb_coloramarilloUML;
+    private javax.swing.JButton jb_colorazulUML;
+    private javax.swing.JButton jb_colorazulclaroUML;
+    private javax.swing.JButton jb_colorcafeUML;
+    private javax.swing.JButton jb_colorcafeclaroUML;
     private javax.swing.JButton jb_colorfusciaUML;
+    private javax.swing.JButton jb_colorgrisUML;
+    private javax.swing.JButton jb_colorlimaUML;
+    private javax.swing.JButton jb_colormoradoUML;
+    private javax.swing.JButton jb_colornaranjaUML;
+    private javax.swing.JButton jb_colornegroUML;
+    private javax.swing.JButton jb_colorrojoUML;
+    private javax.swing.JButton jb_colorrosaUML;
+    private javax.swing.JButton jb_colortealUML;
+    private javax.swing.JButton jb_colorverdeoscUML;
     private javax.swing.JPanel jb_diagramasflujo;
     private javax.swing.JPanel jb_diagramasuml;
     private javax.swing.JDialog jd_creatuFLUJO;
@@ -1518,5 +1737,34 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jp_umldesc;
     // End of variables declaration//GEN-END:variables
 
+    //Esto esta comentado como ultimo recurso
+        /*JPanel plol = new FiguraGeneral();
+        plol.setSize(80, 50);
+        plol.setBounds(340,100,200,95);
+        plol.setBackground(Color.blue);
+        plol.setVisible(true);
+        plol.setVisible(true);
+        JPanel paneldelabel = new JPanel();
+        paneldelabel.setBounds(0, 0, plol.getWidth(), 30);
+        
+        JLabel x = new JLabel("Prueba");
+        x.setForeground(Color.black);
+        Font boldFont = new Font(x.getFont().getName(), Font.BOLD, x.getFont().getSize());
+        x.setFont(boldFont);
+        JTextArea write = new JTextArea(1,10);
+        
+        
+        paneldelabel.add(x);
+        plol.add(paneldelabel);
+        plol.add(write);
+        
+        jPanel6.add(plol);
+        plol.setLocation(0,0);
+        
+        
+        x.setBounds(0,0,plol.getWidth(),30);
+        write.setBounds(20, 35, plol.getWidth()-40, 50);
+        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        */
     
 }
