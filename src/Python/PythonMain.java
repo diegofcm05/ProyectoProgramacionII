@@ -1402,7 +1402,7 @@ public class PythonMain extends javax.swing.JFrame {
         Font f = null;
         
         ClaseGnrl clase = new ClaseGnrl(f);
-        clase.getTitulo().setText(name);
+        clase.getTitulo().setText("Clase " + name);
         jPanel6.add(clase);
         clase.revalidate();
         jPanel6.repaint();
@@ -1415,9 +1415,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorfusciaUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorfusciaUMLMouseClicked
 
@@ -1425,9 +1425,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrojoUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorrojoUMLMouseClicked
 
@@ -1435,9 +1435,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colortealUML.getBackground());
         }
     }//GEN-LAST:event_jb_colortealUMLMouseClicked
 
@@ -1445,9 +1445,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorcafeUMLMouseClicked
 
@@ -1455,9 +1455,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornegroUML.getBackground());
         }
     }//GEN-LAST:event_jb_colornegroUMLMouseClicked
 
@@ -1465,9 +1465,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeclaroUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorcafeclaroUMLMouseClicked
 
@@ -1475,9 +1475,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornaranjaUML.getBackground());
         }
     }//GEN-LAST:event_jb_colornaranjaUMLMouseClicked
 
@@ -1485,9 +1485,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorverdeoscUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorverdeoscUMLMouseClicked
 
@@ -1495,9 +1495,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorazulUMLMouseClicked
 
@@ -1505,9 +1505,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colormoradoUML.getBackground());
         }
     }//GEN-LAST:event_jb_colormoradoUMLMouseClicked
 
@@ -1515,9 +1515,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorgrisUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorgrisUMLMouseClicked
 
@@ -1525,9 +1525,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_coloramarilloUML.getBackground());
         }
     }//GEN-LAST:event_jb_coloramarilloUMLMouseClicked
 
@@ -1535,9 +1535,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulclaroUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorazulclaroUMLMouseClicked
 
@@ -1545,9 +1545,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrosaUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorrosaUMLMouseClicked
 
@@ -1555,9 +1555,9 @@ public class PythonMain extends javax.swing.JFrame {
         FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
         if (ultimoclick != null){
             ultimoclick.setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG().setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG2().setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getTitleBG3().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorlimaUML.getBackground());
         }
     }//GEN-LAST:event_jb_colorlimaUMLMouseClicked
 

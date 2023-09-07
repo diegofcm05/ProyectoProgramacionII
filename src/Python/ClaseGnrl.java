@@ -10,7 +10,8 @@ import java.awt.Font;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.plaf.ComponentUI;
 
@@ -22,17 +23,21 @@ public class ClaseGnrl extends FiguraGeneral{
     
     
     private Font boldFont = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
+    
+    protected JTextPane atributos = new JTextPane();
+    protected JScrollPane pnatributos = new JScrollPane(atributos);
+    
+    protected JTextPane metodos = new JTextPane();
+    protected JScrollPane pnmetodos = new JScrollPane(metodos);
      
-    protected JPanel titleBG = new JPanel();
+    protected JPanel pn_nomclase = new JPanel();
     protected JLabel titulo = new JLabel("NombreClase");
-    protected JPanel titleBG2 = new JPanel();
+    protected JPanel pn_lblatributos = new JPanel();
     protected JLabel titulo2 = new JLabel("Atributos");
-    protected JPanel titleBG3 = new JPanel();
+    protected JPanel pn_lblmetodos = new JPanel();
     protected JLabel titulo3 = new JLabel("Metodos");
     
     private Font f = null;
-    private JTextArea txtA = new JTextArea(3,18);
-    private JTextArea txtA2 = new JTextArea(3,18);
     
     public ClaseGnrl(){
         super();
@@ -43,8 +48,8 @@ public class ClaseGnrl extends FiguraGeneral{
         setSize (200,210);
         setLocation(0,0);
         
-        titleBG.setBackground(getBackground());
-        titleBG.setPreferredSize(new Dimension(getWidth()-10,25));
+        pn_nomclase.setBackground(getBackground());
+        pn_nomclase.setPreferredSize(new Dimension(getWidth()-10,25));
         
         
         titulo.setPreferredSize(new Dimension(getWidth()-10,25));
@@ -53,45 +58,52 @@ public class ClaseGnrl extends FiguraGeneral{
         titulo.setBackground(new Color(0,0,0));
         titulo.setForeground(Color.white);
         titulo.setFont(boldFont);
-        titleBG.add(titulo);
+        pn_nomclase.add(titulo);
         
-        titleBG2.setBackground(getBackground());
-        titleBG2.setPreferredSize(new Dimension(getWidth()-10,25));
+        pn_lblatributos.setBackground(getBackground());
+        pn_lblatributos.setPreferredSize(new Dimension(getWidth()-10,25));
         
         titulo2.setPreferredSize(new Dimension(getWidth()-10,25));
         titulo2.setBackground(new Color(0,0,0));
         titulo2.setForeground(Color.white);
         titulo2.setFont(boldFont);
-        titleBG2.add(titulo2);
+        pn_lblatributos.add(titulo2);
         
-        titleBG3.setBackground(getBackground());
-        titleBG3.setPreferredSize(new Dimension(getWidth()-10,25));
+        pn_lblmetodos.setBackground(getBackground());
+        pn_lblmetodos.setPreferredSize(new Dimension(getWidth()-10,25));
         
         titulo3.setPreferredSize(new Dimension(getWidth()-10,25));
         titulo3.setBackground(new Color(0,0,0));
         titulo3.setForeground(Color.white);
         titulo3.setFont(boldFont);
-        titleBG3.add(titulo3);
+        pn_lblmetodos.add(titulo3);
         
         
-        txtA.setBackground(new Color(175,175,175));
-        txtA2.setBackground(new Color(175,175,175));
+        pnatributos.setPreferredSize(new Dimension (getWidth()-20, 40));
+        atributos.setBackground(new Color(175,175,175));
+        pnatributos.setForeground(new Color(175,175,175));
         
-        add(titleBG);
-        add(titleBG2);
-        add(txtA);
-        add(titleBG3);
-        add(txtA2);
+        pnmetodos.setPreferredSize(new Dimension (getWidth()-20, 40));
+        metodos.setBackground(new Color(175,175,175));
+        pnmetodos.setForeground(new Color(175,175,175));
+        
+        
+        add(pn_nomclase);
+        add(pn_lblatributos);
+        add(pnatributos);
+        add(pn_lblmetodos);
+        add(pnmetodos);
     }
 
-    public JPanel getTitleBG() {
-        return titleBG;
+    public JPanel getPn_nomclase() {
+        return pn_nomclase;
     }
 
-    public void setTitleBG(JPanel titleBG) {
-        this.titleBG = titleBG;
+    public void setPn_nomclase(JPanel pn_nomclase) {
+        this.pn_nomclase = pn_nomclase;
     }
 
+    
     public JLabel getTitulo() {
         return titulo;
     }
@@ -100,13 +112,15 @@ public class ClaseGnrl extends FiguraGeneral{
         this.titulo = titulo;
     }
 
-    public JPanel getTitleBG2() {
-        return titleBG2;
+    public JPanel getPn_lblatributos() {
+        return pn_lblatributos;
     }
 
-    public void setTitleBG2(JPanel titleBG2) {
-        this.titleBG2 = titleBG2;
+    public void setPn_lblatributos(JPanel pn_lblatributos) {
+        this.pn_lblatributos = pn_lblatributos;
     }
+
+    
 
     public JLabel getTitulo2() {
         return titulo2;
@@ -116,13 +130,15 @@ public class ClaseGnrl extends FiguraGeneral{
         this.titulo2 = titulo2;
     }
 
-    public JPanel getTitleBG3() {
-        return titleBG3;
+    public JPanel getPn_lblmetodos() {
+        return pn_lblmetodos;
     }
 
-    public void setTitleBG3(JPanel titleBG3) {
-        this.titleBG3 = titleBG3;
+    public void setPn_lblmetodos(JPanel pn_lblmetodos) {
+        this.pn_lblmetodos = pn_lblmetodos;
     }
+
+    
 
     public JLabel getTitulo3() {
         return titulo3;
@@ -140,21 +156,47 @@ public class ClaseGnrl extends FiguraGeneral{
         this.f = f;
     }
 
-    public JTextArea getTxtA() {
-        return txtA;
+    public Font getBoldFont() {
+        return boldFont;
     }
 
-    public void setTxtA(JTextArea txtA) {
-        this.txtA = txtA;
+    public void setBoldFont(Font boldFont) {
+        this.boldFont = boldFont;
     }
 
-    public JTextArea getTxtA2() {
-        return txtA2;
+    public JTextPane getAtributos() {
+        return atributos;
     }
 
-    public void setTxtA2(JTextArea txtA2) {
-        this.txtA2 = txtA2;
+    public void setAtributos(JTextPane atributos) {
+        this.atributos = atributos;
     }
+
+    public JScrollPane getPnatributos() {
+        return pnatributos;
+    }
+
+    public void setPnatributos(JScrollPane pnatributos) {
+        this.pnatributos = pnatributos;
+    }
+
+    public JTextPane getMetodos() {
+        return metodos;
+    }
+
+    public void setMetodos(JTextPane metodos) {
+        this.metodos = metodos;
+    }
+
+    public JScrollPane getPnmetodos() {
+        return pnmetodos;
+    }
+
+    public void setPnmetodos(JScrollPane pnmetodos) {
+        this.pnmetodos = pnmetodos;
+    }
+
+    
 
     public ComponentUI getUi() {
         return ui;
