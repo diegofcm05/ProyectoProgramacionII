@@ -5,14 +5,21 @@
 package Python;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
@@ -22,15 +29,49 @@ import javax.swing.border.Border;
  */
 public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionListener{
     
+    private Component componenteClickeado;
     private Point Start;
     private static FiguraGeneral ultimoclickeado;
     private boolean seleccionado = false;
+    private boolean borrado = false;
+    protected JPopupMenu menuop = new JPopupMenu();
+    protected JMenuItem nomclass = new JMenuItem();
+    protected JMenuItem eliminar = new JMenuItem();
+    
+    private ArrayList <FiguraGeneral> hijos = new ArrayList();
 
     public FiguraGeneral() {
+        setLocation(10, 10);
         
-       
+        nomclass.setText("Cambiar Nombre");
+        eliminar.setText("Eliminar");
+        menuop.add(nomclass);
+        menuop.add(eliminar);
         this.addMouseListener((MouseListener) this);
         this.addMouseMotionListener((MouseMotionListener) this);
+        
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                borrado = true;
+                JPanel xf = (JPanel) ultimoclickeado.getParent();
+                xf.remove(ultimoclickeado);
+                xf.repaint();
+
+
+
+            }
+        });
+        nomclass.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (componenteClickeado instanceof ClaseGnrl){
+                    String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
+                    ((ClaseGnrl) ultimoclickeado).getTitulo().setText("Clase "+ax);
+                }
+            }
+        });
+        
         
     }
 
@@ -49,11 +90,41 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
     public static void setUltimoclickeado(FiguraGeneral ultimoclickeado) {
         FiguraGeneral.ultimoclickeado = ultimoclickeado;
     }
+
+    public boolean isBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
+    }
+
+    public ArrayList<FiguraGeneral> getHijos() {
+        return hijos;
+    }
+
+    public void setHijos(ArrayList<FiguraGeneral> hijos) {
+        this.hijos = hijos;
+    }
+    
+    public void setHijo(FiguraGeneral hijo){
+        hijos.add(hijo);
+    }
+    
+    
     
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent evt) {
         ultimoclickeado = FiguraGeneral.this;
         seleccionado = !seleccionado;
+        
+        if (evt.isMetaDown()){
+            componenteClickeado = evt.getComponent();
+            menuop.show(evt.getComponent(), evt.getX(), evt.getY());
+            
+        }
+        
+        
         
         repaint();
         

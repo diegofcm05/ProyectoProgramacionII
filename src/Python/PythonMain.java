@@ -4,12 +4,15 @@
  */
 package Python;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,8 +26,10 @@ import javax.swing.SwingUtilities;
  */
 public class PythonMain extends javax.swing.JFrame {
     
-    ArrayList <JPanel> clasesUML = new ArrayList();
-    JPanel panelselected = null;
+    ArrayList <FiguraGeneral> clasesUML = new ArrayList();
+    JPanel panelselected = new JPanel();
+    
+    Date ax = new Date();
 
     /**
      * Creates new form PythonMain
@@ -34,9 +39,12 @@ public class PythonMain extends javax.swing.JFrame {
     
     public PythonMain() {
         initComponents();
+        
         setLocationRelativeTo(null);
         jp_flujodesc.setVisible(false);
         jp_umldesc.setVisible(false);
+        System.out.println(ax);
+        
        
        
     }
@@ -74,12 +82,15 @@ public class PythonMain extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jb_spawnclaseUML = new javax.swing.JButton();
+        jb_spawnabstractUML = new javax.swing.JButton();
+        jb_spawninterfaceUML = new javax.swing.JButton();
+        jp_umlWork = new javax.swing.JPanel();
+        jp_spawnextinterUML = new javax.swing.JButton();
+        jb_spawnextUML = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -110,18 +121,27 @@ public class PythonMain extends javax.swing.JFrame {
         jComboBox8 = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         jComboBox9 = new javax.swing.JComboBox<>();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        jb_spawndecision = new javax.swing.JButton();
+        jb_spawnstart = new javax.swing.JButton();
+        jb_spawnprocess = new javax.swing.JButton();
+        jb_spawncycle = new javax.swing.JButton();
+        jb_spawndata = new javax.swing.JButton();
+        jb_spawnarrow = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jp_flujoWork = new javax.swing.JPanel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
+        JD_herencia = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        cb_dialogherencia = new javax.swing.JComboBox<>();
+        jLabel33 = new javax.swing.JLabel();
+        tf_nomclaseheren = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jb_crearher = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jb_diagramasflujo = new javax.swing.JPanel();
@@ -324,24 +344,45 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Tamaño");
 
+        jLabel35.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("Especificaciones:");
+
+        jLabel36.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("Cuando seleccione un elemento, vuelva a dar click para dejar de seleccionarlo.");
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Al terminar, puede generar el codigo presionando el icono de Python abajo.");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,120 +407,153 @@ public class PythonMain extends javax.swing.JFrame {
                     .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(116, 116, 116))
+                .addGap(68, 68, 68))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(6, 6, 6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 51));
-        jButton3.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 153, 255));
-        jButton3.setText("Clase");
-        jButton3.setFocusable(false);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_spawnclaseUML.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnclaseUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnclaseUML.setForeground(new java.awt.Color(0, 153, 255));
+        jb_spawnclaseUML.setText("Clase");
+        jb_spawnclaseUML.setFocusable(false);
+        jb_spawnclaseUML.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                jb_spawnclaseUMLMouseClicked(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(51, 51, 51));
-        jButton4.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 153, 255));
-        jButton4.setText("Clase Abstracta");
-        jButton4.setFocusable(false);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_spawnabstractUML.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnabstractUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnabstractUML.setForeground(new java.awt.Color(0, 153, 255));
+        jb_spawnabstractUML.setText("Clase Abstracta");
+        jb_spawnabstractUML.setFocusable(false);
+        jb_spawnabstractUML.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                jb_spawnabstractUMLMouseClicked(evt);
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jb_spawnabstractUML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jb_spawnabstractUMLActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(51, 51, 51));
-        jButton5.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 153, 255));
-        jButton5.setText("Interfaz");
-        jButton5.setFocusable(false);
+        jb_spawninterfaceUML.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawninterfaceUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawninterfaceUML.setForeground(new java.awt.Color(0, 153, 255));
+        jb_spawninterfaceUML.setText("Interfaz");
+        jb_spawninterfaceUML.setFocusable(false);
+        jb_spawninterfaceUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawninterfaceUMLMouseClicked(evt);
+            }
+        });
 
-        jPanel6.setBackground(new java.awt.Color(204, 204, 204));
+        jp_umlWork.setBackground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jp_umlWorkLayout = new javax.swing.GroupLayout(jp_umlWork);
+        jp_umlWork.setLayout(jp_umlWorkLayout);
+        jp_umlWorkLayout.setHorizontalGroup(
+            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 969, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jp_umlWorkLayout.setVerticalGroup(
+            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 461, Short.MAX_VALUE)
         );
 
-        jButton8.setBackground(new java.awt.Color(51, 51, 51));
-        jButton8.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 153, 255));
-        jButton8.setText("Asociacion");
-        jButton8.setFocusable(false);
+        jp_spawnextinterUML.setBackground(new java.awt.Color(51, 51, 51));
+        jp_spawnextinterUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jp_spawnextinterUML.setForeground(new java.awt.Color(0, 153, 255));
+        jp_spawnextinterUML.setText("Ext. Interfaz");
+        jp_spawnextinterUML.setFocusable(false);
+        jp_spawnextinterUML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jp_spawnextinterUMLActionPerformed(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(51, 51, 51));
-        jButton9.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(0, 153, 255));
-        jButton9.setText("Herencia");
-        jButton9.setFocusable(false);
+        jb_spawnextUML.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnextUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnextUML.setForeground(new java.awt.Color(0, 153, 255));
+        jb_spawnextUML.setText("Ext. Clase");
+        jb_spawnextUML.setFocusable(false);
+        jb_spawnextUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawnextUMLMouseClicked(evt);
+            }
+        });
+        jb_spawnextUML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_spawnextUMLActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(51, 51, 51));
         jButton10.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(0, 153, 255));
-        jButton10.setText("Comentario");
+        jButton10.setText("Prueba Rombo");
         jButton10.setFocusable(false);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
@@ -495,25 +569,24 @@ public class PythonMain extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5))
+                            .addComponent(jb_spawninterfaceUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_spawnextUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jp_spawnextinterUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_spawnabstractUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jp_umlWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -524,23 +597,23 @@ public class PythonMain extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnabstractUML, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jb_spawninterfaceUML, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnextUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jp_spawnextinterUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addComponent(jLabel21))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jp_umlWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -565,7 +638,9 @@ public class PythonMain extends javax.swing.JFrame {
         );
         jd_creatuUMLLayout.setVerticalGroup(
             jd_creatuUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jd_creatuUMLLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jd_creatuFLUJO.setTitle("Crea tu propio Diagrama de Flujo!");
@@ -652,160 +727,156 @@ public class PythonMain extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(72, 72, 72)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(72, 72, 72))
+                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(69, 69, 69))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jButton11.setBackground(new java.awt.Color(51, 51, 51));
-        jButton11.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(153, 153, 255));
-        jButton11.setText("Decision");
-        jButton11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton11.setFocusable(false);
-
-        jButton12.setBackground(new java.awt.Color(51, 51, 51));
-        jButton12.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(153, 153, 255));
-        jButton12.setText("Inicio");
-        jButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton12.setFocusable(false);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+        jb_spawndecision.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawndecision.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawndecision.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawndecision.setText("Decision");
+        jb_spawndecision.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawndecision.setFocusable(false);
+        jb_spawndecision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawndecisionMouseClicked(evt);
             }
         });
 
-        jButton13.setBackground(new java.awt.Color(51, 51, 51));
-        jButton13.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(153, 153, 255));
-        jButton13.setText("Proceso");
-        jButton13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton13.setFocusable(false);
+        jb_spawnstart.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnstart.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnstart.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawnstart.setText("Inicio");
+        jb_spawnstart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawnstart.setFocusable(false);
+        jb_spawnstart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawnstartMouseClicked(evt);
+            }
+        });
+        jb_spawnstart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_spawnstartActionPerformed(evt);
+            }
+        });
 
-        jButton14.setBackground(new java.awt.Color(51, 51, 51));
-        jButton14.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(153, 153, 255));
-        jButton14.setText("Ciclo");
-        jButton14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton14.setFocusable(false);
+        jb_spawnprocess.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnprocess.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnprocess.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawnprocess.setText("Proceso");
+        jb_spawnprocess.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawnprocess.setFocusable(false);
 
-        jButton15.setBackground(new java.awt.Color(51, 51, 51));
-        jButton15.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(153, 153, 255));
-        jButton15.setText("Datos");
-        jButton15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton15.setFocusable(false);
+        jb_spawncycle.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawncycle.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawncycle.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawncycle.setText("Ciclo");
+        jb_spawncycle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawncycle.setFocusable(false);
 
-        jButton16.setBackground(new java.awt.Color(51, 51, 51));
-        jButton16.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton16.setForeground(new java.awt.Color(153, 153, 255));
-        jButton16.setText("Separador");
-        jButton16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton16.setFocusable(false);
+        jb_spawndata.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawndata.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawndata.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawndata.setText("Datos");
+        jb_spawndata.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawndata.setFocusable(false);
 
-        jPanel7.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jb_spawnarrow.setBackground(new java.awt.Color(51, 51, 51));
+        jb_spawnarrow.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_spawnarrow.setForeground(new java.awt.Color(153, 153, 255));
+        jb_spawnarrow.setText("Flecha");
+        jb_spawnarrow.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_spawnarrow.setFocusable(false);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -817,6 +888,21 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("para bloques:");
 
+        jp_flujoWork.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jp_flujoWorkLayout = new javax.swing.GroupLayout(jp_flujoWork);
+        jp_flujoWork.setLayout(jp_flujoWorkLayout);
+        jp_flujoWorkLayout.setHorizontalGroup(
+            jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 831, Short.MAX_VALUE)
+        );
+        jp_flujoWorkLayout.setVerticalGroup(
+            jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 460, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jp_flujoWork);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -825,17 +911,17 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_spawndata, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_spawncycle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_spawndecision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_spawnstart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_spawnprocess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_spawnarrow, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -848,19 +934,19 @@ public class PythonMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnprocess, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawndecision, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawncycle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawndata, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jb_spawnarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jMenuBar3.setBackground(new java.awt.Color(153, 153, 255));
@@ -883,6 +969,88 @@ public class PythonMain extends javax.swing.JFrame {
         jd_creatuFLUJOLayout.setVerticalGroup(
             jd_creatuFLUJOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel6.setForeground(new java.awt.Color(0, 102, 153));
+
+        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel32.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("Nombre de la clase a crear:");
+
+        jLabel33.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel33.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("Seleccione clase padre:");
+
+        jLabel34.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel34.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("Creacion: Clase Extension");
+
+        jb_crearher.setBackground(new java.awt.Color(102, 153, 255));
+        jb_crearher.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_crearher.setForeground(new java.awt.Color(255, 255, 255));
+        jb_crearher.setText("Crear");
+        jb_crearher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearherMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_nomclaseheren)
+                            .addComponent(cb_dialogherencia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jb_crearher, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_dialogherencia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_nomclaseheren, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jb_crearher, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JD_herenciaLayout = new javax.swing.GroupLayout(JD_herencia.getContentPane());
+        JD_herencia.getContentPane().setLayout(JD_herenciaLayout);
+        JD_herenciaLayout.setHorizontalGroup(
+            JD_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JD_herenciaLayout.setVerticalGroup(
+            JD_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JD_herenciaLayout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1374,19 +1542,20 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.setVisible(false);
         jd_creatuUML.pack();
         jd_creatuUML.setModal(true);
         jd_creatuUML.setLocationRelativeTo(this);
         jd_creatuUML.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jb_spawnabstractUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_spawnabstractUMLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jb_spawnabstractUMLActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void jb_spawnstartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_spawnstartActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_jb_spawnstartActionPerformed
 
     private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
         // TODO add your handling code here:
@@ -1396,185 +1565,574 @@ public class PythonMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void jb_spawnclaseUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnclaseUMLMouseClicked
         System.out.println("Boton de Clase");
         String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
         Font f = null;
         
         ClaseGnrl clase = new ClaseGnrl(f);
         clase.getTitulo().setText("Clase " + name);
-        jPanel6.add(clase);
+        
+        
+        jp_umlWork.add(clase);
         clase.revalidate();
-        jPanel6.repaint();
+        jp_umlWork.repaint();
         
         
         clasesUML.add(clase);
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jb_colorfusciaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorfusciaUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorfusciaUML.getBackground());
+        for (FiguraGeneral figgen : clasesUML) {
+            if (figgen instanceof ClaseGnrl && figgen.isBorrado() == false){
+                System.out.println(((ClaseGnrl) figgen).getTitulo().getText());
+                
+            }
+            if (figgen instanceof ClaseAbstracta && figgen.isBorrado() == false){
+                System.out.println(((ClaseAbstracta) figgen).getJl_nomclase().getText());
+            }
+            
         }
-    }//GEN-LAST:event_jb_colorfusciaUMLMouseClicked
+    }//GEN-LAST:event_jb_spawnclaseUMLMouseClicked
 
-    private void jb_colorrojoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrojoUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrojoUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorrojoUMLMouseClicked
-
-    private void jb_colortealUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colortealUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colortealUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colortealUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colortealUMLMouseClicked
-
-    private void jb_colorcafeUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorcafeUMLMouseClicked
-
-    private void jb_colornegroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornegroUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornegroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornegroUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colornegroUMLMouseClicked
-
-    private void jb_colorcafeclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeclaroUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeclaroUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorcafeclaroUMLMouseClicked
-
-    private void jb_colornaranjaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornaranjaUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornaranjaUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colornaranjaUMLMouseClicked
-
-    private void jb_colorverdeoscUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorverdeoscUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorverdeoscUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorverdeoscUMLMouseClicked
-
-    private void jb_colorazulUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorazulUMLMouseClicked
-
-    private void jb_colormoradoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colormoradoUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colormoradoUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colormoradoUMLMouseClicked
-
-    private void jb_colorgrisUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorgrisUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorgrisUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorgrisUMLMouseClicked
-
-    private void jb_coloramarilloUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_coloramarilloUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_coloramarilloUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_coloramarilloUMLMouseClicked
-
-    private void jb_colorazulclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulclaroUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulclaroUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorazulclaroUMLMouseClicked
-
-    private void jb_colorrosaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrosaUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrosaUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorrosaUMLMouseClicked
-
-    private void jb_colorlimaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorlimaUMLMouseClicked
-        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
-        if (ultimoclick != null){
-            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorlimaUML.getBackground());
-        }
-    }//GEN-LAST:event_jb_colorlimaUMLMouseClicked
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void jb_spawnabstractUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnabstractUMLMouseClicked
         System.out.println("Boton de Clase Abstracta");
         String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
         Font f = null;
         
         ClaseAbstracta clase = new ClaseAbstracta(f);
-        clase.getTitulo().setText(name+ " (Abstracta)");
-        jPanel6.add(clase);
+        clase.getJl_nomclase().setText("Clase Abstracta "+name);
+        jp_umlWork.add(clase);
         clase.revalidate();
-        jPanel6.repaint();
-        
-        
+        jp_umlWork.repaint();
         clasesUML.add(clase);
-    }//GEN-LAST:event_jButton4MouseClicked
+        
+        for (FiguraGeneral figgen : clasesUML) {
+            if (figgen instanceof ClaseGnrl && figgen.isBorrado() == false){
+                System.out.println(((ClaseGnrl) figgen).getTitulo().getText());
+                
+            }
+            if (figgen instanceof ClaseAbstracta && figgen.isBorrado() == false){
+                System.out.println(((ClaseAbstracta) figgen).getJl_nomclase().getText());
+            }
+            
+        }
+    }//GEN-LAST:event_jb_spawnabstractUMLMouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        
+        
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jp_spawnextinterUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jp_spawnextinterUMLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jp_spawnextinterUMLActionPerformed
+
+    private void jb_spawnextUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnextUMLMouseClicked
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (FiguraGeneral fig : clasesUML) {
+            if ((fig instanceof ClaseGnrl || fig instanceof ClaseAbstracta) && !fig.isBorrado()){
+                if (fig instanceof ClaseGnrl){
+                    modelo.addElement((ClaseGnrl)fig);
+                }
+                if (fig instanceof ClaseAbstracta){
+                    modelo.addElement((ClaseAbstracta) fig);
+                }
+                
+            }
+            
+        }
+        cb_dialogherencia.setModel(modelo);
+        
+        JD_herencia.pack();
+        JD_herencia.setModal(true);
+        JD_herencia.setLocationRelativeTo(this);
+        JD_herencia.setVisible(true);
+        
+       
+        
+    }//GEN-LAST:event_jb_spawnextUMLMouseClicked
+
+    private void jb_crearherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearherMouseClicked
+        String name = tf_nomclaseheren.getText();
+        String padre = "notsupportedyet";
+        if (cb_dialogherencia.getSelectedItem() instanceof ClaseGnrl){
+            padre = ((ClaseGnrl) cb_dialogherencia.getSelectedItem()).getTitulo().getText().substring(6,((ClaseGnrl) cb_dialogherencia.getSelectedItem()).getTitulo().getText().length());
+        }
+        if (cb_dialogherencia.getSelectedItem() instanceof ClaseAbstracta){
+            
+        }
+        if (cb_dialogherencia.getSelectedItem() instanceof ClaseHerencia){
+            
+        }
+        if (cb_dialogherencia.getSelectedItem() instanceof Interfaz){
+            
+        }
+        
+        ClaseHerencia claseher = new ClaseHerencia();
+        ((FiguraGeneral) cb_dialogherencia.getSelectedItem()).setHijo(claseher);
+        claseher.getNomclase().setText("Clase "+name);
+        claseher.getExtension().setText("extends "+padre);
+        jp_umlWork.add(claseher);
+        claseher.revalidate();
+        jp_umlWork.repaint();
+        
+        clasesUML.add(claseher);
+        
+    }//GEN-LAST:event_jb_crearherMouseClicked
+
+    private void jb_spawnextUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_spawnextUMLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_spawnextUMLActionPerformed
+
+    private void jb_colorfusciaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorfusciaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorfusciaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorfusciaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorfusciaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorfusciaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorfusciaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorfusciaUML.getBackground());
+        }
+        
+    }//GEN-LAST:event_jb_colorfusciaUMLMouseClicked
+
+    private void jb_colormoradoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colormoradoUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colormoradoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colormoradoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colormoradoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colormoradoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colormoradoUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colormoradoUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colormoradoUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colormoradoUMLMouseClicked
+
+    private void jb_colorazulUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorazulUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorazulUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorazulUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorazulUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorazulUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorazulUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorazulUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorazulUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorazulUMLMouseClicked
+
+    private void jb_colorazulclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulclaroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorazulclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorazulclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorazulclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorazulclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorazulclaroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorazulclaroUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorazulclaroUMLMouseClicked
+
+    private void jb_colorlimaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorlimaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorlimaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorlimaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorlimaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorlimaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorlimaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorlimaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorlimaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorlimaUMLMouseClicked
+
+    private void jb_colorverdeoscUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorverdeoscUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorverdeoscUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorverdeoscUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorverdeoscUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorverdeoscUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorverdeoscUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorverdeoscUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorverdeoscUMLMouseClicked
+
+    private void jb_coloramarilloUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_coloramarilloUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_coloramarilloUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_coloramarilloUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_coloramarilloUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_coloramarilloUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_coloramarilloUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_coloramarilloUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_coloramarilloUMLMouseClicked
+
+    private void jb_colornaranjaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornaranjaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornaranjaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colornaranjaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colornaranjaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colornaranjaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colornaranjaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colornaranjaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colornaranjaUMLMouseClicked
+
+    private void jb_colorrosaUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrosaUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrosaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorrosaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorrosaUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorrosaUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorrosaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorrosaUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorrosaUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorrosaUMLMouseClicked
+
+    private void jb_colorrojoUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrojoUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorrojoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorrojoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorrojoUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorrojoUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorrojoUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorrojoUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorrojoUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorrojoUMLMouseClicked
+
+    private void jb_colorcafeclaroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeclaroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorcafeclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorcafeclaroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorcafeclaroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorcafeclaroUML.getBackground());
+        }
+        
+    }//GEN-LAST:event_jb_colorcafeclaroUMLMouseClicked
+
+    private void jb_colorcafeUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorcafeUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorcafeUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorcafeUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorcafeUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorcafeUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorcafeUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorcafeUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorcafeUMLMouseClicked
+
+    private void jb_colorgrisUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorgrisUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colorgrisUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorgrisUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colorgrisUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colorgrisUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colorgrisUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colorgrisUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colorgrisUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colorgrisUMLMouseClicked
+
+    private void jb_colornegroUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornegroUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colornegroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colornegroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colornegroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colornegroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colornegroUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colornegroUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colornegroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colornegroUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colornegroUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colornegroUMLMouseClicked
+
+    private void jb_colortealUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colortealUMLMouseClicked
+        FiguraGeneral ultimoclick = FiguraGeneral.getUltimoclickeado();
+        if (ultimoclick != null && ultimoclick instanceof ClaseGnrl){
+            ultimoclick.setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_nomclase().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblatributos().setBackground(jb_colortealUML.getBackground());
+            ((ClaseGnrl) ultimoclick).getPn_lblmetodos().setBackground(jb_colortealUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
+            ultimoclick.setBackground(jb_colortealUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colortealUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colortealUML.getBackground());
+            ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colortealUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
+            ultimoclick.setBackground(jb_colortealUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_extension().setBackground(jb_colortealUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_nomclase().setBackground(jb_colortealUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_atributos().setBackground(jb_colortealUML.getBackground());
+            ((ClaseHerencia) ultimoclick).getJp_metodos().setBackground(jb_colortealUML.getBackground());
+        }
+        else if (ultimoclick != null && ultimoclick instanceof Interfaz){
+            ultimoclick.setBackground(jb_colortealUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_nominter().setBackground(jb_colortealUML.getBackground());
+            ((Interfaz) ultimoclick).getJp_metodos().setBackground(jb_colortealUML.getBackground());
+        }
+    }//GEN-LAST:event_jb_colortealUMLMouseClicked
+
+    private void jb_spawnstartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnstartMouseClicked
+        String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
+        Font f = null;
+        
+        ClaseAbstracta clase = new ClaseAbstracta(f);
+        clase.getJl_nomclase().setText("Clase Abstracta "+name);
+        jp_flujoWork.add(clase);
+        clase.revalidate();
+        jp_flujoWork.repaint();
+        clasesUML.add(clase);
+    }//GEN-LAST:event_jb_spawnstartMouseClicked
+
+    private void jb_spawninterfaceUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawninterfaceUMLMouseClicked
+        String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la interfaz:");
+        Interfaz inter = new Interfaz();
+        inter.getNominter().setText("Interfaz: "+name);
+        jp_umlWork.add(inter);
+        inter.revalidate();
+        jp_umlWork.repaint();
+        clasesUML.add(inter);
+    }//GEN-LAST:event_jb_spawninterfaceUMLMouseClicked
+
+    private void jb_spawndecisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawndecisionMouseClicked
+        Rombo nrom = new Rombo();
+        nrom.setRomboColor(Color.yellow);
+        jp_flujoWork.add(nrom);
+        nrom.revalidate();
+        jp_flujoWork.repaint();
+    }//GEN-LAST:event_jb_spawndecisionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1610,26 +2168,25 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    public String generarfullcode(){
+        String codeinstr = "";
+        return codeinstr;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog JD_herencia;
+    private javax.swing.JComboBox<String> cb_dialogherencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
     private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
     private javax.swing.JButton jButton39;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
@@ -1639,10 +2196,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton46;
     private javax.swing.JButton jButton47;
     private javax.swing.JButton jButton48;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -1674,6 +2228,12 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1710,7 +2270,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1729,12 +2289,27 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_colorrosaUML;
     private javax.swing.JButton jb_colortealUML;
     private javax.swing.JButton jb_colorverdeoscUML;
+    private javax.swing.JButton jb_crearher;
     private javax.swing.JPanel jb_diagramasflujo;
     private javax.swing.JPanel jb_diagramasuml;
+    private javax.swing.JButton jb_spawnabstractUML;
+    private javax.swing.JButton jb_spawnarrow;
+    private javax.swing.JButton jb_spawnclaseUML;
+    private javax.swing.JButton jb_spawncycle;
+    private javax.swing.JButton jb_spawndata;
+    private javax.swing.JButton jb_spawndecision;
+    private javax.swing.JButton jb_spawnextUML;
+    private javax.swing.JButton jb_spawninterfaceUML;
+    private javax.swing.JButton jb_spawnprocess;
+    private javax.swing.JButton jb_spawnstart;
     private javax.swing.JDialog jd_creatuFLUJO;
     private javax.swing.JDialog jd_creatuUML;
+    private javax.swing.JPanel jp_flujoWork;
     private javax.swing.JPanel jp_flujodesc;
+    private javax.swing.JButton jp_spawnextinterUML;
+    private javax.swing.JPanel jp_umlWork;
     private javax.swing.JPanel jp_umldesc;
+    private javax.swing.JTextField tf_nomclaseheren;
     // End of variables declaration//GEN-END:variables
 
     //Esto esta comentado como ultimo recurso

@@ -7,6 +7,7 @@ package Python;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,28 +38,34 @@ public class ClaseGnrl extends FiguraGeneral{
     protected JPanel pn_lblmetodos = new JPanel();
     protected JLabel titulo3 = new JLabel("Metodos");
     
+    
+    
     private Font f = null;
     
     public ClaseGnrl(){
         super();
+        
+        
     }
     
     public ClaseGnrl(Font f){
         setBackground(Color.blue);
-        setSize (200,210);
-        setLocation(0,0);
+        setSize (220,190);
+        //setLocation(10,10);
         
         pn_nomclase.setBackground(getBackground());
-        pn_nomclase.setPreferredSize(new Dimension(getWidth()-10,25));
+        pn_nomclase.setPreferredSize(new Dimension(getWidth()-10,20));
         
         
-        titulo.setPreferredSize(new Dimension(getWidth()-10,25));
+        titulo.setPreferredSize(new Dimension(getWidth()-10,20));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         titulo.setBackground(new Color(0,0,0));
         titulo.setForeground(Color.white);
         titulo.setFont(boldFont);
         pn_nomclase.add(titulo);
+        
+        
         
         pn_lblatributos.setBackground(getBackground());
         pn_lblatributos.setPreferredSize(new Dimension(getWidth()-10,25));
@@ -69,6 +76,8 @@ public class ClaseGnrl extends FiguraGeneral{
         titulo2.setFont(boldFont);
         pn_lblatributos.add(titulo2);
         
+        
+        
         pn_lblmetodos.setBackground(getBackground());
         pn_lblmetodos.setPreferredSize(new Dimension(getWidth()-10,25));
         
@@ -77,6 +86,8 @@ public class ClaseGnrl extends FiguraGeneral{
         titulo3.setForeground(Color.white);
         titulo3.setFont(boldFont);
         pn_lblmetodos.add(titulo3);
+        
+        
         
         
         pnatributos.setPreferredSize(new Dimension (getWidth()-20, 40));
@@ -221,6 +232,13 @@ public class ClaseGnrl extends FiguraGeneral{
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
     }
+
+    @Override
+    public String toString() {
+        return titulo.getText();
+    }
+    
+    
     
     
     
