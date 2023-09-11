@@ -15,12 +15,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.plaf.ComponentUI;
+import javax.swing.text.Style;
+import javax.swing.text.StyledDocument;
 
 /**
  *
  * @author dfcm9
  */
 public class ClaseGnrl extends FiguraGeneral{
+    
+    StyledDocument doc;
+    Style estilo;
     
     
     private Font boldFont = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
@@ -147,6 +152,22 @@ public class ClaseGnrl extends FiguraGeneral{
 
     public void setPn_lblmetodos(JPanel pn_lblmetodos) {
         this.pn_lblmetodos = pn_lblmetodos;
+    }
+
+    public StyledDocument getDoc() {
+        return doc;
+    }
+
+    public void setDoc(StyledDocument doc) {
+        this.doc = doc;
+    }
+
+    public Style getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(Style estilo) {
+        this.estilo = estilo;
     }
 
     

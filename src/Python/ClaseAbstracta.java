@@ -28,13 +28,13 @@ public class ClaseAbstracta extends FiguraGeneral{
     protected JLabel jl_nomclase = new JLabel("NombreClase");
     
     
-    
+    /*
     protected JPanel jp_atributos = new JPanel();
     protected JLabel jl_atributos = new JLabel("Atributos");
     
     protected JTextPane tp_atributos = new JTextPane();
     protected JScrollPane sp_tpatributos = new JScrollPane(tp_atributos);
-    
+    */
     
     
     
@@ -54,7 +54,7 @@ public class ClaseAbstracta extends FiguraGeneral{
     
     public ClaseAbstracta(Font f){
         setBackground(Color.blue);
-        setSize (200,210);
+        setSize (200,130);
         //setLocation(0,0);
         
         jp_nomclase.setBackground(getBackground());
@@ -70,7 +70,7 @@ public class ClaseAbstracta extends FiguraGeneral{
         jp_nomclase.add(jl_nomclase);
         
         
-        
+        /*
         jp_atributos.setBackground(getBackground());
         jp_atributos.setPreferredSize(new Dimension(getWidth()-10,25));
         
@@ -83,7 +83,7 @@ public class ClaseAbstracta extends FiguraGeneral{
         sp_tpatributos.setPreferredSize(new Dimension (getWidth()-20, 40));
         tp_atributos.setBackground(new Color(175,175,175));
         sp_tpatributos.setForeground(new Color(175,175,175));
-        
+        */
         
         
         jp_metodos.setBackground(getBackground());
@@ -102,8 +102,8 @@ public class ClaseAbstracta extends FiguraGeneral{
         
         
         add(jp_nomclase);
-        add(jp_atributos);
-        add(sp_tpatributos);
+        //add(jp_atributos);
+        //add(sp_tpatributos);
         add(jp_metodos);
         add(sp_tpmetodos);
     }
@@ -125,7 +125,7 @@ public class ClaseAbstracta extends FiguraGeneral{
     }
 
     
-
+/*
     public JPanel getJp_atributos() {
         return jp_atributos;
     }
@@ -142,7 +142,7 @@ public class ClaseAbstracta extends FiguraGeneral{
     public void setJl_atributos(JLabel jl_atributos) {
         this.jl_atributos = jl_atributos;
     }
-
+*/
     
 
     public JPanel getJp_metodos() {
@@ -173,6 +173,7 @@ public class ClaseAbstracta extends FiguraGeneral{
         this.f = f;
     }
 
+/*    
     public JTextPane getTp_atributos() {
         return tp_atributos;
     }
@@ -188,7 +189,8 @@ public class ClaseAbstracta extends FiguraGeneral{
     public void setSp_tpatributos(JScrollPane sp_tpatributos) {
         this.sp_tpatributos = sp_tpatributos;
     }
-
+*/
+    
     public JTextPane getTp_metodos() {
         return tp_metodos;
     }

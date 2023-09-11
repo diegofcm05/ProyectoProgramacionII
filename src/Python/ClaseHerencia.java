@@ -47,19 +47,23 @@ public class ClaseHerencia extends FiguraGeneral{
     protected JTextPane tp_metodos = new JTextPane();
     protected JScrollPane sp_tpmetodos = new JScrollPane(tp_metodos);
     
+    private FiguraGeneral padre;
     
     
     
-    public ClaseHerencia(){
+    
+    public ClaseHerencia(FiguraGeneral padre){
+        
+        this.padre = padre;
         
         setBackground(Color.blue);
-        setSize (200,230);
+        setSize (200,215);
         //setLocation(10,10);
         
         jp_extension.setBackground(getBackground());
-        jp_extension.setPreferredSize(new Dimension(getWidth()-10,15));
+        jp_extension.setPreferredSize(new Dimension(getWidth()-10,20));
         
-        extension.setPreferredSize(new Dimension(getWidth()-10,15));
+        extension.setPreferredSize(new Dimension(getWidth()-10,20));
         extension.setBackground(new Color(0,0,0));
         extension.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         extension.setForeground(Color.white);
@@ -274,6 +278,14 @@ public class ClaseHerencia extends FiguraGeneral{
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
     }
+
+    @Override
+    public String toString() {
+        return nomclase.getText();
+    }
+
+    
+    
     
     
     

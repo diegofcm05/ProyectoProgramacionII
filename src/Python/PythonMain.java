@@ -6,6 +6,7 @@ package Python;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,6 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -27,6 +31,7 @@ import javax.swing.SwingUtilities;
 public class PythonMain extends javax.swing.JFrame {
     
     ArrayList <FiguraGeneral> clasesUML = new ArrayList();
+    ArrayList <Interfaz> allinters = new ArrayList();
     JPanel panelselected = new JPanel();
     
     Date ax = new Date();
@@ -44,6 +49,16 @@ public class PythonMain extends javax.swing.JFrame {
         jp_flujodesc.setVisible(false);
         jp_umldesc.setVisible(false);
         System.out.println(ax);
+        
+        
+
+        DefaultComboBoxModel modelo=(DefaultComboBoxModel) cb_fontsUML.getModel();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String fontNames[] = ge.getAvailableFontFamilyNames();
+        for (int i = 0; i < fontNames.length; i++) {
+            modelo.addElement(fontNames[i]);
+        }
+        cb_fontsUML.setModel(modelo);
         
        
        
@@ -77,8 +92,8 @@ public class PythonMain extends javax.swing.JFrame {
         jb_colorazulUML = new javax.swing.JButton();
         jb_colormoradoUML = new javax.swing.JButton();
         jb_colorfusciaUML = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_fontsUML = new javax.swing.JComboBox<>();
+        cb_tipofontUML = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -93,7 +108,7 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawnextUML = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        jl_pythonUML = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -142,6 +157,11 @@ public class PythonMain extends javax.swing.JFrame {
         tf_nomclaseheren = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jb_crearher = new javax.swing.JButton();
+        JD_aquicode = new javax.swing.JDialog();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jb_diagramasflujo = new javax.swing.JPanel();
@@ -255,7 +275,7 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jb_colorrosaUML.setBackground(new java.awt.Color(255, 153, 255));
+        jb_colorrosaUML.setBackground(new java.awt.Color(255, 102, 255));
         jb_colorrosaUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_colorrosaUML.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -303,7 +323,7 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jb_colorazulUML.setBackground(new java.awt.Color(0, 0, 204));
+        jb_colorazulUML.setBackground(new java.awt.Color(0, 51, 153));
         jb_colorazulUML.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_colorazulUML.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -327,11 +347,20 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Century", "Arial", "Times New Roman", " " }));
+        cb_fontsUML.setBackground(new java.awt.Color(102, 102, 102));
+        cb_fontsUML.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_fontsUMLItemStateChanged(evt);
+            }
+        });
 
-        jComboBox2.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", " " }));
+        cb_tipofontUML.setBackground(new java.awt.Color(102, 102, 102));
+        cb_tipofontUML.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", "Subrayado", " " }));
+        cb_tipofontUML.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipofontUMLItemStateChanged(evt);
+            }
+        });
 
         jComboBox3.setBackground(new java.awt.Color(102, 102, 102));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "16", " " }));
@@ -363,83 +392,68 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(69, 69, 69))
+                            .addComponent(cb_fontsUML, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_tipofontUML, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorazulUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jb_colornaranjaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,23 +461,47 @@ public class PythonMain extends javax.swing.JFrame {
                                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addComponent(cb_fontsUML, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_tipofontUML, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jb_colorcafeclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorrojoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jb_colornegroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorcafeUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jb_colorazulclaroUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jb_colorgrisUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jb_colortealUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jb_colorrosaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jb_colorverdeoscUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jb_colorfusciaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jb_coloramarilloUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jb_colorazulUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jb_colorlimaUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jb_colormoradoUML, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(46, 46, 46))
         );
 
         jb_spawnclaseUML.setBackground(new java.awt.Color(51, 51, 51));
@@ -544,10 +582,10 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(51, 51, 51));
+        jButton10.setBackground(new java.awt.Color(0, 153, 255));
         jButton10.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 153, 255));
-        jButton10.setText("Prueba Rombo");
+        jButton10.setForeground(new java.awt.Color(0, 0, 0));
+        jButton10.setText("Generar Codigo");
         jButton10.setFocusable(false);
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -558,10 +596,15 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Opciones disponibles:");
+        jLabel19.setText("Herramientas");
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Python/pylogo5.png"))); // NOI18N
-        jLabel21.setText("jLabel21");
+        jl_pythonUML.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Python/pylogo5.png"))); // NOI18N
+        jl_pythonUML.setText("jLabel21");
+        jl_pythonUML.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_pythonUMLMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -569,23 +612,20 @@ public class PythonMain extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5))
-                            .addComponent(jb_spawninterfaceUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_spawnextUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jp_spawnextinterUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_spawnabstractUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jl_pythonUML, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5))
+                        .addComponent(jb_spawninterfaceUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnextUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jp_spawnextinterUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnabstractUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jp_umlWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -595,9 +635,9 @@ public class PythonMain extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_spawnabstractUML, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -610,7 +650,7 @@ public class PythonMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(jLabel21))
+                        .addComponent(jl_pythonUML))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jp_umlWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -634,7 +674,7 @@ public class PythonMain extends javax.swing.JFrame {
             jd_creatuUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_creatuUMLLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         jd_creatuUMLLayout.setVerticalGroup(
             jd_creatuUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1051,6 +1091,51 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(JD_herenciaLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Codigo Generado (Java UML --> Python)");
+
+        jTextPane1.setBackground(new java.awt.Color(153, 204, 255));
+        jTextPane1.setBorder(null);
+        jScrollPane2.setViewportView(jTextPane1);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JD_aquicodeLayout = new javax.swing.GroupLayout(JD_aquicode.getContentPane());
+        JD_aquicode.getContentPane().setLayout(JD_aquicodeLayout);
+        JD_aquicodeLayout.setHorizontalGroup(
+            JD_aquicodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JD_aquicodeLayout.setVerticalGroup(
+            JD_aquicodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1573,6 +1658,8 @@ public class PythonMain extends javax.swing.JFrame {
         ClaseGnrl clase = new ClaseGnrl(f);
         clase.getTitulo().setText("Clase " + name);
         
+        clase.setDoc(clase.getAtributos().getStyledDocument());
+        clase.setEstilo(clase.getAtributos().addStyle("estATCG", null));
         
         jp_umlWork.add(clase);
         clase.revalidate();
@@ -1628,14 +1715,16 @@ public class PythonMain extends javax.swing.JFrame {
     private void jb_spawnextUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnextUMLMouseClicked
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (FiguraGeneral fig : clasesUML) {
-            if ((fig instanceof ClaseGnrl || fig instanceof ClaseAbstracta) && !fig.isBorrado()){
+            if ((fig instanceof ClaseGnrl || fig instanceof ClaseAbstracta || fig instanceof ClaseHerencia) && !fig.isBorrado()){
                 if (fig instanceof ClaseGnrl){
                     modelo.addElement((ClaseGnrl)fig);
                 }
                 if (fig instanceof ClaseAbstracta){
                     modelo.addElement((ClaseAbstracta) fig);
                 }
-                
+                if (fig instanceof ClaseHerencia){
+                    modelo.addElement((ClaseHerencia) fig);
+                }
             }
             
         }
@@ -1657,24 +1746,25 @@ public class PythonMain extends javax.swing.JFrame {
             padre = ((ClaseGnrl) cb_dialogherencia.getSelectedItem()).getTitulo().getText().substring(6,((ClaseGnrl) cb_dialogherencia.getSelectedItem()).getTitulo().getText().length());
         }
         if (cb_dialogherencia.getSelectedItem() instanceof ClaseAbstracta){
-            
+            padre = ((ClaseAbstracta) cb_dialogherencia.getSelectedItem()).getJl_nomclase().getText().substring(15, ((ClaseAbstracta) cb_dialogherencia.getSelectedItem()).getJl_nomclase().getText().length());
         }
         if (cb_dialogherencia.getSelectedItem() instanceof ClaseHerencia){
-            
-        }
-        if (cb_dialogherencia.getSelectedItem() instanceof Interfaz){
-            
+            padre = ((ClaseHerencia) cb_dialogherencia.getSelectedItem()).getNomclase().getText().substring(6, ((ClaseHerencia) cb_dialogherencia.getSelectedItem()).getNomclase().getText().length());
         }
         
-        ClaseHerencia claseher = new ClaseHerencia();
+        FiguraGeneral temppadre = (FiguraGeneral) cb_dialogherencia.getSelectedItem();
+        
+        ClaseHerencia claseher = new ClaseHerencia(temppadre);
         ((FiguraGeneral) cb_dialogherencia.getSelectedItem()).setHijo(claseher);
         claseher.getNomclase().setText("Clase "+name);
         claseher.getExtension().setText("extends "+padre);
         jp_umlWork.add(claseher);
         claseher.revalidate();
         jp_umlWork.repaint();
-        
         clasesUML.add(claseher);
+        
+        JD_herencia.setVisible(false);
+        tf_nomclaseheren.setText("");
         
     }//GEN-LAST:event_jb_crearherMouseClicked
 
@@ -1693,7 +1783,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorfusciaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorfusciaUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorfusciaUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorfusciaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorfusciaUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1722,7 +1812,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colormoradoUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colormoradoUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colormoradoUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colormoradoUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colormoradoUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1750,7 +1840,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorazulUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorazulUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorazulUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1778,7 +1868,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorazulclaroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorazulclaroUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulclaroUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorazulclaroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorazulclaroUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1806,7 +1896,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorlimaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorlimaUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorlimaUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorlimaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorlimaUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1834,7 +1924,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorverdeoscUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorverdeoscUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorverdeoscUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorverdeoscUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorverdeoscUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1862,7 +1952,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_coloramarilloUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_coloramarilloUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_coloramarilloUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_coloramarilloUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_coloramarilloUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1890,7 +1980,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colornaranjaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colornaranjaUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornaranjaUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornaranjaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colornaranjaUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1918,7 +2008,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorrosaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorrosaUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrosaUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrosaUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorrosaUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1946,7 +2036,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorrojoUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorrojoUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrojoUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorrojoUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorrojoUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -1974,7 +2064,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorcafeclaroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeclaroUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeclaroUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeclaroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorcafeclaroUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -2003,7 +2093,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorcafeUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorcafeUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorcafeUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorcafeUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -2031,7 +2121,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colorgrisUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colorgrisUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorgrisUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colorgrisUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colorgrisUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -2059,7 +2149,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colornegroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colornegroUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornegroUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colornegroUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colornegroUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -2087,7 +2177,7 @@ public class PythonMain extends javax.swing.JFrame {
         else if (ultimoclick != null && ultimoclick instanceof ClaseAbstracta){
             ultimoclick.setBackground(jb_colortealUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_nomclase().setBackground(jb_colortealUML.getBackground());
-            ((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colortealUML.getBackground());
+            //((ClaseAbstracta) ultimoclick).getJp_atributos().setBackground(jb_colortealUML.getBackground());
             ((ClaseAbstracta) ultimoclick).getJp_metodos().setBackground(jb_colortealUML.getBackground());
         }
         else if (ultimoclick != null && ultimoclick instanceof ClaseHerencia){
@@ -2105,15 +2195,7 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_colortealUMLMouseClicked
 
     private void jb_spawnstartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnstartMouseClicked
-        String name = JOptionPane.showInputDialog(null, "Ingrese el nombre de la clase:");
-        Font f = null;
         
-        ClaseAbstracta clase = new ClaseAbstracta(f);
-        clase.getJl_nomclase().setText("Clase Abstracta "+name);
-        jp_flujoWork.add(clase);
-        clase.revalidate();
-        jp_flujoWork.repaint();
-        clasesUML.add(clase);
     }//GEN-LAST:event_jb_spawnstartMouseClicked
 
     private void jb_spawninterfaceUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawninterfaceUMLMouseClicked
@@ -2124,6 +2206,7 @@ public class PythonMain extends javax.swing.JFrame {
         inter.revalidate();
         jp_umlWork.repaint();
         clasesUML.add(inter);
+        allinters.add(inter);
     }//GEN-LAST:event_jb_spawninterfaceUMLMouseClicked
 
     private void jb_spawndecisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawndecisionMouseClicked
@@ -2133,6 +2216,54 @@ public class PythonMain extends javax.swing.JFrame {
         nrom.revalidate();
         jp_flujoWork.repaint();
     }//GEN-LAST:event_jb_spawndecisionMouseClicked
+
+    private void jl_pythonUMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_pythonUMLMouseClicked
+        
+    }//GEN-LAST:event_jl_pythonUMLMouseClicked
+
+    private void cb_fontsUMLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_fontsUMLItemStateChanged
+        try {
+            FiguraGeneral ultselect = FiguraGeneral.getUltimoclickeado();
+            if (ultselect instanceof ClaseGnrl){
+                //doc = ((ClaseGnrl) ultselect).getAtributos().getStyledDocument();
+                //estilo = ((ClaseGnrl) ultselect).getAtributos().addStyle("EstiloAtribCG", null);
+                StyleConstants.setFontFamily(((ClaseGnrl) ultselect).getEstilo(), cb_fontsUML.getSelectedItem().toString());
+                ((ClaseGnrl) ultselect).getDoc().setCharacterAttributes(((ClaseGnrl) ultselect).getAtributos().getSelectionStart(),
+                        ((ClaseGnrl) ultselect).getAtributos().getSelectionEnd() - ((ClaseGnrl) ultselect).getAtributos().getSelectionStart(),
+                        ((ClaseGnrl) ultselect).getAtributos().getStyle("estATCG"),
+                        true);
+            }
+            
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error.");
+            e.printStackTrace();
+        }
+        
+        
+        
+    }//GEN-LAST:event_cb_fontsUMLItemStateChanged
+
+    private void cb_tipofontUMLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipofontUMLItemStateChanged
+       
+        try {
+            FiguraGeneral ultselect = FiguraGeneral.getUltimoclickeado();
+            if (ultselect instanceof ClaseGnrl){
+                if (cb_tipofontUML.getSelectedIndex()==1){
+                    StyleConstants.setBold(((ClaseGnrl) ultselect).getEstilo(), true);
+                    ((ClaseGnrl) ultselect).getDoc().setCharacterAttributes(((ClaseGnrl) ultselect).getAtributos().getSelectionStart(),
+                        ((ClaseGnrl) ultselect).getAtributos().getSelectionEnd() - ((ClaseGnrl) ultselect).getAtributos().getSelectionStart(),
+                        ((ClaseGnrl) ultselect).getAtributos().getStyle("estATCG"),
+                        true);
+                }
+                
+                
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cb_tipofontUMLItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -2171,12 +2302,30 @@ public class PythonMain extends javax.swing.JFrame {
     
     public String generarfullcode(){
         String codeinstr = "";
+        for (FiguraGeneral piezauml : clasesUML) {
+            if (piezauml instanceof ClaseGnrl){
+                
+            }
+            if (piezauml instanceof ClaseAbstracta){
+                
+            }
+            if (piezauml instanceof ClaseHerencia){
+                
+            }
+            if (piezauml instanceof Interfaz){
+                
+            }
+            
+        }
         return codeinstr;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog JD_aquicode;
     private javax.swing.JDialog JD_herencia;
     private javax.swing.JComboBox<String> cb_dialogherencia;
+    private javax.swing.JComboBox<String> cb_fontsUML;
+    private javax.swing.JComboBox<String> cb_tipofontUML;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton17;
@@ -2197,8 +2346,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton47;
     private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
@@ -2216,7 +2363,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -2234,6 +2380,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2270,10 +2417,13 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton jb_coloramarilloUML;
     private javax.swing.JButton jb_colorazulUML;
     private javax.swing.JButton jb_colorazulclaroUML;
@@ -2304,6 +2454,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_spawnstart;
     private javax.swing.JDialog jd_creatuFLUJO;
     private javax.swing.JDialog jd_creatuUML;
+    private javax.swing.JLabel jl_pythonUML;
     private javax.swing.JPanel jp_flujoWork;
     private javax.swing.JPanel jp_flujodesc;
     private javax.swing.JButton jp_spawnextinterUML;
@@ -2311,7 +2462,9 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jp_umldesc;
     private javax.swing.JTextField tf_nomclaseheren;
     // End of variables declaration//GEN-END:variables
-
+    
+    StyledDocument doc;
+    Style estilo;
     //Esto esta comentado como ultimo recurso
         /*JPanel plol = new FiguraGeneral();
         plol.setSize(80, 50);

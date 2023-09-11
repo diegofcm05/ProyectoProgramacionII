@@ -13,7 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.geom.Path2D;
-import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -24,29 +24,33 @@ import javax.swing.JTextField;
 public class Rombo extends FiguraGeneral{
     
     private Color romboColor = Color.red; // Color predeterminado
-    private JTextField textField;
+    private JTextPane textPane;
     
     public Rombo() {
         // Constructor: Configurar el panel y agregar componentes
-        setLayout(new GridBagLayout());
+        setLayout(null);
         setSize(200,100);
         setBackground(new Color(204,204,204));
 
-        // Crear un JTextField y agregarlo al centro del panel
-        textField = new JTextField("Texto en el rombo");
-        textField.setBackground(Color.BLUE); // Establecer el fondo del JTextField al color del panel
-        textField.setForeground(Color.WHITE); // Establecer el color del texto en blanco
-        textField.setBorder(null); // Eliminar el borde del JTextField
+        // Crear un JTextPane y agregarlo al centro del panel
+        textPane = new JTextPane();
+        textPane.setText("Aqui va el texto de instruccion");
+        textPane.setBackground(Color.BLUE); // Establecer el fondo del JTextPane al color del panel
+        textPane.setForeground(Color.WHITE); // Establecer el color del texto en blanco
+        textPane.setBorder(null); // Eliminar el borde del JTextPane
+        
         
         // Cambiar el estilo de fuente del texto a negrita
-        Font boldFont = new Font(textField.getFont().getName(), Font.BOLD, textField.getFont().getSize());
-        textField.setFont(boldFont);
+        Font boldFont = new Font(textPane.getFont().getName(), Font.BOLD, textPane.getFont().getSize());
+        textPane.setFont(boldFont);
+        
+        textPane.setBounds(30, (getHeight()/2)-10, 140, 20);
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        /*GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        add(textField, gbc);
+        gbc.fill = GridBagConstraints.HORIZONTAL;*/
+        add(textPane);
     }
     
     public void setRomboColor(Color color) {

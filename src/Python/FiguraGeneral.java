@@ -37,16 +37,21 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
     protected JPopupMenu menuop = new JPopupMenu();
     protected JMenuItem nomclass = new JMenuItem();
     protected JMenuItem eliminar = new JMenuItem();
+    protected JMenuItem addinterface = new JMenuItem();
     
     private ArrayList <FiguraGeneral> hijos = new ArrayList();
+    private ArrayList <Interfaz> interdisp = new ArrayList();
+    private ArrayList <Interfaz> implementadas = new ArrayList();
 
     public FiguraGeneral() {
         setLocation(10, 10);
         
         nomclass.setText("Cambiar Nombre");
         eliminar.setText("Eliminar");
+        addinterface.setText("Implementar Interfaz");
         menuop.add(nomclass);
         menuop.add(eliminar);
+        menuop.add(addinterface);
         this.addMouseListener((MouseListener) this);
         this.addMouseMotionListener((MouseMotionListener) this);
         
@@ -74,6 +79,15 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
         
         
     }
+
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
+
+    public void setSeleccionado(boolean seleccionado) {
+        this.seleccionado = seleccionado;
+    }
+    
 
     public Point getStart() {
         return Start;
@@ -110,7 +124,14 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
     public void setHijo(FiguraGeneral hijo){
         hijos.add(hijo);
     }
-    
+
+    public ArrayList<Interfaz> getInterdisp() {
+        return interdisp;
+    }
+
+    public void setInterdisp(ArrayList<Interfaz> interdisp) {
+        this.interdisp = interdisp;
+    }
     
     
     @Override
