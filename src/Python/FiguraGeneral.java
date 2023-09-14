@@ -38,10 +38,9 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
     protected JMenuItem nomclass = new JMenuItem();
     protected JMenuItem eliminar = new JMenuItem();
     protected JMenuItem addinterface = new JMenuItem();
+    protected JMenuItem colortext = new JMenuItem();
     
-    private ArrayList <FiguraGeneral> hijos = new ArrayList();
-    private ArrayList <Interfaz> interdisp = new ArrayList();
-    private ArrayList <Interfaz> implementadas = new ArrayList();
+    
 
     public FiguraGeneral() {
         setLocation(10, 10);
@@ -73,6 +72,26 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
                 if (componenteClickeado instanceof ClaseGnrl){
                     String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
                     ((ClaseGnrl) ultimoclickeado).getTitulo().setText("Clase "+ax);
+                    for (FiguraGeneral obj : ((ClaseGnrl) ultimoclickeado).getHijos()) {
+                        ((ClaseHerencia) obj).getExtension().setText("extends "+ax);
+                        
+                    }
+                }
+                if (componenteClickeado instanceof ClaseAbstracta){
+                    String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
+                    ((ClaseAbstracta) ultimoclickeado).getJl_nomclase().setText("Clase Abstracta "+ax);
+                    for (FiguraGeneral obj : ((ClaseAbstracta) ultimoclickeado).getHijos()) {
+                        ((ClaseHerencia) obj).getExtension().setText("extends "+ax);
+                        
+                    }
+                }
+                if (componenteClickeado instanceof ClaseHerencia){
+                    String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
+                    ((ClaseHerencia) ultimoclickeado).getNomclase().setText("Clase "+ax);
+                    for (FiguraGeneral obj : ((ClaseHerencia) ultimoclickeado).getHijos()) {
+                        ((ClaseHerencia) obj).getExtension().setText("extends "+ax);
+                        
+                    }
                 }
             }
         });
@@ -113,25 +132,6 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
         this.borrado = borrado;
     }
 
-    public ArrayList<FiguraGeneral> getHijos() {
-        return hijos;
-    }
-
-    public void setHijos(ArrayList<FiguraGeneral> hijos) {
-        this.hijos = hijos;
-    }
-    
-    public void setHijo(FiguraGeneral hijo){
-        hijos.add(hijo);
-    }
-
-    public ArrayList<Interfaz> getInterdisp() {
-        return interdisp;
-    }
-
-    public void setInterdisp(ArrayList<Interfaz> interdisp) {
-        this.interdisp = interdisp;
-    }
     
     
     @Override

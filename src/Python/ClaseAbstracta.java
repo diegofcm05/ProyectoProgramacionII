@@ -7,6 +7,7 @@ package Python;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.plaf.ComponentUI;
+import javax.swing.text.Style;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -27,22 +30,16 @@ public class ClaseAbstracta extends FiguraGeneral{
     protected JPanel jp_nomclase = new JPanel();
     protected JLabel jl_nomclase = new JLabel("NombreClase");
     
-    
-    /*
-    protected JPanel jp_atributos = new JPanel();
-    protected JLabel jl_atributos = new JLabel("Atributos");
-    
-    protected JTextPane tp_atributos = new JTextPane();
-    protected JScrollPane sp_tpatributos = new JScrollPane(tp_atributos);
-    */
-    
-    
+    private ArrayList <FiguraGeneral> hijos = new ArrayList();
     
     protected JPanel jp_metodos = new JPanel();
     protected JLabel jl_metodos = new JLabel("Metodos");
     
-    protected JTextPane tp_metodos = new JTextPane();
+    protected JTextArea tp_metodos = new JTextArea();
     protected JScrollPane sp_tpmetodos = new JScrollPane(tp_metodos);
+    
+    private StyledDocument doctpmet;
+    private Style estilotpmet;
     
     
     
@@ -70,22 +67,6 @@ public class ClaseAbstracta extends FiguraGeneral{
         jp_nomclase.add(jl_nomclase);
         
         
-        /*
-        jp_atributos.setBackground(getBackground());
-        jp_atributos.setPreferredSize(new Dimension(getWidth()-10,25));
-        
-        jl_atributos.setPreferredSize(new Dimension(getWidth()-10,25));
-        jl_atributos.setBackground(new Color(0,0,0));
-        jl_atributos.setForeground(Color.white);
-        jl_atributos.setFont(boldFont);
-        jp_atributos.add(jl_atributos);
-        
-        sp_tpatributos.setPreferredSize(new Dimension (getWidth()-20, 40));
-        tp_atributos.setBackground(new Color(175,175,175));
-        sp_tpatributos.setForeground(new Color(175,175,175));
-        */
-        
-        
         jp_metodos.setBackground(getBackground());
         jp_metodos.setPreferredSize(new Dimension(getWidth()-10,25));
         
@@ -102,8 +83,6 @@ public class ClaseAbstracta extends FiguraGeneral{
         
         
         add(jp_nomclase);
-        //add(jp_atributos);
-        //add(sp_tpatributos);
         add(jp_metodos);
         add(sp_tpmetodos);
     }
@@ -124,26 +103,32 @@ public class ClaseAbstracta extends FiguraGeneral{
         this.jl_nomclase = jl_nomclase;
     }
 
-    
-/*
-    public JPanel getJp_atributos() {
-        return jp_atributos;
+    public ArrayList<FiguraGeneral> getHijos() {
+        return hijos;
     }
 
-    public void setJp_atributos(JPanel jp_atributos) {
-        this.jp_atributos = jp_atributos;
-    }
-    
-
-    public JLabel getJl_atributos() {
-        return jl_atributos;
+    public void setHijos(ArrayList<FiguraGeneral> hijos) {
+        this.hijos = hijos;
     }
 
-    public void setJl_atributos(JLabel jl_atributos) {
-        this.jl_atributos = jl_atributos;
-    }
-*/
     
+    
+
+    public StyledDocument getDoctpmet() {
+        return doctpmet;
+    }
+
+    public void setDoctpmet(StyledDocument doctpmet) {
+        this.doctpmet = doctpmet;
+    }
+
+    public Style getEstilotpmet() {
+        return estilotpmet;
+    }
+
+    public void setEstilotpmet(Style estilotpmet) {
+        this.estilotpmet = estilotpmet;
+    }
 
     public JPanel getJp_metodos() {
         return jp_metodos;
@@ -173,31 +158,16 @@ public class ClaseAbstracta extends FiguraGeneral{
         this.f = f;
     }
 
-/*    
-    public JTextPane getTp_atributos() {
-        return tp_atributos;
-    }
-
-    public void setTp_atributos(JTextPane tp_atributos) {
-        this.tp_atributos = tp_atributos;
-    }
-
-    public JScrollPane getSp_tpatributos() {
-        return sp_tpatributos;
-    }
-
-    public void setSp_tpatributos(JScrollPane sp_tpatributos) {
-        this.sp_tpatributos = sp_tpatributos;
-    }
-*/
-    
-    public JTextPane getTp_metodos() {
+    public JTextArea getTp_metodos() {
         return tp_metodos;
     }
 
-    public void setTp_metodos(JTextPane tp_metodos) {
+    public void setTp_metodos(JTextArea tp_metodos) {
         this.tp_metodos = tp_metodos;
     }
+
+    
+    
 
     public JScrollPane getSp_tpmetodos() {
         return sp_tpmetodos;

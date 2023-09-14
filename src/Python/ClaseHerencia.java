@@ -15,9 +15,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.event.EventListenerList;
 import javax.swing.plaf.ComponentUI;
+import javax.swing.text.Style;
+import javax.swing.text.StyledDocument;
 
 
 /**
@@ -25,6 +28,15 @@ import javax.swing.plaf.ComponentUI;
  * @author dfcm9
  */
 public class ClaseHerencia extends FiguraGeneral{
+    
+    private StyledDocument doctpatri;
+    private Style estilotpatri;
+            
+    private StyledDocument doctpmeto;
+    private Style estilotpmeto;
+            
+            
+            
     
     private Font boldFont = new Font(getFont().getName(), Font.BOLD, getFont().getSize());
     private Font boldFontext = new Font(getFont().getName(), Font.BOLD, 9);
@@ -38,16 +50,19 @@ public class ClaseHerencia extends FiguraGeneral{
     protected JPanel jp_atributos = new JPanel();
     protected JLabel atributos = new JLabel("Atributos");
     
-    protected JTextPane tp_atributos = new JTextPane();
+    protected JTextArea tp_atributos = new JTextArea();
     protected JScrollPane sp_tpatributos = new JScrollPane(tp_atributos);
     
     protected JPanel jp_metodos = new JPanel();
     protected JLabel metodos = new JLabel("Metodos");
     
-    protected JTextPane tp_metodos = new JTextPane();
+    protected JTextArea tp_metodos = new JTextArea();
     protected JScrollPane sp_tpmetodos = new JScrollPane(tp_metodos);
     
     private FiguraGeneral padre;
+    
+    private ArrayList <FiguraGeneral> hijos = new ArrayList();
+    
     
     
     
@@ -181,13 +196,7 @@ public class ClaseHerencia extends FiguraGeneral{
         this.atributos = atributos;
     }
 
-    public JTextPane getTp_atributos() {
-        return tp_atributos;
-    }
-
-    public void setTp_atributos(JTextPane tp_atributos) {
-        this.tp_atributos = tp_atributos;
-    }
+    
 
     public JScrollPane getSp_tpatributos() {
         return sp_tpatributos;
@@ -213,13 +222,23 @@ public class ClaseHerencia extends FiguraGeneral{
         this.metodos = metodos;
     }
 
-    public JTextPane getTp_metodos() {
+    public JTextArea getTp_atributos() {
+        return tp_atributos;
+    }
+
+    public void setTp_atributos(JTextArea tp_atributos) {
+        this.tp_atributos = tp_atributos;
+    }
+
+    public JTextArea getTp_metodos() {
         return tp_metodos;
     }
 
-    public void setTp_metodos(JTextPane tp_metodos) {
+    public void setTp_metodos(JTextArea tp_metodos) {
         this.tp_metodos = tp_metodos;
     }
+
+    
 
     public JScrollPane getSp_tpmetodos() {
         return sp_tpmetodos;
@@ -278,6 +297,57 @@ public class ClaseHerencia extends FiguraGeneral{
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
     }
+
+    public StyledDocument getDoctpatri() {
+        return doctpatri;
+    }
+
+    public void setDoctpatri(StyledDocument doctpatri) {
+        this.doctpatri = doctpatri;
+    }
+
+    public Style getEstilotpatri() {
+        return estilotpatri;
+    }
+
+    public void setEstilotpatri(Style estilotpatri) {
+        this.estilotpatri = estilotpatri;
+    }
+
+    public StyledDocument getDoctpmeto() {
+        return doctpmeto;
+    }
+
+    public void setDoctpmeto(StyledDocument doctpmeto) {
+        this.doctpmeto = doctpmeto;
+    }
+
+    public Style getEstilotpmeto() {
+        return estilotpmeto;
+    }
+
+    public void setEstilotpmeto(Style estilotpmeto) {
+        this.estilotpmeto = estilotpmeto;
+    }
+
+    public FiguraGeneral getPadre() {
+        return padre;
+    }
+
+    public void setPadre(FiguraGeneral padre) {
+        this.padre = padre;
+    }
+
+    public ArrayList<FiguraGeneral> getHijos() {
+        return hijos;
+    }
+
+    public void setHijos(ArrayList<FiguraGeneral> hijos) {
+        this.hijos = hijos;
+    }
+    
+    
+    
 
     @Override
     public String toString() {
