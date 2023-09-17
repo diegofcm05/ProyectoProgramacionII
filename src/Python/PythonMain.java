@@ -361,7 +361,7 @@ public class PythonMain extends javax.swing.JFrame {
         });
 
         cb_tipofontUML.setBackground(new java.awt.Color(102, 102, 102));
-        cb_tipofontUML.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", "Subrayado", " " }));
+        cb_tipofontUML.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", "Bold Italic", " " }));
         cb_tipofontUML.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_tipofontUMLItemStateChanged(evt);
@@ -1143,7 +1143,7 @@ public class PythonMain extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 153));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Codigo Generado (Java UML --> Python)");
@@ -2482,24 +2482,164 @@ public class PythonMain extends javax.swing.JFrame {
             if (piezauml instanceof ClaseHerencia){
                 
                 FiguraGeneral padtem = ((ClaseHerencia) piezauml).getPadre();
+                
                 if (padtem instanceof ClaseGnrl){
-                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseGnrl) padtem).getTitulo().getText()+"):\n"; 
+                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseGnrl) padtem).getTitulo().getText().substring(6)+"):\n"; 
+                    
+                    String attpadre = ((ClaseGnrl) padtem).getAtributos().getText();
+                    String [] attpadrespl = attpadre.split("\n");
+                    
+                    
+                    codeinstr+="\tdef __init__ (self";
+                    
+                    String att = ((ClaseHerencia) piezauml).getTp_atributos().getText();
+                    String [] attspli = att.split("\n");
+                    
+                    for (String g : attpadrespl) {
+                        codeinstr+=", "+g;
+                        
+                    }
+                    
+                    for (String at : attspli) {
+                        codeinstr+=", "+at;
+                    }
+                    codeinstr+="):\n";
+                    
+                    
+                    
+                    codeinstr+="\t\tsuper().__init__(";
+                    
+                    for (int i = 0; i < attpadrespl.length; i++) {
+                        if (i==0){
+                            codeinstr+=attpadrespl[i];
+                            
+                        }
+                        else{
+                            codeinstr+=", "+attpadrespl[i];
+                        }
+                        
+                    }
+                    codeinstr+="):\n";
+                    
+                    for (String atr : attspli) {
+                        codeinstr+="\t\tself."+atr+" = "+atr+"\n";
+                    }
+                    
+                    codeinstr+="\n\n";
+                    
+                    String met = ((ClaseHerencia) piezauml).getTp_metodos().getText();
+                    String [] mets = met.split("\n");
+                    
+                    for (String met1 : mets) {
+                        codeinstr+="\tdef "+met1+" (self):\n";
+                        codeinstr+="\t\tpass";
+                        codeinstr+="\n\n";
+                       
+                    }
+                    
+                    codeinstr+="\n";
+                    
                 }
                 else if (padtem instanceof ClaseAbstracta){
-                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseAbstracta) padtem).getJl_nomclase().getText()+"):\n";
+                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseAbstracta) padtem).getJl_nomclase().getText().substring(15)+"):\n";
+                    
+                    codeinstr+="\tdef __init__ (self";
+                    
+                    String att = ((ClaseHerencia) piezauml).getTp_atributos().getText();
+                    String [] attspli = att.split("\n");
+                    
+                    for (String at : attspli) {
+                        codeinstr+=", "+at;
+                    }
+                    codeinstr+="):\n";
+                    
+                    for (String atr : attspli) {
+                        codeinstr+="\t\tself."+atr+" = "+atr+"\n";
+                    }
+                    
+                    codeinstr+="\n\n";
+                    
+                    String metpad = ((ClaseAbstracta) padtem).getTp_metodos().getText();
+                    String [] metpadspli = metpad.split("\n");
+                    
+                    for (String string : metpadspli) {
+                        codeinstr+="\tdef "+string+" (self):\n";
+                        codeinstr+="\t\tpass";
+                        codeinstr+="\n\n";
+                    }
+                    
+                    String mets = ((ClaseHerencia) piezauml).getTp_metodos().getText();
+                    String [] metssp = mets.split("\n");
+                     
+                    for (String string : metssp) {
+                        codeinstr+="\tdef "+string+" (self):\n";
+                        codeinstr+="\t\tpass";
+                        codeinstr+="\n\n";
+                        
+                    }
+                    
+                    codeinstr+="\n";
+                    
                 }
                 else if (padtem instanceof ClaseHerencia){
-                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseHerencia) padtem).getNomclase().getText()+"):\n";
-                }
-                else{
+                    codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseHerencia) padtem).getNomclase().getText().substring(6)+"):\n";
+                    
+                    codeinstr+="\tdef __init__ (self";
+                    
+                    String attpadre = ((ClaseHerencia) padtem).getTp_atributos().getText();
+                    String [] attpadrespl = attpadre.split("\n");
+                    
+                    String att = ((ClaseHerencia) piezauml).getTp_atributos().getText();
+                    String [] attspli = att.split("\n");
+                    
+                    for (String r : attpadrespl) {
+                        codeinstr+=", "+r;
+                        
+                    }
+                    
+                    for (String at : attspli) {
+                        codeinstr+=", "+at;
+                    }
+                    codeinstr+="):\n";
+                    
+                    
+                    
+                    codeinstr+="\t\tsuper().__init__(";
+                    
+                    for (int i = 0; i < attpadrespl.length; i++) {
+                        if (i==0){
+                            codeinstr+=attpadrespl[i];
+                            
+                        }
+                        else{
+                            codeinstr+=", "+attpadrespl[i];
+                        }
+                        
+                    }
+                    codeinstr+="):\n";
+                    
+                    for (String atr : attspli) {
+                        codeinstr+="\t\tself."+atr+" = "+atr+"\n";
+                    }
+                    
+                    codeinstr+="\n\n";
+                    
+                    String met = ((ClaseHerencia) piezauml).getTp_metodos().getText();
+                    String [] mets = met.split("\n");
+                    
+                    for (String met1 : mets) {
+                        codeinstr+="\tdef "+met1+" (self):\n";
+                        codeinstr+="\t\tpass";
+                        codeinstr+="\n\n";
+                       
+                    }
+                    
+                    codeinstr+="\n";
                     
                 }
                 
                 codeinstr+="\n\n";
-                
-                        
-                
-                
+ 
             }
             if (piezauml instanceof Interfaz){
                 codeinstr+="class "+((Interfaz) piezauml).getNominter().getText().substring(9)+":\n";
