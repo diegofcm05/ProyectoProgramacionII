@@ -8,35 +8,36 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.Ellipse2D;
 import javax.swing.JTextArea;
+import javax.swing.JFormattedTextField;
 
 /**
  *
  * @author dfcm9
  */
-public class InicioFin extends FiguraGeneral{
+public class Ciclo extends FiguraGeneral{
     
-    private Color ColorInifin = Color.red; // Color predeterminado
+    private Color ColorCirc = Color.red; // Color predeterminado
     private JTextArea textA;
+    private JTextArea num_proceso;
     
-    public InicioFin(){
+    public Ciclo(){
         
-        // Constructor: Configurar el panel y agregar componentes
+        
         setLayout(null);
-        setSize(180,80);
+        setSize(180,100);
         setBackground(new Color(204,204,204));
-
-        // Crear un JTextPane y agregarlo al centro del panel
+        
+        
+ 
         textA = new JTextArea();
-        textA.setText("Inicio/Fin");
+        textA.setText("Ingrese la instruccion aqui");
         textA.setBackground(Color.GRAY); // Establecer el fondo del JTextPane al color del panel
         textA.setForeground(Color.WHITE); // Establecer el color del texto en blanco
         textA.setBorder(null); // Eliminar el borde del JTextPane
         
         
-        // Cambiar el estilo de fuente del texto a negrita
         Font boldFont = new Font(textA.getFont().getName(), Font.BOLD, textA.getFont().getSize());
         textA.setFont(boldFont);
         
@@ -48,29 +49,26 @@ public class InicioFin extends FiguraGeneral{
         
     }
     
-    public void setInicioFinColor(Color color) {
-        this.ColorInifin = color;
+    public void CircColor(Color color) {
+        this.ColorCirc = color;
         repaint(); // Vuelve a dibujar el componente para reflejar el nuevo color
     }
     
-    
-    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
+
         int width = getWidth();
         int height = getHeight();
-        
+
+        // Crear una elipse
+        Ellipse2D.Double ellipse = new Ellipse2D.Double(0, 0, width, height);
+
+        // Rellenar la elipse con un color
         Graphics2D g2d = (Graphics2D) g;
-        
-        // Crear una forma de cápsula horizontal
-        Shape capsuleShape = new RoundRectangle2D.Double(0, height / 4, width, height / 2, height / 2, height / 2);
-        
-        // Rellenar la forma con un color
-        g2d.setColor(ColorInifin); // Cambia el color como desees
-        g2d.fill(capsuleShape);
+        g2d.setColor(Color.red); // Cambia el color como desees
+        g2d.fill(ellipse);
     }
     
+   
     
-
 }

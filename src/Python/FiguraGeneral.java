@@ -205,6 +205,46 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
         }
     }
     
+    protected Color Colorclaro(Color x){
+        int newred = x.getRed();
+        int newgreen= x.getGreen();
+        int newblue = x.getBlue();
+        
+        int restared = 255-newred;
+        int restagreen = 255-newgreen;
+        int restablue = 255-newblue;
+        
+        
+        
+        if (newred + 30 <= 255){
+            newred+=30;
+        }
+        else{
+            newred+=restared;
+        }
+        
+        if (newgreen + 30 <= 255){
+            newgreen +=30;
+        }
+        else{
+            newgreen+=restagreen;
+        }
+        
+        if (newblue + 30 <= 255){
+            newblue+=30;
+        }
+        else{
+            newred+=restablue;
+        }
+        
+        Color newcol = new Color(newred, newgreen, newblue);
+        
+        return newcol;
+        
+        
+    }
+    
+    
     
     
 }

@@ -109,12 +109,13 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawnclaseUML = new javax.swing.JButton();
         jb_spawnabstractUML = new javax.swing.JButton();
         jb_spawninterfaceUML = new javax.swing.JButton();
-        jp_umlWork = new javax.swing.JPanel();
         jp_spawnextinterUML = new javax.swing.JButton();
         jb_spawnextUML = new javax.swing.JButton();
         jb_generarcofdigouml = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jl_pythonUML = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jp_umlWork = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
@@ -122,32 +123,32 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jButton35 = new javax.swing.JButton();
-        jButton36 = new javax.swing.JButton();
-        jButton37 = new javax.swing.JButton();
-        jButton38 = new javax.swing.JButton();
-        jButton39 = new javax.swing.JButton();
+        jb_colornegroFLUJO = new javax.swing.JButton();
+        jb_coloresmeraldaFLUJO = new javax.swing.JButton();
+        jb_colorrojoFLUJO = new javax.swing.JButton();
+        jb_colorcafeclaroFLUJO = new javax.swing.JButton();
+        jb_colorcafeFLUJO = new javax.swing.JButton();
         jButton40 = new javax.swing.JButton();
-        jButton41 = new javax.swing.JButton();
-        jButton42 = new javax.swing.JButton();
-        jButton43 = new javax.swing.JButton();
-        jButton44 = new javax.swing.JButton();
-        jButton45 = new javax.swing.JButton();
-        jButton46 = new javax.swing.JButton();
-        jButton47 = new javax.swing.JButton();
-        jButton48 = new javax.swing.JButton();
+        jb_colornaranjaFLUJO = new javax.swing.JButton();
+        jb_coloramarilloFLUJO = new javax.swing.JButton();
+        jb_colorazulFLUJO = new javax.swing.JButton();
+        jb_colorlimaFLUJO = new javax.swing.JButton();
+        jb_colorverdeoscFLUJO = new javax.swing.JButton();
+        jb_colorazuloscFLUJO = new javax.swing.JButton();
+        jb_colormoradoFLUJO = new javax.swing.JButton();
+        jb_colorfusciaFLUJO = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        cb_fontsFLUJO = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        cb_tipofontFLUJO = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        cb_tamfontFLUJO = new javax.swing.JComboBox<>();
         jb_spawndecision = new javax.swing.JButton();
         jb_spawnstart = new javax.swing.JButton();
         jb_spawnprocess = new javax.swing.JButton();
         jb_spawncycle = new javax.swing.JButton();
         jb_spawndata = new javax.swing.JButton();
-        jb_spawnarrow = new javax.swing.JButton();
+        jb_gencodeFlujo = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -439,7 +440,7 @@ public class PythonMain extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_fontsUML, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_tipofontUML, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -591,19 +592,6 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jp_umlWork.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jp_umlWorkLayout = new javax.swing.GroupLayout(jp_umlWork);
-        jp_umlWork.setLayout(jp_umlWorkLayout);
-        jp_umlWorkLayout.setHorizontalGroup(
-            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1105, Short.MAX_VALUE)
-        );
-        jp_umlWorkLayout.setVerticalGroup(
-            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jp_spawnextinterUML.setBackground(new java.awt.Color(51, 51, 51));
         jp_spawnextinterUML.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jp_spawnextinterUML.setForeground(new java.awt.Color(0, 153, 255));
@@ -654,6 +642,22 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
+        jp_umlWork.setBackground(new java.awt.Color(204, 204, 204));
+        jp_umlWork.setPreferredSize(new java.awt.Dimension(1200, 1300));
+
+        javax.swing.GroupLayout jp_umlWorkLayout = new javax.swing.GroupLayout(jp_umlWork);
+        jp_umlWork.setLayout(jp_umlWorkLayout);
+        jp_umlWorkLayout.setHorizontalGroup(
+            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1200, Short.MAX_VALUE)
+        );
+        jp_umlWorkLayout.setVerticalGroup(
+            jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1300, Short.MAX_VALUE)
+        );
+
+        jScrollPane3.setViewportView(jp_umlWork);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -676,17 +680,17 @@ public class PythonMain extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addComponent(jp_umlWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1090, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jb_spawnclaseUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -698,15 +702,12 @@ public class PythonMain extends javax.swing.JFrame {
                         .addComponent(jb_spawnextUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jp_spawnextinterUML, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(16, 16, 16)
                         .addComponent(jb_generarcofdigouml, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addComponent(jl_pythonUML)
-                        .addGap(24, 24, 24))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jp_umlWork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(jl_pythonUML))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 102, 204));
@@ -738,76 +739,81 @@ public class PythonMain extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setBackground(new java.awt.Color(204, 204, 204));
         jButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton35.setBackground(new java.awt.Color(0, 0, 0));
-        jButton35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornegroFLUJO.setBackground(new java.awt.Color(0, 0, 0));
+        jb_colornegroFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton36.setBackground(new java.awt.Color(153, 153, 153));
-        jButton36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloresmeraldaFLUJO.setBackground(new java.awt.Color(0, 102, 102));
+        jb_coloresmeraldaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton37.setBackground(new java.awt.Color(204, 0, 0));
-        jButton37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrojoFLUJO.setBackground(new java.awt.Color(204, 0, 0));
+        jb_colorrojoFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton38.setBackground(new java.awt.Color(153, 102, 0));
-        jButton38.setForeground(new java.awt.Color(153, 102, 0));
-        jButton38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeclaroFLUJO.setBackground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeclaroFLUJO.setForeground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeclaroFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton39.setBackground(new java.awt.Color(102, 51, 0));
-        jButton39.setForeground(new java.awt.Color(153, 102, 0));
-        jButton39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeFLUJO.setBackground(new java.awt.Color(102, 51, 0));
+        jb_colorcafeFLUJO.setForeground(new java.awt.Color(153, 102, 0));
+        jb_colorcafeFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton40.setBackground(new java.awt.Color(255, 153, 255));
+        jButton40.setBackground(new java.awt.Color(255, 102, 204));
         jButton40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton41.setBackground(new java.awt.Color(255, 153, 0));
-        jButton41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornaranjaFLUJO.setBackground(new java.awt.Color(255, 153, 0));
+        jb_colornaranjaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton42.setBackground(new java.awt.Color(255, 255, 0));
-        jButton42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloramarilloFLUJO.setBackground(new java.awt.Color(255, 255, 0));
+        jb_coloramarilloFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton43.setBackground(new java.awt.Color(0, 102, 153));
-        jButton43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulFLUJO.setBackground(new java.awt.Color(0, 102, 204));
+        jb_colorazulFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton44.setBackground(new java.awt.Color(0, 255, 0));
-        jButton44.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorlimaFLUJO.setBackground(new java.awt.Color(51, 204, 0));
+        jb_colorlimaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton45.setBackground(new java.awt.Color(0, 102, 0));
-        jButton45.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorverdeoscFLUJO.setBackground(new java.awt.Color(0, 102, 0));
+        jb_colorverdeoscFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton46.setBackground(new java.awt.Color(0, 0, 204));
-        jButton46.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazuloscFLUJO.setBackground(new java.awt.Color(0, 0, 204));
+        jb_colorazuloscFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton47.setBackground(new java.awt.Color(153, 51, 255));
-        jButton47.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colormoradoFLUJO.setBackground(new java.awt.Color(153, 51, 255));
+        jb_colormoradoFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colormoradoFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colormoradoFLUJOMouseClicked(evt);
+            }
+        });
 
-        jButton48.setBackground(new java.awt.Color(153, 0, 153));
-        jButton48.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorfusciaFLUJO.setBackground(new java.awt.Color(153, 0, 153));
+        jb_colorfusciaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Fuente");
 
-        jComboBox7.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Century", "Arial", "Times New Roman", " " }));
-        jComboBox7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cb_fontsFLUJO.setBackground(new java.awt.Color(102, 102, 102));
+        cb_fontsFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Century", "Arial", "Times New Roman", " " }));
+        cb_fontsFLUJO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Tipo");
 
-        jComboBox8.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", " " }));
-        jComboBox8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cb_tipofontFLUJO.setBackground(new java.awt.Color(102, 102, 102));
+        cb_tipofontFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", " " }));
+        cb_tipofontFLUJO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Tamaño");
 
-        jComboBox9.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "16", " " }));
-        jComboBox9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cb_tamfontFLUJO.setBackground(new java.awt.Color(102, 102, 102));
+        cb_tamfontFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "16", " " }));
+        cb_tamfontFLUJO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -816,97 +822,88 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jb_colorcafeclaroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jb_colorrojoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jb_colornegroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jb_colorcafeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jb_colorazuloscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colormoradoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colorfusciaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jb_coloramarilloFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colorlimaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_colorverdeoscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_coloresmeraldaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jb_colorazulFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_colornaranjaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorcafeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colornegroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorcafeclaroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorrojoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colornaranjaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_coloramarilloFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorlimaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorverdeoscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorazulFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_coloresmeraldaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jb_colorfusciaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jButton44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jb_colorazuloscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colormoradoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jb_spawndecision.setBackground(new java.awt.Color(51, 51, 51));
@@ -924,7 +921,7 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawnstart.setBackground(new java.awt.Color(51, 51, 51));
         jb_spawnstart.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jb_spawnstart.setForeground(new java.awt.Color(153, 153, 255));
-        jb_spawnstart.setText("Inicio");
+        jb_spawnstart.setText("Inicio/Fin");
         jb_spawnstart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_spawnstart.setFocusable(false);
         jb_spawnstart.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -944,6 +941,11 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawnprocess.setText("Proceso");
         jb_spawnprocess.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_spawnprocess.setFocusable(false);
+        jb_spawnprocess.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawnprocessMouseClicked(evt);
+            }
+        });
 
         jb_spawncycle.setBackground(new java.awt.Color(51, 51, 51));
         jb_spawncycle.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
@@ -951,6 +953,11 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawncycle.setText("Ciclo");
         jb_spawncycle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_spawncycle.setFocusable(false);
+        jb_spawncycle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawncycleMouseClicked(evt);
+            }
+        });
 
         jb_spawndata.setBackground(new java.awt.Color(51, 51, 51));
         jb_spawndata.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
@@ -958,13 +965,18 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawndata.setText("Datos");
         jb_spawndata.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_spawndata.setFocusable(false);
+        jb_spawndata.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_spawndataMouseClicked(evt);
+            }
+        });
 
-        jb_spawnarrow.setBackground(new java.awt.Color(51, 51, 51));
-        jb_spawnarrow.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jb_spawnarrow.setForeground(new java.awt.Color(153, 153, 255));
-        jb_spawnarrow.setText("Flecha");
-        jb_spawnarrow.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jb_spawnarrow.setFocusable(false);
+        jb_gencodeFlujo.setBackground(new java.awt.Color(51, 51, 51));
+        jb_gencodeFlujo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_gencodeFlujo.setForeground(new java.awt.Color(153, 153, 255));
+        jb_gencodeFlujo.setText("Generar Codigo");
+        jb_gencodeFlujo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_gencodeFlujo.setFocusable(false);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -976,17 +988,20 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("para bloques:");
 
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 1250));
+
         jp_flujoWork.setBackground(new java.awt.Color(204, 204, 204));
+        jp_flujoWork.setPreferredSize(new java.awt.Dimension(975, 1400));
 
         javax.swing.GroupLayout jp_flujoWorkLayout = new javax.swing.GroupLayout(jp_flujoWork);
         jp_flujoWork.setLayout(jp_flujoWorkLayout);
         jp_flujoWorkLayout.setHorizontalGroup(
             jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+            .addGap(0, 975, Short.MAX_VALUE)
         );
         jp_flujoWorkLayout.setVerticalGroup(
             jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGap(0, 1400, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jp_flujoWork);
@@ -1004,19 +1019,19 @@ public class PythonMain extends javax.swing.JFrame {
                     .addComponent(jb_spawndecision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jb_spawnstart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(jb_spawnprocess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jb_spawnarrow, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1032,9 +1047,9 @@ public class PythonMain extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jb_spawndata, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jb_spawnarrow, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jMenuBar3.setBackground(new java.awt.Color(153, 153, 255));
@@ -2261,6 +2276,10 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_colortealUMLMouseClicked
 
     private void jb_spawnstartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnstartMouseClicked
+        InicioFin inifin = new InicioFin();
+        jp_flujoWork.add(inifin);
+        inifin.revalidate();
+        jp_flujoWork.repaint();
         
     }//GEN-LAST:event_jb_spawnstartMouseClicked
 
@@ -2379,6 +2398,38 @@ public class PythonMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_ApplyFontChangesMouseClicked
 
+    private void jb_spawnprocessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawnprocessMouseClicked
+        Proceso npro = new Proceso();
+        npro.setProcesoColor(Color.yellow);
+        jp_flujoWork.add(npro);
+        npro.revalidate();
+        jp_flujoWork.repaint();     
+                
+    }//GEN-LAST:event_jb_spawnprocessMouseClicked
+
+    private void jb_spawndataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawndataMouseClicked
+        Datos ndata = new Datos();
+        jp_flujoWork.add(ndata);
+        ndata.revalidate();
+        jp_flujoWork.repaint();
+    }//GEN-LAST:event_jb_spawndataMouseClicked
+
+    private void jb_spawncycleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_spawncycleMouseClicked
+        Ciclo nciclo = new Ciclo();
+        jp_flujoWork.add(nciclo);
+        nciclo.revalidate();
+        jp_flujoWork.repaint();
+    }//GEN-LAST:event_jb_spawncycleMouseClicked
+
+    private void jb_colormoradoFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colormoradoFLUJOMouseClicked
+        FiguraGeneral ultc = FiguraGeneral.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colormoradoFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        
+    }//GEN-LAST:event_jb_colormoradoFLUJOMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2422,7 +2473,7 @@ public class PythonMain extends javax.swing.JFrame {
             }
         }
         for (FiguraGeneral piezauml : clasesUML) {
-            if (piezauml instanceof ClaseGnrl){
+            if (piezauml instanceof ClaseGnrl && !piezauml.isBorrado()){
                 
                 //Crea un Array de Atributos de esa Clase
                 String atri = ((ClaseGnrl) piezauml).getAtributos().getText();
@@ -2463,7 +2514,7 @@ public class PythonMain extends javax.swing.JFrame {
                 codeinstr+="\n";
                  
             }
-            if (piezauml instanceof ClaseAbstracta){
+            if (piezauml instanceof ClaseAbstracta && !piezauml.isBorrado()){
                 codeinstr+="class "+((ClaseAbstracta) piezauml).getJl_nomclase().getText().substring(15)+":\n";
                 
                 String metca = ((ClaseAbstracta) piezauml).getTp_metodos().getText();
@@ -2479,7 +2530,7 @@ public class PythonMain extends javax.swing.JFrame {
                 
                 codeinstr+="\n";
             }
-            if (piezauml instanceof ClaseHerencia){
+            if (piezauml instanceof ClaseHerencia && !piezauml.isBorrado()){
                 
                 FiguraGeneral padtem = ((ClaseHerencia) piezauml).getPadre();
                 
@@ -2519,7 +2570,7 @@ public class PythonMain extends javax.swing.JFrame {
                         }
                         
                     }
-                    codeinstr+="):\n";
+                    codeinstr+=")\n";
                     
                     for (String atr : attspli) {
                         codeinstr+="\t\tself."+atr+" = "+atr+"\n";
@@ -2616,7 +2667,7 @@ public class PythonMain extends javax.swing.JFrame {
                         }
                         
                     }
-                    codeinstr+="):\n";
+                    codeinstr+=")\n";
                     
                     for (String atr : attspli) {
                         codeinstr+="\t\tself."+atr+" = "+atr+"\n";
@@ -2641,7 +2692,7 @@ public class PythonMain extends javax.swing.JFrame {
                 codeinstr+="\n\n";
  
             }
-            if (piezauml instanceof Interfaz){
+            if (piezauml instanceof Interfaz && !piezauml.isBorrado()){
                 codeinstr+="class "+((Interfaz) piezauml).getNominter().getText().substring(9)+":\n";
                 
                 String metca = ((Interfaz) piezauml).getTp_metodos().getText();
@@ -2666,31 +2717,18 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JDialog JD_aquicode;
     private javax.swing.JDialog JD_herencia;
     private javax.swing.JComboBox<String> cb_dialogherencia;
+    private javax.swing.JComboBox<String> cb_fontsFLUJO;
     private javax.swing.JComboBox<String> cb_fontsUML;
+    private javax.swing.JComboBox<String> cb_tamfontFLUJO;
     private javax.swing.JComboBox<String> cb_tamfontUML;
+    private javax.swing.JComboBox<String> cb_tipofontFLUJO;
     private javax.swing.JComboBox<String> cb_tipofontUML;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton35;
-    private javax.swing.JButton jButton36;
-    private javax.swing.JButton jButton37;
-    private javax.swing.JButton jButton38;
-    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton40;
-    private javax.swing.JButton jButton41;
-    private javax.swing.JButton jButton42;
-    private javax.swing.JButton jButton43;
-    private javax.swing.JButton jButton44;
-    private javax.swing.JButton jButton45;
-    private javax.swing.JButton jButton46;
-    private javax.swing.JButton jButton47;
-    private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2762,31 +2800,45 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jb_ApplyFontChanges;
+    private javax.swing.JButton jb_coloramarilloFLUJO;
     private javax.swing.JButton jb_coloramarilloUML;
+    private javax.swing.JButton jb_colorazulFLUJO;
     private javax.swing.JButton jb_colorazulUML;
     private javax.swing.JButton jb_colorazulclaroUML;
+    private javax.swing.JButton jb_colorazuloscFLUJO;
+    private javax.swing.JButton jb_colorcafeFLUJO;
     private javax.swing.JButton jb_colorcafeUML;
+    private javax.swing.JButton jb_colorcafeclaroFLUJO;
     private javax.swing.JButton jb_colorcafeclaroUML;
+    private javax.swing.JButton jb_coloresmeraldaFLUJO;
+    private javax.swing.JButton jb_colorfusciaFLUJO;
     private javax.swing.JButton jb_colorfusciaUML;
     private javax.swing.JButton jb_colorgrisUML;
+    private javax.swing.JButton jb_colorlimaFLUJO;
     private javax.swing.JButton jb_colorlimaUML;
+    private javax.swing.JButton jb_colormoradoFLUJO;
     private javax.swing.JButton jb_colormoradoUML;
+    private javax.swing.JButton jb_colornaranjaFLUJO;
     private javax.swing.JButton jb_colornaranjaUML;
+    private javax.swing.JButton jb_colornegroFLUJO;
     private javax.swing.JButton jb_colornegroUML;
+    private javax.swing.JButton jb_colorrojoFLUJO;
     private javax.swing.JButton jb_colorrojoUML;
     private javax.swing.JButton jb_colorrosaUML;
     private javax.swing.JButton jb_colortealUML;
+    private javax.swing.JButton jb_colorverdeoscFLUJO;
     private javax.swing.JButton jb_colorverdeoscUML;
     private javax.swing.JButton jb_crearher;
     private javax.swing.JPanel jb_diagramasflujo;
     private javax.swing.JPanel jb_diagramasuml;
+    private javax.swing.JButton jb_gencodeFlujo;
     private javax.swing.JButton jb_generarcofdigouml;
     private javax.swing.JButton jb_spawnabstractUML;
-    private javax.swing.JButton jb_spawnarrow;
     private javax.swing.JButton jb_spawnclaseUML;
     private javax.swing.JButton jb_spawncycle;
     private javax.swing.JButton jb_spawndata;
