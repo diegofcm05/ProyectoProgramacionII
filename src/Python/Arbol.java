@@ -67,7 +67,7 @@ public class Arbol {
     
     public String genif(Rombo r){
         String ifgen = "";
-        ifgen+= "if "+r.getTextA().getText();
+        ifgen+= "if "+r.getTextA().getText()+": \n";
         return ifgen;
     }
     
@@ -80,17 +80,26 @@ public class Arbol {
     public String genprocess(Proceso p){
         String processgen = "";
         
+        processgen+=p.getTextA().getText()+"\n";
+        
         return processgen;
     }
     
     public String genciclo(Ciclo c){
         String ciclogen = "";
         
+        ciclogen+="while "+c.getTextA().getText()+": \n";
+        
         return ciclogen;
     }
     
     public String gendata (Datos d){
         String datagen = "";
+        String [] tempa = d.getTextA().getText().split(";");
+        
+        for (int i = 0; i < tempa.length; i++) {
+            datagen+=tempa[0]+"\n";
+        }
         
         return datagen;
     }

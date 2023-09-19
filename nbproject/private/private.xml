@@ -5,12 +5,20 @@
             <url>src/Python/Rombo.java</url>
             <bookmark id="1">
                 <name/>
-                <line>89</line>
+                <line>183</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/PythonMain.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/InicioFin.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/FiguraFlujo.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/Rombo.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/Datos.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/Proceso.java</file>
+            <file>file:/C:/Users/dfcm9/OneDrive/Desktop/PrograII_Parcial1/MiniPython_DC/src/Python/Ciclo.java</file>
+        </group>
     </open-files>
 </project-private>

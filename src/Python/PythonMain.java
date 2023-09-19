@@ -6,18 +6,29 @@ package Python;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,6 +37,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 /**
  *
@@ -120,11 +136,13 @@ public class PythonMain extends javax.swing.JFrame {
         jl_pythonUML = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jp_umlWork = new javax.swing.JPanel();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        menubar_UML = new javax.swing.JMenuBar();
+        mn_archivoUML = new javax.swing.JMenu();
+        mi_guardaPNG_UML = new javax.swing.JMenuItem();
+        mi_guardaPDF_UML = new javax.swing.JMenuItem();
+        mi_abrirbinarioUML = new javax.swing.JMenuItem();
+        mi_guardarbinarioUML = new javax.swing.JMenuItem();
+        mi_printUML = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
         jd_creatuFLUJO = new javax.swing.JDialog();
@@ -164,8 +182,13 @@ public class PythonMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jp_flujoWork = new javax.swing.JPanel();
         jb_addtotree = new javax.swing.JButton();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu8 = new javax.swing.JMenu();
+        menubar_Flujo = new javax.swing.JMenuBar();
+        mn_archivoFLUJO = new javax.swing.JMenu();
+        mi_guardarPNGFLUJO = new javax.swing.JMenuItem();
+        mi_guardarPDFFLUJO = new javax.swing.JMenuItem();
+        mi_abrirFLUJO = new javax.swing.JMenuItem();
+        mi_guardarFLUJO = new javax.swing.JMenuItem();
+        mi_printFLUJO = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         JD_herencia = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
@@ -655,7 +678,7 @@ public class PythonMain extends javax.swing.JFrame {
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(852, 1100));
 
-        jp_umlWork.setBackground(new java.awt.Color(204, 204, 204));
+        jp_umlWork.setBackground(new java.awt.Color(255, 255, 255));
         jp_umlWork.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         javax.swing.GroupLayout jp_umlWorkLayout = new javax.swing.GroupLayout(jp_umlWork);
@@ -723,30 +746,51 @@ public class PythonMain extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        jMenuBar2.setBackground(new java.awt.Color(0, 102, 204));
-        jMenuBar2.setForeground(new java.awt.Color(0, 0, 0));
+        menubar_UML.setBackground(new java.awt.Color(0, 102, 204));
+        menubar_UML.setForeground(new java.awt.Color(0, 0, 0));
 
-        jMenu6.setText("Archivo");
+        mn_archivoUML.setText("Archivo");
 
-        jMenuItem13.setText("Guardar Como");
-        jMenu6.add(jMenuItem13);
+        mi_guardaPNG_UML.setText("Guardar como PNG");
+        mi_guardaPNG_UML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardaPNG_UMLActionPerformed(evt);
+            }
+        });
+        mn_archivoUML.add(mi_guardaPNG_UML);
 
-        jMenuItem14.setText("Abrir Archivo");
-        jMenu6.add(jMenuItem14);
+        mi_guardaPDF_UML.setText("Guardar como PDF");
+        mi_guardaPDF_UML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardaPDF_UMLActionPerformed(evt);
+            }
+        });
+        mn_archivoUML.add(mi_guardaPDF_UML);
 
-        jMenuItem15.setText("Imprimir Diagrama");
-        jMenu6.add(jMenuItem15);
+        mi_abrirbinarioUML.setText("Abrir archivo bin");
+        mn_archivoUML.add(mi_abrirbinarioUML);
 
-        jMenuBar2.add(jMenu6);
+        mi_guardarbinarioUML.setText("Guardar archivo bin");
+        mn_archivoUML.add(mi_guardarbinarioUML);
+
+        mi_printUML.setText("Imprimir Diagrama");
+        mi_printUML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_printUMLActionPerformed(evt);
+            }
+        });
+        mn_archivoUML.add(mi_printUML);
+
+        menubar_UML.add(mn_archivoUML);
 
         jMenu7.setText("Ayuda");
 
         jMenuItem16.setText("Acerca del programa");
         jMenu7.add(jMenuItem16);
 
-        jMenuBar2.add(jMenu7);
+        menubar_UML.add(jMenu7);
 
-        jd_creatuUML.setJMenuBar(jMenuBar2);
+        jd_creatuUML.setJMenuBar(menubar_UML);
 
         javax.swing.GroupLayout jd_creatuUMLLayout = new javax.swing.GroupLayout(jd_creatuUML.getContentPane());
         jd_creatuUML.getContentPane().setLayout(jd_creatuUMLLayout);
@@ -1138,7 +1182,7 @@ public class PythonMain extends javax.swing.JFrame {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 1100));
 
-        jp_flujoWork.setBackground(new java.awt.Color(204, 204, 204));
+        jp_flujoWork.setBackground(new java.awt.Color(255, 255, 255));
         jp_flujoWork.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         javax.swing.GroupLayout jp_flujoWorkLayout = new javax.swing.GroupLayout(jp_flujoWork);
@@ -1215,16 +1259,47 @@ public class PythonMain extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jMenuBar3.setBackground(new java.awt.Color(153, 153, 255));
-        jMenuBar3.setForeground(new java.awt.Color(0, 0, 0));
+        menubar_Flujo.setBackground(new java.awt.Color(153, 153, 255));
+        menubar_Flujo.setForeground(new java.awt.Color(0, 0, 0));
 
-        jMenu8.setText("Archivo");
-        jMenuBar3.add(jMenu8);
+        mn_archivoFLUJO.setText("Archivo");
+
+        mi_guardarPNGFLUJO.setText("Guardar como PNG");
+        mi_guardarPNGFLUJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardarPNGFLUJOActionPerformed(evt);
+            }
+        });
+        mn_archivoFLUJO.add(mi_guardarPNGFLUJO);
+
+        mi_guardarPDFFLUJO.setText("Guardar como PDF");
+        mi_guardarPDFFLUJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardarPDFFLUJOActionPerformed(evt);
+            }
+        });
+        mn_archivoFLUJO.add(mi_guardarPDFFLUJO);
+
+        mi_abrirFLUJO.setText("Abrir archivo bin");
+        mn_archivoFLUJO.add(mi_abrirFLUJO);
+
+        mi_guardarFLUJO.setText("Guardar archivo bin");
+        mn_archivoFLUJO.add(mi_guardarFLUJO);
+
+        mi_printFLUJO.setText("Imprmir Diagrama");
+        mi_printFLUJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_printFLUJOActionPerformed(evt);
+            }
+        });
+        mn_archivoFLUJO.add(mi_printFLUJO);
+
+        menubar_Flujo.add(mn_archivoFLUJO);
 
         jMenu9.setText("Ayuda");
-        jMenuBar3.add(jMenu9);
+        menubar_Flujo.add(jMenu9);
 
-        jd_creatuFLUJO.setJMenuBar(jMenuBar3);
+        jd_creatuFLUJO.setJMenuBar(menubar_Flujo);
 
         javax.swing.GroupLayout jd_creatuFLUJOLayout = new javax.swing.GroupLayout(jd_creatuFLUJO.getContentPane());
         jd_creatuFLUJO.getContentPane().setLayout(jd_creatuFLUJOLayout);
@@ -3048,6 +3123,172 @@ public class PythonMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jb_gencodeFlujoMouseClicked
 
+    private void mi_guardaPNG_UMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardaPNG_UMLActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Imagen como PNG");
+
+        int userSelection = fileChooser.showSaveDialog(jd_creatuUML);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String nombre = fileToSave.getAbsolutePath(); // Obtener la ruta completa seleccionada por el usuario
+
+            int widthUML = jp_umlWork.getWidth();
+            int heightUML = jp_umlWork.getHeight();
+
+            BufferedImage bf = new BufferedImage(widthUML, heightUML, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = bf.createGraphics();
+
+            jp_umlWork.paint(g2d);
+            g2d.dispose();
+
+            try {
+                ImageIO.write(bf, "PNG", new File(nombre + ".png"));
+                JOptionPane.showMessageDialog(jd_creatuUML, "Imagen creada exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(jd_creatuUML, "No se selecciono ninguna ubicacion para guardar la imagen.");
+        }
+    }//GEN-LAST:event_mi_guardaPNG_UMLActionPerformed
+
+    private void mi_guardarPNGFLUJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardarPNGFLUJOActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Imagen como PNG");
+
+        int userSelection = fileChooser.showSaveDialog(jd_creatuFLUJO);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String nombre = fileToSave.getAbsolutePath(); // Obtener la ruta completa seleccionada por el usuario
+
+            int widthflujo = jp_flujoWork.getWidth();
+            int heightflujo = jp_flujoWork.getHeight();
+
+            BufferedImage bf = new BufferedImage(widthflujo, heightflujo, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = bf.createGraphics();
+
+            jp_flujoWork.paint(g2d);
+            g2d.dispose();
+
+            try {
+                ImageIO.write(bf, "PNG", new File(nombre + ".png"));
+                JOptionPane.showMessageDialog(jd_creatuFLUJO, "Imagen creada exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "No se selecciono ninguna ubicacion para guardar la imagen.");
+        }
+    }//GEN-LAST:event_mi_guardarPNGFLUJOActionPerformed
+
+    private void mi_guardaPDF_UMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardaPDF_UMLActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Imagen como PNG y PDF");
+
+        int userSelection = fileChooser.showSaveDialog(jd_creatuUML);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String nombre = fileToSave.getAbsolutePath(); // Obtener la ruta completa seleccionada por el usuario
+
+            int widthUML = jp_umlWork.getWidth();
+            int heightUML = jp_umlWork.getHeight();
+
+            BufferedImage bf = new BufferedImage(widthUML, heightUML, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = bf.createGraphics();
+
+            jp_umlWork.paint(g2d);
+            g2d.dispose();
+            jp_umlWork.paint(g2d);
+            g2d.dispose();
+
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage(new PDRectangle(widthUML, heightUML));
+            document.addPage(page);
+           
+            try {
+                
+                ImageIO.write(bf, "PNG", new File(nombre + ".png"));
+                JOptionPane.showMessageDialog(jd_creatuUML, "Imagen creada exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            try {
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                contentStream.drawImage(PDImageXObject.createFromFile(nombre + ".png", document), TOP_ALIGNMENT, TOP_ALIGNMENT);
+                contentStream.close();
+                document.save(new File(nombre + ".pdf"));
+                document.close();
+                JOptionPane.showMessageDialog(jd_creatuUML, "Archivo pdf creado exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(jd_creatuUML, "No se selecciono ninguna ubicacion para guardar la imagen.");
+        }
+    }//GEN-LAST:event_mi_guardaPDF_UMLActionPerformed
+
+    private void mi_guardarPDFFLUJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardarPDFFLUJOActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar Imagen como PNG y PDF");
+
+        int userSelection = fileChooser.showSaveDialog(jd_creatuFLUJO);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String nombre = fileToSave.getAbsolutePath(); // Obtener la ruta completa seleccionada por el usuario
+
+            int widthFLU = jp_flujoWork.getWidth();
+            int heightFLU = jp_flujoWork.getHeight();
+
+            BufferedImage bf = new BufferedImage(widthFLU, heightFLU, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = bf.createGraphics();
+
+            jp_flujoWork.paint(g2d);
+            g2d.dispose();
+            jp_flujoWork.paint(g2d);
+            g2d.dispose();
+
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage(new PDRectangle(widthFLU, heightFLU));
+            document.addPage(page);
+           
+            try {
+                
+                ImageIO.write(bf, "PNG", new File(nombre + ".png"));
+                JOptionPane.showMessageDialog(jd_creatuFLUJO, "Imagen creada exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            try {
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                contentStream.drawImage(PDImageXObject.createFromFile(nombre + ".png", document), TOP_ALIGNMENT, TOP_ALIGNMENT);
+                contentStream.close();
+                document.save(new File(nombre + ".pdf"));
+                document.close();
+                JOptionPane.showMessageDialog(jd_creatuFLUJO, "Archivo pdf creado exitosamente");
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "No se selecciono ninguna ubicacion para guardar la imagen.");
+        }
+    }//GEN-LAST:event_mi_guardarPDFFLUJOActionPerformed
+
+    private void mi_printUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_printUMLActionPerformed
+        PrintRecord(jp_umlWork);
+    }//GEN-LAST:event_mi_printUMLActionPerformed
+
+    private void mi_printFLUJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_printFLUJOActionPerformed
+        PrintRecord(jp_flujoWork);
+    }//GEN-LAST:event_mi_printFLUJOActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3092,6 +3333,7 @@ public class PythonMain extends javax.swing.JFrame {
         boolean existen = true;
         int cont = 2;
         int tamanio = 0;
+        
  
         for (FiguraFlujo fig : ordenflujo) {
 
@@ -3373,6 +3615,63 @@ public class PythonMain extends javax.swing.JFrame {
     }
     
     
+    //Metodo para Imprimir Paneles
+    private void PrintRecord (JPanel panel){
+        
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        
+        //Ponerle nombre al PrinterJob
+        pj.setJobName("Print Record");
+        
+        //Hacer el Set Printable
+        pj.setPrintable(new Printable(){
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                //Chequea si el size es muy grande
+                if (pageIndex > 0){
+                    return Printable.NO_SUCH_PAGE;
+                }
+                
+                //Hacer las Graficas 2D
+                Graphics2D graphics2D = (Graphics2D)graphics;
+                
+                //Hacer la "traduccion" de las graficas
+                graphics2D.translate(pageFormat.getImageableX()*2, pageFormat.getImageableY()*2);
+                
+                //Esto es una escala de pagina. No obstante, la default es 0.3, no 0.5.
+                
+                //Diego here, despues de probar, creo que la mejor es esta scale.
+                graphics2D.scale(0.6, 0.6);
+                
+                //Pintamos el panel como graficas
+                panel.paint(graphics2D);
+                
+                //Retornar si la pagina existe
+                return Printable.PAGE_EXISTS;
+            }
+            
+        });
+        //Guardar PrinterDialog como booleano
+        boolean Resultadoreturn = pj.printDialog();
+        
+        //Revisar si el dialogo se muestra
+        if (Resultadoreturn){
+            
+            try {
+                //Llamamos al metodo para imprimir
+                pj.print();
+                
+            } catch (PrinterException printerexc) {
+                JOptionPane.showMessageDialog(null, printerexc.getMessage());
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    
     
     
     
@@ -3436,20 +3735,13 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -3529,6 +3821,20 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jp_spawnextinterUML;
     private javax.swing.JPanel jp_umlWork;
     private javax.swing.JPanel jp_umldesc;
+    private javax.swing.JMenuBar menubar_Flujo;
+    private javax.swing.JMenuBar menubar_UML;
+    private javax.swing.JMenuItem mi_abrirFLUJO;
+    private javax.swing.JMenuItem mi_abrirbinarioUML;
+    private javax.swing.JMenuItem mi_guardaPDF_UML;
+    private javax.swing.JMenuItem mi_guardaPNG_UML;
+    private javax.swing.JMenuItem mi_guardarFLUJO;
+    private javax.swing.JMenuItem mi_guardarPDFFLUJO;
+    private javax.swing.JMenuItem mi_guardarPNGFLUJO;
+    private javax.swing.JMenuItem mi_guardarbinarioUML;
+    private javax.swing.JMenuItem mi_printFLUJO;
+    private javax.swing.JMenuItem mi_printUML;
+    private javax.swing.JMenu mn_archivoFLUJO;
+    private javax.swing.JMenu mn_archivoUML;
     private javax.swing.JTextField tf_nomclaseheren;
     private javax.swing.JTextPane tp_finalcodeUML;
     // End of variables declaration//GEN-END:variables
