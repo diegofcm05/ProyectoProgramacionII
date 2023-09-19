@@ -26,19 +26,15 @@ public class Ciclo extends FiguraFlujo{
     
     private Color ColorCirc = Color.red; // Color predeterminado
     private JTextArea textA;
-    private JTextField indiceentextfield;
+
     
     public Ciclo(){
         
         
         setLayout(null);
         setSize(180,100);
-        setBackground(new Color(204,204,204));
-        
-        indiceentextfield = new JTextField();
-        indiceentextfield.setBackground(Color.GRAY);
-        indiceentextfield.setForeground(Color.WHITE);
-        indiceentextfield.setBorder(null);
+        setBackground(new Color(255,255,255));
+
         
  
         textA = new JTextArea();
@@ -52,16 +48,15 @@ public class Ciclo extends FiguraFlujo{
         textA.setFont(boldFont);
         
         Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
-        indiceentextfield.setFont(boldFont2);
+
         
         textA.setBounds(20, (getHeight()/2)-10, 140, 20);
-        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
+
         
-        
-        add(indiceentextfield);
+
         add(textA);
         
-        super.setIndice(indiceentextfield.getText());
+
         
         
     }
@@ -102,13 +97,7 @@ public class Ciclo extends FiguraFlujo{
         this.textA = textA;
     }
 
-    public JTextField getIndiceentextfield() {
-        return indiceentextfield;
-    }
 
-    public void setIndiceentextfield(JTextField indiceentextfield) {
-        this.indiceentextfield = indiceentextfield;
-    }
 
     
 

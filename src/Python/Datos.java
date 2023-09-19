@@ -23,8 +23,7 @@ import javax.swing.plaf.ComponentUI;
  * @author dfcm9
  */
 public class Datos extends FiguraFlujo{
-    
-    private JTextField indiceentextfield;
+
     private Color Colordata = Color.red; // Color predeterminado
     private JTextArea textA;
     
@@ -33,12 +32,8 @@ public class Datos extends FiguraFlujo{
         // Constructor: Configurar el panel y agregar componentes
         setLayout(null);
         setSize(260,60);
-        setBackground(new Color(204,204,204));
-        
-        indiceentextfield = new JTextField();
-        indiceentextfield.setBackground(Color.GRAY);
-        indiceentextfield.setForeground(Color.WHITE);
-        indiceentextfield.setBorder(null);
+        setBackground(new Color(255,255,255));
+
 
         // Crear un JTextPane y agregarlo al centro del panel
         textA = new JTextArea();
@@ -54,9 +49,7 @@ public class Datos extends FiguraFlujo{
         
         
         textA.setBounds(40, (getHeight()/2)-13, 180, 20);
-        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
 
-        add(indiceentextfield);
         add(textA);
         
         
@@ -90,13 +83,7 @@ public class Datos extends FiguraFlujo{
         g2d.fill(parallelogram);
     }
 
-    public JTextField getIndiceentextfield() {
-        return indiceentextfield;
-    }
 
-    public void setIndiceentextfield(JTextField indiceentextfield) {
-        this.indiceentextfield = indiceentextfield;
-    }
 
     
 

@@ -31,7 +31,7 @@ public class InicioFin extends FiguraFlujo{
         // Constructor: Configurar el panel y agregar componentes
         setLayout(null);
         setSize(180,80);
-        setBackground(new Color(204,204,204));
+        setBackground(new Color(255,255,255));
 
         // Crear un JTextPane y agregarlo al centro del panel
         textA = new JTextArea();

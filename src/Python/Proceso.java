@@ -20,9 +20,7 @@ import javax.swing.plaf.ComponentUI;
  * @author dfcm9
  */
 public class Proceso extends FiguraFlujo{
-    
-    
-    private JTextField indiceentextfield;
+
     private Color colorpro = Color.red; // Color predeterminado
     private JTextArea textA;
     
@@ -32,11 +30,7 @@ public class Proceso extends FiguraFlujo{
         setSize(200,80);
         setBackground(colorpro);
         
-        indiceentextfield = new JTextField();
-        indiceentextfield.setBackground(Color.GRAY);
-        indiceentextfield.setForeground(Color.WHITE);
-        indiceentextfield.setBorder(null);
-        
+
         
         textA = new JTextArea();
         textA.setText("Aqui va el texto de instruccion");
@@ -50,13 +44,13 @@ public class Proceso extends FiguraFlujo{
         textA.setFont(boldFont);
         
         Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
-        indiceentextfield.setFont(boldFont2);
+
         
         textA.setBounds(20, (getHeight()/2)-20, 160, 20);
-        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
+
         
         add(textA);
-        add(indiceentextfield);
+
     
     }
     
@@ -65,13 +59,7 @@ public class Proceso extends FiguraFlujo{
         repaint();
     }
 
-    public JTextField getIndiceentextfield() {
-        return indiceentextfield;
-    }
 
-    public void setIndiceentextfield(JTextField indiceentextfield) {
-        this.indiceentextfield = indiceentextfield;
-    }
 
 
     public Color getColorpro() {

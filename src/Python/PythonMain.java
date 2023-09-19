@@ -60,6 +60,8 @@ public class PythonMain extends javax.swing.JFrame {
     ArrayList <FiguraGeneral> clasesUML = new ArrayList();
     ArrayList <FiguraFlujo> ordenflujo = new ArrayList();
     ArrayList <Interfaz> allinters = new ArrayList();
+    ArrayList <Rombo> condiciones = new ArrayList();
+    ArrayList <Ciclo> ciclos = new ArrayList();
     
     
     Date ax = new Date();
@@ -189,7 +191,7 @@ public class PythonMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jp_flujoWork = new javax.swing.JPanel();
         jb_addtotree = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jb_AddToArbolFlujo = new javax.swing.JButton();
         menubar_Flujo = new javax.swing.JMenuBar();
         mn_archivoFLUJO = new javax.swing.JMenu();
         mi_guardarPNGFLUJO = new javax.swing.JMenuItem();
@@ -216,6 +218,11 @@ public class PythonMain extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jt_aquiarbflujo = new javax.swing.JTree();
         jButton4 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        pop_agregar = new javax.swing.JPopupMenu();
+        mi_addNod = new javax.swing.JMenuItem();
+        pop_eliminar = new javax.swing.JPopupMenu();
+        mi_deleteNod = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jb_diagramasflujo = new javax.swing.JPanel();
@@ -1197,7 +1204,7 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("Opciones disponibles");
+        jLabel27.setText("--Opciones disponibles--");
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 1100));
 
@@ -1229,13 +1236,19 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(153, 153, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Agregar seleccionado al arbol");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jb_AddToArbolFlujo.setBackground(new java.awt.Color(153, 153, 255));
+        jb_AddToArbolFlujo.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        jb_AddToArbolFlujo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AddToArbolFlujo.setText("Agregar seleccionado al arbol");
+        jb_AddToArbolFlujo.setFocusable(false);
+        jb_AddToArbolFlujo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_AddToArbolFlujoMouseClicked(evt);
+            }
+        });
+        jb_AddToArbolFlujo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jb_AddToArbolFlujoActionPerformed(evt);
             }
         });
 
@@ -1259,7 +1272,7 @@ public class PythonMain extends javax.swing.JFrame {
                             .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jb_AddToArbolFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1271,7 +1284,7 @@ public class PythonMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jb_AddToArbolFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1472,16 +1485,29 @@ public class PythonMain extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel8.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel8.setBackground(new java.awt.Color(102, 0, 153));
 
+        jt_aquiarbflujo.setBackground(new java.awt.Color(255, 255, 255));
+        jt_aquiarbflujo.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        jt_aquiarbflujo.setForeground(new java.awt.Color(0, 0, 0));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Diagrama de Flujo");
         jt_aquiarbflujo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_aquiarbflujo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_aquiarbflujoMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jt_aquiarbflujo);
 
         jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Salir");
+
+        jLabel21.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Arbol de procesos: Diagrama de Flujo");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1490,21 +1516,26 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(208, 208, 208)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addGap(141, 141, 141)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout jd_arbolFlujoLayout = new javax.swing.GroupLayout(jd_arbolFlujo.getContentPane());
@@ -1517,6 +1548,22 @@ public class PythonMain extends javax.swing.JFrame {
             jd_arbolFlujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        mi_addNod.setText("Agregar");
+        mi_addNod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_addNodActionPerformed(evt);
+            }
+        });
+        pop_agregar.add(mi_addNod);
+
+        mi_deleteNod.setText("jMenuItem13");
+        mi_deleteNod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_deleteNodActionPerformed(evt);
+            }
+        });
+        pop_eliminar.add(mi_deleteNod);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mini Python - Diagram Maker");
@@ -2007,7 +2054,7 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        this.setVisible(false);
+
         jd_creatuUML.pack();
         jd_creatuUML.setModal(true);
         jd_creatuUML.setLocationRelativeTo(this);
@@ -3118,11 +3165,11 @@ public class PythonMain extends javax.swing.JFrame {
             
             if (ult instanceof Proceso){
                 ((Proceso) ult).getTextA().setFont(newfo);
-                ((Proceso) ult).getIndiceentextfield().setFont(newfo);
+
             }
             else if (ult instanceof Datos){
                 ((Datos) ult).getTextA().setFont(newfo);
-                ((Datos) ult).getIndiceentextfield().setFont(newfo);
+
             }
             else if (ult instanceof InicioFin){
                 ((InicioFin) ult).getTextA().setFont(newfo);
@@ -3133,7 +3180,7 @@ public class PythonMain extends javax.swing.JFrame {
             }
             else if (ult instanceof Ciclo){
                 ((Ciclo) ult).getTextA().setFont(newfo);
-                ((Ciclo) ult).getIndiceentextfield().setFont(newfo);
+
             }
             
         } catch (Exception e) {
@@ -3147,11 +3194,11 @@ public class PythonMain extends javax.swing.JFrame {
             Color newcol = JColorChooser.showDialog(this, "Seleccione color de texto", Color.yellow);
             if (ult instanceof Proceso){
                 ((Proceso) ult).getTextA().setForeground(newcol);
-                ((Proceso) ult).getIndiceentextfield().setForeground(newcol);
+
             }
             else if (ult instanceof Datos){
                 ((Datos) ult).getTextA().setForeground(newcol);
-                ((Datos) ult).getIndiceentextfield().setForeground(newcol);
+
             }
             else if (ult instanceof InicioFin){
                 ((InicioFin) ult).getTextA().setForeground(newcol);
@@ -3162,7 +3209,7 @@ public class PythonMain extends javax.swing.JFrame {
             }
             else if (ult instanceof Ciclo){
                 ((Ciclo) ult).getTextA().setForeground(newcol);
-                ((Ciclo) ult).getIndiceentextfield().setForeground(newcol);
+
             }
             
             
@@ -3172,24 +3219,10 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_textcolorFLUJOMouseClicked
 
     private void jb_addtotreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_addtotreeMouseClicked
-       FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
-      
-       if (ult instanceof Datos){
-           ult.setIndice(((Datos) ult).getIndiceentextfield().getText().trim());
-       }
-       else if (ult instanceof Proceso){
-           ult.setIndice(((Proceso) ult).getIndiceentextfield().getText().trim());
-       }
-       else if (ult instanceof Rombo){
-       }
-       else if (ult instanceof Ciclo){
-           ult.setIndice(((Ciclo) ult).getIndiceentextfield().getText().trim());
-       }
-       
-       System.out.println("La ultima figura clickeada fue: "+ult);
-       ordenflujo.add(ult);
-       
-       
+       jd_arbolFlujo.pack();
+       jd_arbolFlujo.setModal(true);
+       jd_arbolFlujo.setLocationRelativeTo(this);
+       jd_arbolFlujo.setVisible(true);
     }//GEN-LAST:event_jb_addtotreeMouseClicked
 
     private void jb_gencodeFlujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_gencodeFlujoMouseClicked
@@ -3585,9 +3618,99 @@ public class PythonMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mi_abrirbinarioUMLActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jb_AddToArbolFlujoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_AddToArbolFlujoActionPerformed
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jb_AddToArbolFlujoActionPerformed
+
+    private void jb_AddToArbolFlujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AddToArbolFlujoMouseClicked
+        try {
+            FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
+            GenerarArb(ult);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jb_AddToArbolFlujoMouseClicked
+
+    private void jt_aquiarbflujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_aquiarbflujoMouseClicked
+        if (evt.isMetaDown()) {
+            
+            selectedNode = (DefaultMutableTreeNode) jt_aquiarbflujo.getLastSelectedPathComponent();
+            
+            try {
+                if (selectedNode.getUserObject().equals("True") || selectedNode.getUserObject().equals("False")) {
+                    pop_agregar.show(evt.getComponent(), evt.getX(), evt.getY());
+                } else {
+                    pop_eliminar.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            } catch (NullPointerException e) {
+                //JOptionPane.showMessageDialog(this, "Seleccione un nodo adentro del bucle o condicional al que quiera agregar!");
+                e.printStackTrace();
+            }
+            
+        }
+        
+    }//GEN-LAST:event_jt_aquiarbflujoMouseClicked
+
+    private void mi_addNodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_addNodActionPerformed
+        
+        DefaultTreeModel m = (DefaultTreeModel) jt_aquiarbflujo.getModel();
+        String figTit = "";
+        
+        FiguraFlujo currentSel = FiguraFlujo.getUltimoclickeado();
+
+        
+        if (selectedNode != null && currentSel != null) {
+            if (currentSel instanceof Proceso) {
+                Proceso temp = (Proceso) currentSel;
+                figTit = "Proceso: " + temp.getTextA().getText();
+                DefaultMutableTreeNode sigInstru = new DefaultMutableTreeNode(figTit);
+                selectedNode.add(sigInstru);
+
+            } else if (currentSel instanceof Rombo) {
+                Rombo temp = (Rombo) currentSel;
+                generarIf(temp, selectedNode);
+                condiciones.add(temp);
+            }
+            
+            else if (currentSel instanceof Ciclo){
+                Ciclo temp = (Ciclo) currentSel;
+                generarCiclo(temp, selectedNode);
+                ciclos.add(temp);
+                
+            }
+            else if (currentSel instanceof Datos) {
+                Datos temp = (Datos) currentSel;
+                figTit = "Datos: " + temp.getTextA().getText();
+                DefaultMutableTreeNode sigInstru = new DefaultMutableTreeNode(figTit);
+                selectedNode.add(sigInstru);
+            } else if (currentSel instanceof InicioFin) {
+                InicioFin temp = (InicioFin) currentSel;
+                figTit = "#" + temp.getTextA().getText();
+                DefaultMutableTreeNode sigInstru = new DefaultMutableTreeNode(figTit);
+                selectedNode.add(sigInstru);
+            }
+        }
+
+        m.reload();
+    }//GEN-LAST:event_mi_addNodActionPerformed
+
+    private void mi_deleteNodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_deleteNodActionPerformed
+        DefaultTreeModel m = (DefaultTreeModel) jt_aquiarbflujo.getModel();
+        FiguraFlujo currentSel = FiguraFlujo.getUltimoclickeado();
+
+        if (selectedNode != null &&  currentSel!= null) {
+            int op = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el nodo?");
+
+            if (op == JOptionPane.YES_OPTION) {
+                m.removeNodeFromParent(selectedNode);
+            }
+
+        }
+
+        m.reload();
+    }//GEN-LAST:event_mi_deleteNodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3993,7 +4116,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -4008,6 +4130,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -4068,6 +4191,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JButton jb_AddToArbolFlujo;
     private javax.swing.JButton jb_ApplyFontChanges;
     private javax.swing.JButton jb_addtotree;
     private javax.swing.JButton jb_applyfontFLUJO;
@@ -4131,6 +4255,8 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenuBar menubar_UML;
     private javax.swing.JMenuItem mi_abrirFLUJO;
     private javax.swing.JMenuItem mi_abrirbinarioUML;
+    private javax.swing.JMenuItem mi_addNod;
+    private javax.swing.JMenuItem mi_deleteNod;
     private javax.swing.JMenuItem mi_guardaPDF_UML;
     private javax.swing.JMenuItem mi_guardaPNG_UML;
     private javax.swing.JMenuItem mi_guardarFLUJO;
@@ -4141,10 +4267,13 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mi_printUML;
     private javax.swing.JMenu mn_archivoFLUJO;
     private javax.swing.JMenu mn_archivoUML;
+    private javax.swing.JPopupMenu pop_agregar;
+    private javax.swing.JPopupMenu pop_eliminar;
     private javax.swing.JTextField tf_nomclaseheren;
     private javax.swing.JTextPane tp_finalcodeUML;
     // End of variables declaration//GEN-END:variables
     
+    private DefaultMutableTreeNode selectedNode = null;
     
     //Metodos para Serializar
     
@@ -4361,5 +4490,13 @@ public class PythonMain extends javax.swing.JFrame {
 
         c.add(figName);
     }
+    
+    
+    public void Agregarnodo(){
+        
+    
+    }
+    
+    
     
 }
