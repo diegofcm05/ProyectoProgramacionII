@@ -9,15 +9,22 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Path2D;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 
 /**
  *
  * @author dfcm9
  */
-public class Datos extends FiguraGeneral{
+public class Datos extends FiguraFlujo{
     
+    private JTextField indiceentextfield;
     private Color Colordata = Color.red; // Color predeterminado
     private JTextArea textA;
     
@@ -27,6 +34,11 @@ public class Datos extends FiguraGeneral{
         setLayout(null);
         setSize(260,60);
         setBackground(new Color(204,204,204));
+        
+        indiceentextfield = new JTextField();
+        indiceentextfield.setBackground(Color.GRAY);
+        indiceentextfield.setForeground(Color.WHITE);
+        indiceentextfield.setBorder(null);
 
         // Crear un JTextPane y agregarlo al centro del panel
         textA = new JTextArea();
@@ -40,9 +52,11 @@ public class Datos extends FiguraGeneral{
         Font boldFont = new Font(textA.getFont().getName(), Font.BOLD, textA.getFont().getSize());
         textA.setFont(boldFont);
         
-        textA.setBounds(40, (getHeight()/2)-10, 180, 20);
-
         
+        textA.setBounds(40, (getHeight()/2)-13, 180, 20);
+        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
+
+        add(indiceentextfield);
         add(textA);
         
         
@@ -75,6 +89,91 @@ public class Datos extends FiguraGeneral{
         g2d.setColor(Colordata); // Cambia el color como desees
         g2d.fill(parallelogram);
     }
+
+    public JTextField getIndiceentextfield() {
+        return indiceentextfield;
+    }
+
+    public void setIndiceentextfield(JTextField indiceentextfield) {
+        this.indiceentextfield = indiceentextfield;
+    }
+
+    
+
+    public Color getColordata() {
+        return Colordata;
+    }
+
+    public void setColordata(Color Colordata) {
+        this.Colordata = Colordata;
+    }
+
+    public JTextArea getTextA() {
+        return textA;
+    }
+
+    public void setTextA(JTextArea textA) {
+        this.textA = textA;
+    }
+
+    public JPopupMenu getMenuop() {
+        return menuop;
+    }
+
+    public void setMenuop(JPopupMenu menuop) {
+        this.menuop = menuop;
+    }
+
+
+    public JMenuItem getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JMenuItem eliminar) {
+        this.eliminar = eliminar;
+    }
+
+
+    public JMenuItem getColortext() {
+        return colortext;
+    }
+
+    public void setColortext(JMenuItem colortext) {
+        this.colortext = colortext;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+
+    @Override
+    public String toString() {
+        return "Datos "+super.getIndice();
+    }
+    
+    
+    
+    
     
     
     

@@ -34,8 +34,9 @@ import javax.swing.text.StyledDocument;
 public class PythonMain extends javax.swing.JFrame {
     
     ArrayList <FiguraGeneral> clasesUML = new ArrayList();
+    ArrayList <FiguraFlujo> ordenflujo = new ArrayList();
     ArrayList <Interfaz> allinters = new ArrayList();
-    JPanel panelselected = new JPanel();
+    
     
     Date ax = new Date();
 
@@ -61,7 +62,10 @@ public class PythonMain extends javax.swing.JFrame {
         for (int i = 0; i < fontNames.length; i++) {
             modelo.addElement(fontNames[i]);
         }
+        
+        
         cb_fontsUML.setModel(modelo);
+        cb_fontsFLUJO.setModel(modelo);
         
        
        
@@ -118,17 +122,21 @@ public class PythonMain extends javax.swing.JFrame {
         jp_umlWork = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jd_creatuFLUJO = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
+        jb_colorgrisFLUJO = new javax.swing.JButton();
         jb_colornegroFLUJO = new javax.swing.JButton();
         jb_coloresmeraldaFLUJO = new javax.swing.JButton();
         jb_colorrojoFLUJO = new javax.swing.JButton();
         jb_colorcafeclaroFLUJO = new javax.swing.JButton();
         jb_colorcafeFLUJO = new javax.swing.JButton();
-        jButton40 = new javax.swing.JButton();
+        jb_colorrosaFLUJO = new javax.swing.JButton();
         jb_colornaranjaFLUJO = new javax.swing.JButton();
         jb_coloramarilloFLUJO = new javax.swing.JButton();
         jb_colorazulFLUJO = new javax.swing.JButton();
@@ -143,6 +151,8 @@ public class PythonMain extends javax.swing.JFrame {
         cb_tipofontFLUJO = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         cb_tamfontFLUJO = new javax.swing.JComboBox<>();
+        jb_applyfontFLUJO = new javax.swing.JButton();
+        jb_textcolorFLUJO = new javax.swing.JButton();
         jb_spawndecision = new javax.swing.JButton();
         jb_spawnstart = new javax.swing.JButton();
         jb_spawnprocess = new javax.swing.JButton();
@@ -153,6 +163,7 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jp_flujoWork = new javax.swing.JPanel();
+        jb_addtotree = new javax.swing.JButton();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu8 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
@@ -642,18 +653,20 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(852, 1100));
+
         jp_umlWork.setBackground(new java.awt.Color(204, 204, 204));
-        jp_umlWork.setPreferredSize(new java.awt.Dimension(1200, 1300));
+        jp_umlWork.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         javax.swing.GroupLayout jp_umlWorkLayout = new javax.swing.GroupLayout(jp_umlWork);
         jp_umlWork.setLayout(jp_umlWorkLayout);
         jp_umlWorkLayout.setHorizontalGroup(
             jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGap(0, 1078, Short.MAX_VALUE)
         );
         jp_umlWorkLayout.setVerticalGroup(
             jp_umlWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
+            .addGap(0, 1100, Short.MAX_VALUE)
         );
 
         jScrollPane3.setViewportView(jp_umlWork);
@@ -713,10 +726,24 @@ public class PythonMain extends javax.swing.JFrame {
         jMenuBar2.setBackground(new java.awt.Color(0, 102, 204));
         jMenuBar2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jMenu6.setText("File");
+        jMenu6.setText("Archivo");
+
+        jMenuItem13.setText("Guardar Como");
+        jMenu6.add(jMenuItem13);
+
+        jMenuItem14.setText("Abrir Archivo");
+        jMenu6.add(jMenuItem14);
+
+        jMenuItem15.setText("Imprimir Diagrama");
+        jMenu6.add(jMenuItem15);
+
         jMenuBar2.add(jMenu6);
 
-        jMenu7.setText("Edit");
+        jMenu7.setText("Ayuda");
+
+        jMenuItem16.setText("Acerca del programa");
+        jMenu7.add(jMenuItem16);
+
         jMenuBar2.add(jMenu7);
 
         jd_creatuUML.setJMenuBar(jMenuBar2);
@@ -739,46 +766,111 @@ public class PythonMain extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton7.setBackground(new java.awt.Color(204, 204, 204));
-        jButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorgrisFLUJO.setBackground(new java.awt.Color(102, 102, 102));
+        jb_colorgrisFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorgrisFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorgrisFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colornegroFLUJO.setBackground(new java.awt.Color(0, 0, 0));
         jb_colornegroFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornegroFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colornegroFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_coloresmeraldaFLUJO.setBackground(new java.awt.Color(0, 102, 102));
         jb_coloresmeraldaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloresmeraldaFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_coloresmeraldaFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorrojoFLUJO.setBackground(new java.awt.Color(204, 0, 0));
         jb_colorrojoFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrojoFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorrojoFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorcafeclaroFLUJO.setBackground(new java.awt.Color(153, 102, 0));
         jb_colorcafeclaroFLUJO.setForeground(new java.awt.Color(153, 102, 0));
         jb_colorcafeclaroFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeclaroFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorcafeclaroFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorcafeFLUJO.setBackground(new java.awt.Color(102, 51, 0));
         jb_colorcafeFLUJO.setForeground(new java.awt.Color(153, 102, 0));
         jb_colorcafeFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorcafeFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorcafeFLUJOMouseClicked(evt);
+            }
+        });
 
-        jButton40.setBackground(new java.awt.Color(255, 102, 204));
-        jButton40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrosaFLUJO.setBackground(new java.awt.Color(255, 102, 204));
+        jb_colorrosaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorrosaFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorrosaFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colornaranjaFLUJO.setBackground(new java.awt.Color(255, 153, 0));
         jb_colornaranjaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colornaranjaFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colornaranjaFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_coloramarilloFLUJO.setBackground(new java.awt.Color(255, 255, 0));
         jb_coloramarilloFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_coloramarilloFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_coloramarilloFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorazulFLUJO.setBackground(new java.awt.Color(0, 102, 204));
         jb_colorazulFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazulFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorazulFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorlimaFLUJO.setBackground(new java.awt.Color(51, 204, 0));
         jb_colorlimaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorlimaFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorlimaFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorverdeoscFLUJO.setBackground(new java.awt.Color(0, 102, 0));
         jb_colorverdeoscFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorverdeoscFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorverdeoscFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colorazuloscFLUJO.setBackground(new java.awt.Color(0, 0, 204));
         jb_colorazuloscFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorazuloscFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorazuloscFLUJOMouseClicked(evt);
+            }
+        });
 
         jb_colormoradoFLUJO.setBackground(new java.awt.Color(153, 51, 255));
         jb_colormoradoFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -790,6 +882,11 @@ public class PythonMain extends javax.swing.JFrame {
 
         jb_colorfusciaFLUJO.setBackground(new java.awt.Color(153, 0, 153));
         jb_colorfusciaFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_colorfusciaFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_colorfusciaFLUJOMouseClicked(evt);
+            }
+        });
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -804,7 +901,7 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel25.setText("Tipo");
 
         cb_tipofontFLUJO.setBackground(new java.awt.Color(102, 102, 102));
-        cb_tipofontFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", " " }));
+        cb_tipofontFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Bold", "Italic", "Bold Italic", " " }));
         cb_tipofontFLUJO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
@@ -815,6 +912,28 @@ public class PythonMain extends javax.swing.JFrame {
         cb_tamfontFLUJO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "16", " " }));
         cb_tamfontFLUJO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jb_applyfontFLUJO.setBackground(new java.awt.Color(153, 153, 153));
+        jb_applyfontFLUJO.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_applyfontFLUJO.setForeground(new java.awt.Color(255, 255, 255));
+        jb_applyfontFLUJO.setText("Aplicar Cambios");
+        jb_applyfontFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_applyfontFLUJOMouseClicked(evt);
+            }
+        });
+
+        jb_textcolorFLUJO.setBackground(new java.awt.Color(51, 51, 51));
+        jb_textcolorFLUJO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Python/letra.png"))); // NOI18N
+        jb_textcolorFLUJO.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_textcolorFLUJO.setFocusable(false);
+        jb_textcolorFLUJO.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jb_textcolorFLUJO.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jb_textcolorFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_textcolorFLUJOMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -822,17 +941,27 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addComponent(jb_textcolorFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jb_applyfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(273, 273, 273)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -851,7 +980,7 @@ public class PythonMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jb_colorfusciaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_colorrosaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jb_coloramarilloFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -864,46 +993,60 @@ public class PythonMain extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jb_colorazulFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jb_colornaranjaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_colorgrisFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jb_colorcafeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colornegroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorcafeclaroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorrojoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colornaranjaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jb_textcolorFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jb_colorcafeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colornegroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorcafeclaroFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorrojoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colornaranjaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jb_coloramarilloFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorlimaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorverdeoscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_colorazulFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jb_coloresmeraldaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_coloramarilloFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorlimaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorverdeoscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_colorazulFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_coloresmeraldaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_tamfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_tipofontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jb_colorfusciaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jb_colorrosaFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_colorazuloscFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jb_colormoradoFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(jb_colorgrisFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(37, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_applyfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
 
         jb_spawndecision.setBackground(new java.awt.Color(51, 51, 51));
@@ -971,12 +1114,17 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
 
-        jb_gencodeFlujo.setBackground(new java.awt.Color(51, 51, 51));
+        jb_gencodeFlujo.setBackground(new java.awt.Color(153, 153, 255));
         jb_gencodeFlujo.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jb_gencodeFlujo.setForeground(new java.awt.Color(153, 153, 255));
-        jb_gencodeFlujo.setText("Generar Codigo");
+        jb_gencodeFlujo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_gencodeFlujo.setText("Generar codigo");
         jb_gencodeFlujo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_gencodeFlujo.setFocusable(false);
+        jb_gencodeFlujo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_gencodeFlujoMouseClicked(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -988,23 +1136,35 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("para bloques:");
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 1250));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         jp_flujoWork.setBackground(new java.awt.Color(204, 204, 204));
-        jp_flujoWork.setPreferredSize(new java.awt.Dimension(975, 1400));
+        jp_flujoWork.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         javax.swing.GroupLayout jp_flujoWorkLayout = new javax.swing.GroupLayout(jp_flujoWork);
         jp_flujoWork.setLayout(jp_flujoWorkLayout);
         jp_flujoWorkLayout.setHorizontalGroup(
             jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 975, Short.MAX_VALUE)
+            .addGap(0, 963, Short.MAX_VALUE)
         );
         jp_flujoWorkLayout.setVerticalGroup(
             jp_flujoWorkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1400, Short.MAX_VALUE)
+            .addGap(0, 1100, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jp_flujoWork);
+
+        jb_addtotree.setBackground(new java.awt.Color(51, 51, 51));
+        jb_addtotree.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jb_addtotree.setForeground(new java.awt.Color(153, 153, 255));
+        jb_addtotree.setText("Agregar figura al arbol");
+        jb_addtotree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jb_addtotree.setFocusable(false);
+        jb_addtotree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_addtotreeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1021,7 +1181,8 @@ public class PythonMain extends javax.swing.JFrame {
                     .addComponent(jb_spawnprocess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_addtotree, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -1047,18 +1208,20 @@ public class PythonMain extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jb_spawndata, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jb_addtotree, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jMenuBar3.setBackground(new java.awt.Color(153, 153, 255));
-        jMenuBar3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar3.setForeground(new java.awt.Color(0, 0, 0));
 
-        jMenu8.setText("File");
+        jMenu8.setText("Archivo");
         jMenuBar3.add(jMenu8);
 
-        jMenu9.setText("Edit");
+        jMenu9.setText("Ayuda");
         jMenuBar3.add(jMenu9);
 
         jd_creatuFLUJO.setJMenuBar(jMenuBar3);
@@ -2348,9 +2511,7 @@ public class PythonMain extends javax.swing.JFrame {
                 ((Interfaz) ultselect).getTp_metodos().setForeground(newcol);
                 
             }
-            
-            
-            
+  
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2422,13 +2583,470 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_spawncycleMouseClicked
 
     private void jb_colormoradoFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colormoradoFLUJOMouseClicked
-        FiguraGeneral ultc = FiguraGeneral.getUltimoclickeado();
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
         if (ultc instanceof Datos){
             Color tem = jb_colormoradoFLUJO.getBackground();
             ((Datos) ultc).setDataColor(tem);
         }
-        
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colormoradoFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colormoradoFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colormoradoFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colormoradoFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
     }//GEN-LAST:event_jb_colormoradoFLUJOMouseClicked
+
+    private void jb_colornegroFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornegroFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colornegroFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colornegroFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colornegroFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colornegroFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colornegroFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colornegroFLUJOMouseClicked
+
+    private void jb_colorcafeFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorcafeFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorcafeFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorcafeFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorcafeFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorcafeFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorcafeFLUJOMouseClicked
+
+    private void jb_colorcafeclaroFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorcafeclaroFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorcafeclaroFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorcafeclaroFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorcafeclaroFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorcafeclaroFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorcafeclaroFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorcafeclaroFLUJOMouseClicked
+
+    private void jb_colorrojoFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrojoFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorrojoFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorrojoFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorrojoFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorrojoFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorrojoFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorrojoFLUJOMouseClicked
+
+    private void jb_colornaranjaFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colornaranjaFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colornaranjaFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colornaranjaFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colornaranjaFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colornaranjaFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colornaranjaFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colornaranjaFLUJOMouseClicked
+
+    private void jb_coloramarilloFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_coloramarilloFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_coloramarilloFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_coloramarilloFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_coloramarilloFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_coloramarilloFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_coloramarilloFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+        
+    }//GEN-LAST:event_jb_coloramarilloFLUJOMouseClicked
+
+    private void jb_colorlimaFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorlimaFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorlimaFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorlimaFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorlimaFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorlimaFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorlimaFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorlimaFLUJOMouseClicked
+
+    private void jb_colorverdeoscFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorverdeoscFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorverdeoscFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorverdeoscFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorverdeoscFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorverdeoscFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorverdeoscFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorverdeoscFLUJOMouseClicked
+
+    private void jb_coloresmeraldaFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_coloresmeraldaFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_coloresmeraldaFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_coloresmeraldaFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_coloresmeraldaFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_coloresmeraldaFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_coloresmeraldaFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_coloresmeraldaFLUJOMouseClicked
+
+    private void jb_colorazulFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazulFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorazulFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorazulFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorazulFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorazulFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorazulFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorazulFLUJOMouseClicked
+
+    private void jb_colorazuloscFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorazuloscFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorazuloscFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorazuloscFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorazuloscFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorazuloscFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorazuloscFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorazuloscFLUJOMouseClicked
+
+    private void jb_colorfusciaFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorfusciaFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorfusciaFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorfusciaFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorfusciaFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorfusciaFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorfusciaFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorfusciaFLUJOMouseClicked
+
+    private void jb_colorrosaFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorrosaFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorrosaFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorrosaFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorrosaFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorrosaFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorrosaFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorrosaFLUJOMouseClicked
+
+    private void jb_colorgrisFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorgrisFLUJOMouseClicked
+        FiguraFlujo ultc = FiguraFlujo.getUltimoclickeado();
+        if (ultc instanceof Datos){
+            Color tem = jb_colorgrisFLUJO.getBackground();
+            ((Datos) ultc).setDataColor(tem);
+        }
+        if (ultc instanceof InicioFin){
+            Color tem = jb_colorgrisFLUJO.getBackground();
+            ((InicioFin) ultc).setInicioFinColor(tem);
+        }
+        if (ultc instanceof Proceso){
+            Color tem = jb_colorgrisFLUJO.getBackground();
+            ((Proceso) ultc).setProcesoColor(tem);
+        }
+        if (ultc instanceof Rombo){
+            Color tem = jb_colorgrisFLUJO.getBackground();
+            ((Rombo) ultc).setRomboColor(tem);
+        }
+        if (ultc instanceof Ciclo){
+            Color tem = jb_colorgrisFLUJO.getBackground();
+            ((Ciclo) ultc).setCircColor(tem);
+        }
+    }//GEN-LAST:event_jb_colorgrisFLUJOMouseClicked
+
+    private void jb_applyfontFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_applyfontFLUJOMouseClicked
+        try {
+            FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
+            Font newfo = null;
+            
+            if (cb_tipofontUML.getSelectedIndex()==0){
+                newfo = new Font(cb_fontsUML.getSelectedItem().toString(), Font.PLAIN, Integer.parseInt(cb_tamfontUML.getSelectedItem().toString()));
+                
+            }
+            else if (cb_tipofontUML.getSelectedIndex()==1){
+                newfo = new Font(cb_fontsUML.getSelectedItem().toString(), Font.BOLD, Integer.parseInt(cb_tamfontUML.getSelectedItem().toString()));
+            }
+            else if (cb_tipofontUML.getSelectedIndex()==2){
+                newfo = new Font(cb_fontsUML.getSelectedItem().toString(), Font.ITALIC, Integer.parseInt(cb_tamfontUML.getSelectedItem().toString()));
+            }
+            else if (cb_tipofontUML.getSelectedIndex()==3){
+                newfo = new Font(cb_fontsUML.getSelectedItem().toString(), Font.BOLD + Font.ITALIC, Integer.parseInt(cb_tamfontUML.getSelectedItem().toString()));
+            }
+            
+            if (ult instanceof Proceso){
+                ((Proceso) ult).getTextA().setFont(newfo);
+                ((Proceso) ult).getIndiceentextfield().setFont(newfo);
+            }
+            else if (ult instanceof Datos){
+                ((Datos) ult).getTextA().setFont(newfo);
+                ((Datos) ult).getIndiceentextfield().setFont(newfo);
+            }
+            else if (ult instanceof InicioFin){
+                ((InicioFin) ult).getTextA().setFont(newfo);
+                
+            }
+            else if (ult instanceof Rombo){
+                ((Rombo) ult).getTextA().setFont(newfo);
+                ((Rombo) ult).getIndiceentextfield().setFont(newfo);
+            }
+            else if (ult instanceof Ciclo){
+                ((Ciclo) ult).getTextA().setFont(newfo);
+                ((Ciclo) ult).getIndiceentextfield().setFont(newfo);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error.");
+        }
+    }//GEN-LAST:event_jb_applyfontFLUJOMouseClicked
+
+    private void jb_textcolorFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_textcolorFLUJOMouseClicked
+        try {
+            FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
+            Color newcol = JColorChooser.showDialog(this, "Seleccione color de texto", Color.yellow);
+            if (ult instanceof Proceso){
+                ((Proceso) ult).getTextA().setForeground(newcol);
+                ((Proceso) ult).getIndiceentextfield().setForeground(newcol);
+            }
+            else if (ult instanceof Datos){
+                ((Datos) ult).getTextA().setForeground(newcol);
+                ((Datos) ult).getIndiceentextfield().setForeground(newcol);
+            }
+            else if (ult instanceof InicioFin){
+                ((InicioFin) ult).getTextA().setForeground(newcol);
+                
+            }
+            else if (ult instanceof Rombo){
+                ((Rombo) ult).getTextA().setForeground(newcol);
+                ((Rombo) ult).getIndiceentextfield().setForeground(newcol);
+            }
+            else if (ult instanceof Ciclo){
+                ((Ciclo) ult).getTextA().setForeground(newcol);
+                ((Ciclo) ult).getIndiceentextfield().setForeground(newcol);
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jb_textcolorFLUJOMouseClicked
+
+    private void jb_addtotreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_addtotreeMouseClicked
+       FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
+      
+       if (ult instanceof Datos){
+           ult.setIndice(((Datos) ult).getIndiceentextfield().getText().trim());
+       }
+       else if (ult instanceof Proceso){
+           ult.setIndice(((Proceso) ult).getIndiceentextfield().getText().trim());
+       }
+       else if (ult instanceof Rombo){
+           ult.setIndice(((Rombo) ult).getIndiceentextfield().getText().trim());
+       }
+       else if (ult instanceof Ciclo){
+           ult.setIndice(((Ciclo) ult).getIndiceentextfield().getText().trim());
+       }
+       
+       System.out.println("La ultima figura clickeada fue: "+ult);
+       ordenflujo.add(ult);
+       
+       
+    }//GEN-LAST:event_jb_addtotreeMouseClicked
+
+    private void jb_gencodeFlujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_gencodeFlujoMouseClicked
+        Arbol arbflu = genarbolflujo();
+        String res = arbflu.recorrer(arbflu.getRaiz());
+        System.out.println(res);
+        
+    }//GEN-LAST:event_jb_gencodeFlujoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2464,6 +3082,47 @@ public class PythonMain extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    public Arbol genarbolflujo (){
+        
+        
+        Arbol flujograma = new Arbol();
+        flujograma.setRaiz(new FiguraFlujo("Inicio"));
+        boolean existen = true;
+        int cont = 2;
+        int tamanio = 0;
+ 
+        for (FiguraFlujo fig : ordenflujo) {
+
+            String [] temp = fig.getIndice().split("\\.");
+
+            if (temp.length >= cont) {
+                flujograma.agregar(flujograma.getRaiz(), fig);
+                System.out.println("Se va a agregar la figura "+fig);
+            }
+            else {
+                System.out.println("Se va a agregar la figura "+fig);
+                flujograma.getRaiz().setHijo(fig);       
+            }
+            if (ordenflujo.indexOf(fig) == ordenflujo.size()) {
+                cont++;
+            }
+
+            if (tamanio == ordenflujo.size()) {
+                existen = false;
+            }
+        }
+        tamanio++;
+            
+        //}
+        
+        
+        
+        return flujograma;
+        
+    }
+    
     
     public String generarfullcode(){
         String codeinstr = "";
@@ -2712,6 +3371,13 @@ public class PythonMain extends javax.swing.JFrame {
         }
         return codeinstr;
     }
+    
+    
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog JD_aquicode;
@@ -2727,8 +3393,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton40;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2783,6 +3447,10 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -2805,6 +3473,8 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jb_ApplyFontChanges;
+    private javax.swing.JButton jb_addtotree;
+    private javax.swing.JButton jb_applyfontFLUJO;
     private javax.swing.JButton jb_coloramarilloFLUJO;
     private javax.swing.JButton jb_coloramarilloUML;
     private javax.swing.JButton jb_colorazulFLUJO;
@@ -2818,6 +3488,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_coloresmeraldaFLUJO;
     private javax.swing.JButton jb_colorfusciaFLUJO;
     private javax.swing.JButton jb_colorfusciaUML;
+    private javax.swing.JButton jb_colorgrisFLUJO;
     private javax.swing.JButton jb_colorgrisUML;
     private javax.swing.JButton jb_colorlimaFLUJO;
     private javax.swing.JButton jb_colorlimaUML;
@@ -2829,6 +3500,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_colornegroUML;
     private javax.swing.JButton jb_colorrojoFLUJO;
     private javax.swing.JButton jb_colorrojoUML;
+    private javax.swing.JButton jb_colorrosaFLUJO;
     private javax.swing.JButton jb_colorrosaUML;
     private javax.swing.JButton jb_colortealUML;
     private javax.swing.JButton jb_colorverdeoscFLUJO;
@@ -2847,6 +3519,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_spawninterfaceUML;
     private javax.swing.JButton jb_spawnprocess;
     private javax.swing.JButton jb_spawnstart;
+    private javax.swing.JButton jb_textcolorFLUJO;
     private javax.swing.JButton jb_textcolorUML;
     private javax.swing.JDialog jd_creatuFLUJO;
     private javax.swing.JDialog jd_creatuUML;

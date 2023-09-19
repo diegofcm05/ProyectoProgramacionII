@@ -10,13 +10,18 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 /**
  *
  * @author dfcm9
  */
-public class InicioFin extends FiguraGeneral{
+public class InicioFin extends FiguraFlujo{
     
     private Color ColorInifin = Color.red; // Color predeterminado
     private JTextArea textA;
@@ -70,6 +75,81 @@ public class InicioFin extends FiguraGeneral{
         g2d.setColor(ColorInifin); // Cambia el color como desees
         g2d.fill(capsuleShape);
     }
+
+    public Color getColorInifin() {
+        return ColorInifin;
+    }
+
+    public void setColorInifin(Color ColorInifin) {
+        this.ColorInifin = ColorInifin;
+    }
+
+    public JTextArea getTextA() {
+        return textA;
+    }
+
+    public void setTextA(JTextArea textA) {
+        this.textA = textA;
+    }
+
+    public JPopupMenu getMenuop() {
+        return menuop;
+    }
+
+    public void setMenuop(JPopupMenu menuop) {
+        this.menuop = menuop;
+    }
+
+
+
+    public JMenuItem getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JMenuItem eliminar) {
+        this.eliminar = eliminar;
+    }
+
+
+
+    public JMenuItem getColortext() {
+        return colortext;
+    }
+
+    public void setColortext(JMenuItem colortext) {
+        this.colortext = colortext;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+    
+    @Override
+    public String toString() {
+        return "InicioFin "+super.getIndice();
+    }
+    
+    
     
     
 

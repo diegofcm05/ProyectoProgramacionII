@@ -13,8 +13,14 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.geom.Path2D;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 /**
  *
@@ -22,16 +28,23 @@ import javax.swing.JTextPane;
  */
 
 
-public class Rombo extends FiguraGeneral{
+public class Rombo extends FiguraFlujo{
     
+    private JTextField indiceentextfield;
     private Color romboColor = Color.red; // Color predeterminado
     private JTextArea textA;
     
     public Rombo() {
+        
         // Constructor: Configurar el panel y agregar componentes
         setLayout(null);
         setSize(200,100);
         setBackground(new Color(204,204,204));
+        
+        indiceentextfield = new JTextField();
+        indiceentextfield.setBackground(Color.GRAY);
+        indiceentextfield.setForeground(Color.WHITE);
+        indiceentextfield.setBorder(null);
 
         // Crear un JTextPane y agregarlo al centro del panel
         textA = new JTextArea();
@@ -40,15 +53,22 @@ public class Rombo extends FiguraGeneral{
         textA.setForeground(Color.WHITE); // Establecer el color del texto en blanco
         textA.setBorder(null); // Eliminar el borde del JTextPane
         
+        Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
+        indiceentextfield.setFont(boldFont2);
+
         
         // Cambiar el estilo de fuente del texto a negrita
         Font boldFont = new Font(textA.getFont().getName(), Font.BOLD, textA.getFont().getSize());
         textA.setFont(boldFont);
         
         textA.setBounds(30, (getHeight()/2)-10, 140, 20);
+        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
+        
+        
 
         
         add(textA);
+        add(indiceentextfield);
     }
     
     public void setRomboColor(Color color) {
@@ -78,6 +98,82 @@ public class Rombo extends FiguraGeneral{
         g2d.setColor(romboColor);
         g2d.fill(rombo);
     }
+
+    public JTextField getIndiceentextfield() {
+        return indiceentextfield;
+    }
+
+    public void setIndiceentextfield(JTextField indiceentextfield) {
+        this.indiceentextfield = indiceentextfield;
+    }
+
+    
+
+    public JTextArea getTextA() {
+        return textA;
+    }
+
+    public void setTextA(JTextArea textA) {
+        this.textA = textA;
+    }
+
+    public JPopupMenu getMenuop() {
+        return menuop;
+    }
+
+    public void setMenuop(JPopupMenu menuop) {
+        this.menuop = menuop;
+    }
+
+
+    public JMenuItem getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JMenuItem eliminar) {
+        this.eliminar = eliminar;
+    }
+
+
+
+    public JMenuItem getColortext() {
+        return colortext;
+    }
+
+    public void setColortext(JMenuItem colortext) {
+        this.colortext = colortext;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+    
+    @Override
+    public String toString() {
+        return "Rombo "+super.getIndice();
+    }
+    
+    
     
     
 

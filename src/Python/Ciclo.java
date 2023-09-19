@@ -9,18 +9,24 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+import javax.accessibility.AccessibleContext;
 import javax.swing.JTextArea;
 import javax.swing.JFormattedTextField;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 /**
  *
  * @author dfcm9
  */
-public class Ciclo extends FiguraGeneral{
+public class Ciclo extends FiguraFlujo{
     
     private Color ColorCirc = Color.red; // Color predeterminado
     private JTextArea textA;
-    private JTextArea num_proceso;
+    private JTextField indiceentextfield;
     
     public Ciclo(){
         
@@ -29,6 +35,10 @@ public class Ciclo extends FiguraGeneral{
         setSize(180,100);
         setBackground(new Color(204,204,204));
         
+        indiceentextfield = new JTextField();
+        indiceentextfield.setBackground(Color.GRAY);
+        indiceentextfield.setForeground(Color.WHITE);
+        indiceentextfield.setBorder(null);
         
  
         textA = new JTextArea();
@@ -41,15 +51,22 @@ public class Ciclo extends FiguraGeneral{
         Font boldFont = new Font(textA.getFont().getName(), Font.BOLD, textA.getFont().getSize());
         textA.setFont(boldFont);
         
-        textA.setBounds(40, (getHeight()/2)-10, 100, 20);
-
+        Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
+        indiceentextfield.setFont(boldFont2);
         
+        textA.setBounds(20, (getHeight()/2)-10, 140, 20);
+        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
+        
+        
+        add(indiceentextfield);
         add(textA);
+        
+        super.setIndice(indiceentextfield.getText());
         
         
     }
     
-    public void CircColor(Color color) {
+    public void setCircColor(Color color) {
         this.ColorCirc = color;
         repaint(); // Vuelve a dibujar el componente para reflejar el nuevo color
     }
@@ -65,9 +82,90 @@ public class Ciclo extends FiguraGeneral{
 
         // Rellenar la elipse con un color
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.red); // Cambia el color como desees
+        g2d.setColor(ColorCirc); // Cambia el color como desees
         g2d.fill(ellipse);
     }
+
+    public Color getColorCirc() {
+        return ColorCirc;
+    }
+
+    public void setColorCirc(Color ColorCirc) {
+        this.ColorCirc = ColorCirc;
+    }
+
+    public JTextArea getTextA() {
+        return textA;
+    }
+
+    public void setTextA(JTextArea textA) {
+        this.textA = textA;
+    }
+
+    public JTextField getIndiceentextfield() {
+        return indiceentextfield;
+    }
+
+    public void setIndiceentextfield(JTextField indiceentextfield) {
+        this.indiceentextfield = indiceentextfield;
+    }
+
+    
+
+    public JPopupMenu getMenuop() {
+        return menuop;
+    }
+
+    public void setMenuop(JPopupMenu menuop) {
+        this.menuop = menuop;
+    }
+
+    public JMenuItem getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JMenuItem eliminar) {
+        this.eliminar = eliminar;
+    }
+
+
+    public JMenuItem getColortext() {
+        return colortext;
+    }
+
+    public void setColortext(JMenuItem colortext) {
+        this.colortext = colortext;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+    
+    @Override
+    public String toString() {
+        return "Ciclo "+super.getIndice();
+    }
+    
     
    
     

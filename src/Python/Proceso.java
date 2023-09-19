@@ -6,23 +6,37 @@ package Python;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.event.EventListenerList;
+import javax.swing.plaf.ComponentUI;
 
 /**
  *
  * @author dfcm9
  */
-public class Proceso extends FiguraGeneral{
+public class Proceso extends FiguraFlujo{
     
+    
+    private JTextField indiceentextfield;
     private Color colorpro = Color.red; // Color predeterminado
     private JTextArea textA;
     
     public Proceso(){
         
         setLayout(null);
-        setSize(200,60);
+        setSize(200,80);
         setBackground(colorpro);
+        
+        indiceentextfield = new JTextField();
+        indiceentextfield.setBackground(Color.GRAY);
+        indiceentextfield.setForeground(Color.WHITE);
+        indiceentextfield.setBorder(null);
+        
         
         textA = new JTextArea();
         textA.setText("Aqui va el texto de instruccion");
@@ -35,17 +49,104 @@ public class Proceso extends FiguraGeneral{
         Font boldFont = new Font(textA.getFont().getName(), Font.BOLD, textA.getFont().getSize());
         textA.setFont(boldFont);
         
-        textA.setBounds(20, (getHeight()/2)-10, 160, 20);
-
+        Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
+        indiceentextfield.setFont(boldFont2);
+        
+        textA.setBounds(20, (getHeight()/2)-20, 160, 20);
+        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
         
         add(textA);
+        add(indiceentextfield);
     
     }
     
     public void setProcesoColor(Color color) {
-        this.colorpro = color;
-        repaint(); // Vuelve a dibujar el componente para reflejar el nuevo color
+        setBackground(color);
+        repaint();
     }
+
+    public JTextField getIndiceentextfield() {
+        return indiceentextfield;
+    }
+
+    public void setIndiceentextfield(JTextField indiceentextfield) {
+        this.indiceentextfield = indiceentextfield;
+    }
+
+
+    public Color getColorpro() {
+        return colorpro;
+    }
+
+    public void setColorpro(Color colorpro) {
+        this.colorpro = colorpro;
+    }
+
+    public JTextArea getTextA() {
+        return textA;
+    }
+
+    public void setTextA(JTextArea textA) {
+        this.textA = textA;
+    }
+
+    public JPopupMenu getMenuop() {
+        return menuop;
+    }
+
+    public void setMenuop(JPopupMenu menuop) {
+        this.menuop = menuop;
+    }
+
+    
+
+    public JMenuItem getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(JMenuItem eliminar) {
+        this.eliminar = eliminar;
+    }
+
+
+    public JMenuItem getColortext() {
+        return colortext;
+    }
+
+    public void setColortext(JMenuItem colortext) {
+        this.colortext = colortext;
+    }
+
+    public ComponentUI getUi() {
+        return ui;
+    }
+
+    public void setUi(ComponentUI ui) {
+        this.ui = ui;
+    }
+
+    public EventListenerList getListenerList() {
+        return listenerList;
+    }
+
+    public void setListenerList(EventListenerList listenerList) {
+        this.listenerList = listenerList;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+    
+    @Override
+    public String toString() {
+        return "Proceso "+super.getIndice();
+    }
+    
+    
     
     
 }
