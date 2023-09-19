@@ -30,7 +30,6 @@ import javax.swing.plaf.ComponentUI;
 
 public class Rombo extends FiguraFlujo{
     
-    private JTextField indiceentextfield;
     private Color romboColor = Color.red; // Color predeterminado
     private JTextArea textA;
     
@@ -40,11 +39,6 @@ public class Rombo extends FiguraFlujo{
         setLayout(null);
         setSize(200,100);
         setBackground(new Color(204,204,204));
-        
-        indiceentextfield = new JTextField();
-        indiceentextfield.setBackground(Color.GRAY);
-        indiceentextfield.setForeground(Color.WHITE);
-        indiceentextfield.setBorder(null);
 
         // Crear un JTextPane y agregarlo al centro del panel
         textA = new JTextArea();
@@ -54,7 +48,6 @@ public class Rombo extends FiguraFlujo{
         textA.setBorder(null); // Eliminar el borde del JTextPane
         
         Font boldFont2 = new Font(textA.getFont().getName(), Font.BOLD, 10);
-        indiceentextfield.setFont(boldFont2);
 
         
         // Cambiar el estilo de fuente del texto a negrita
@@ -62,13 +55,11 @@ public class Rombo extends FiguraFlujo{
         textA.setFont(boldFont);
         
         textA.setBounds(30, (getHeight()/2)-10, 140, 20);
-        indiceentextfield.setBounds((getWidth()/2)-20, getHeight()-15, 40, 15);
         
         
 
         
         add(textA);
-        add(indiceentextfield);
     }
     
     public void setRomboColor(Color color) {
@@ -99,13 +90,6 @@ public class Rombo extends FiguraFlujo{
         g2d.fill(rombo);
     }
 
-    public JTextField getIndiceentextfield() {
-        return indiceentextfield;
-    }
-
-    public void setIndiceentextfield(JTextField indiceentextfield) {
-        this.indiceentextfield = indiceentextfield;
-    }
 
     
 

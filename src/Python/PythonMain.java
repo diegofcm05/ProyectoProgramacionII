@@ -43,6 +43,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -184,10 +186,10 @@ public class PythonMain extends javax.swing.JFrame {
         jb_spawndata = new javax.swing.JButton();
         jb_gencodeFlujo = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jp_flujoWork = new javax.swing.JPanel();
         jb_addtotree = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         menubar_Flujo = new javax.swing.JMenuBar();
         mn_archivoFLUJO = new javax.swing.JMenu();
         mi_guardarPNGFLUJO = new javax.swing.JMenuItem();
@@ -209,6 +211,11 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tp_finalcodeUML = new javax.swing.JTextPane();
+        jd_arbolFlujo = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_aquiarbflujo = new javax.swing.JTree();
+        jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jb_diagramasflujo = new javax.swing.JPanel();
@@ -999,9 +1006,9 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(412, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1019,7 +1026,8 @@ public class PythonMain extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(jb_textcolorFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_applyfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(273, 273, 273)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1106,7 +1114,7 @@ public class PythonMain extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_applyfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
+                        .addGap(20, 20, 20))))
         );
 
         jb_spawndecision.setBackground(new java.awt.Color(51, 51, 51));
@@ -1191,11 +1199,6 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Opciones disponibles");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("para bloques:");
-
         jScrollPane1.setPreferredSize(new java.awt.Dimension(850, 1100));
 
         jp_flujoWork.setBackground(new java.awt.Color(255, 255, 255));
@@ -1217,12 +1220,22 @@ public class PythonMain extends javax.swing.JFrame {
         jb_addtotree.setBackground(new java.awt.Color(51, 51, 51));
         jb_addtotree.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jb_addtotree.setForeground(new java.awt.Color(153, 153, 255));
-        jb_addtotree.setText("Agregar figura al arbol");
+        jb_addtotree.setText("Ver Arbol");
         jb_addtotree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_addtotree.setFocusable(false);
         jb_addtotree.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jb_addtotreeMouseClicked(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(153, 153, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Agregar seleccionado al arbol");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -1232,20 +1245,24 @@ public class PythonMain extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jb_spawndata, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jb_spawncycle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jb_spawndecision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_spawnstart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jb_spawnprocess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jb_addtotree, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jb_spawndata, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_spawncycle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_spawndecision, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_spawnstart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_spawnprocess, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_gencodeFlujo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jb_addtotree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1254,10 +1271,10 @@ public class PythonMain extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jb_spawnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jb_spawnprocess, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1453,6 +1470,52 @@ public class PythonMain extends javax.swing.JFrame {
         JD_aquicodeLayout.setVerticalGroup(
             JD_aquicodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel8.setBackground(new java.awt.Color(0, 51, 102));
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Diagrama de Flujo");
+        jt_aquiarbflujo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane4.setViewportView(jt_aquiarbflujo);
+
+        jButton4.setBackground(new java.awt.Color(102, 102, 102));
+        jButton4.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Salir");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+
+        javax.swing.GroupLayout jd_arbolFlujoLayout = new javax.swing.GroupLayout(jd_arbolFlujo.getContentPane());
+        jd_arbolFlujo.getContentPane().setLayout(jd_arbolFlujoLayout);
+        jd_arbolFlujoLayout.setHorizontalGroup(
+            jd_arbolFlujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_arbolFlujoLayout.setVerticalGroup(
+            jd_arbolFlujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -3067,7 +3130,6 @@ public class PythonMain extends javax.swing.JFrame {
             }
             else if (ult instanceof Rombo){
                 ((Rombo) ult).getTextA().setFont(newfo);
-                ((Rombo) ult).getIndiceentextfield().setFont(newfo);
             }
             else if (ult instanceof Ciclo){
                 ((Ciclo) ult).getTextA().setFont(newfo);
@@ -3097,7 +3159,6 @@ public class PythonMain extends javax.swing.JFrame {
             }
             else if (ult instanceof Rombo){
                 ((Rombo) ult).getTextA().setForeground(newcol);
-                ((Rombo) ult).getIndiceentextfield().setForeground(newcol);
             }
             else if (ult instanceof Ciclo){
                 ((Ciclo) ult).getTextA().setForeground(newcol);
@@ -3120,7 +3181,6 @@ public class PythonMain extends javax.swing.JFrame {
            ult.setIndice(((Proceso) ult).getIndiceentextfield().getText().trim());
        }
        else if (ult instanceof Rombo){
-           ult.setIndice(((Rombo) ult).getIndiceentextfield().getText().trim());
        }
        else if (ult instanceof Ciclo){
            ult.setIndice(((Ciclo) ult).getIndiceentextfield().getText().trim());
@@ -3524,6 +3584,10 @@ public class PythonMain extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_mi_abrirbinarioUMLActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3929,6 +3993,8 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3948,7 +4014,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -3995,9 +4060,11 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -4050,6 +4117,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jb_spawnstart;
     private javax.swing.JButton jb_textcolorFLUJO;
     private javax.swing.JButton jb_textcolorUML;
+    private javax.swing.JDialog jd_arbolFlujo;
     private javax.swing.JDialog jd_creatuFLUJO;
     private javax.swing.JDialog jd_creatuUML;
     private javax.swing.JLabel jl_pythonUML;
@@ -4058,6 +4126,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jp_spawnextinterUML;
     private javax.swing.JPanel jp_umlWork;
     private javax.swing.JPanel jp_umldesc;
+    private javax.swing.JTree jt_aquiarbflujo;
     private javax.swing.JMenuBar menubar_Flujo;
     private javax.swing.JMenuBar menubar_UML;
     private javax.swing.JMenuItem mi_abrirFLUJO;
@@ -4080,11 +4149,11 @@ public class PythonMain extends javax.swing.JFrame {
     //Metodos para Serializar
     
     public DatosCG genDatosCG (ClaseGnrl abc){
-        System.out.println("Hijos del parametro: "+ abc.getHijos());
+       
         String nom = abc.getTitulo().getText();
         DatosCG temp = new DatosCG(nom, abc.getWidth(), abc.getHeight(), abc.getAtributos().getText(), abc.getMetodos().getText(), abc.getAtributos().getFont(), abc.getBackground());
         temp.setHijos(abc.getHijos());
-        System.out.println("Hijos del serializable: "+temp.getHijos());
+        
         return temp;
     }
     
@@ -4204,6 +4273,93 @@ public class PythonMain extends javax.swing.JFrame {
         
         return inter;
         
+        
+    
+    }
+    
+    public void GenerarArb (JPanel jp){
+       
+        DefaultTreeModel modelo = (DefaultTreeModel) jt_aquiarbflujo.getModel();
+
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) modelo.getRoot();
+
+        String figTit = "";
+
+        if (jp instanceof Proceso) {
+            Proceso temp = (Proceso) jp;
+            
+            figTit = "Proceso: " + temp.getTextA().getText();
+            
+            DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
+            
+            root.add(figName);
+            
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "Se ha cargado la informacion exitosamente!");
+
+        }
+        if (jp instanceof Rombo) {
+            Rombo temp = (Rombo) jp;
+            
+            generarIf(temp, root);
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "Se ha cargado la informacion exitosamente!");
+
+        }
+        
+        if (jp instanceof Ciclo){
+            Ciclo temp = (Ciclo) jp;
+            generarCiclo(temp, root);
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "Se ha cargado la informacion exitosamente!");
+            
+        }
+        if (jp instanceof InicioFin) {
+            InicioFin temp = (InicioFin) jp;
+            figTit = "#" + temp.getTextA().getText();
+            DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
+            root.add(figName);
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "Se ha cargado la informacion exitosamente!");
+
+        }
+        if (jp instanceof Datos) {
+            Datos temp = (Datos) jp;
+            figTit = "Datos: " + temp.getTextA().getText();
+            DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
+            root.add(figName);
+            JOptionPane.showMessageDialog(jd_creatuFLUJO, "Se ha cargado la informacion exitosamente!");
+
+        }
+
+        modelo.reload();
+
+    
+    }
+    
+    public void generarIf(Rombo temp, DefaultMutableTreeNode c) {
+
+        String figTit = "If " + temp.getTextA().getText() + ":";
+
+        DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
+
+        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("True");
+        DefaultMutableTreeNode falso = new DefaultMutableTreeNode("False");
+
+        figName.add(verdadero);
+        figName.add(falso);
+
+        c.add(figName);
+    }
+    
+    public void generarCiclo(Ciclo temp, DefaultMutableTreeNode c){
+        String figTit = "while " + temp.getTextA().getText() + ":";
+
+        DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
+
+        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("True");
+        DefaultMutableTreeNode falso = new DefaultMutableTreeNode("False");
+
+        figName.add(verdadero);
+        figName.add(falso);
+
+        c.add(figName);
     }
     
 }
