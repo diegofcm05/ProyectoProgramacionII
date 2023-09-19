@@ -6,12 +6,13 @@ package Python;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.Serializable;
 
 /**
- *
+ 
  * @author dfcm9
  */
-public class DatosIF {
+public class DatosIF implements Serializable{
     
     private String nombre;
     private int width, height;

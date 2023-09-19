@@ -69,15 +69,17 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
         nomclass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (componenteClickeado instanceof ClaseGnrl){
+                if (ultimoclickeado instanceof ClaseGnrl){
+                    System.out.println(((ClaseGnrl) ultimoclickeado).getHijos());
                     String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
                     ((ClaseGnrl) ultimoclickeado).getTitulo().setText("Clase "+ax);
                     for (FiguraGeneral obj : ((ClaseGnrl) ultimoclickeado).getHijos()) {
                         ((ClaseHerencia) obj).getExtension().setText("extends "+ax);
                         
                     }
+                    revalidate();
                 }
-                if (componenteClickeado instanceof ClaseAbstracta){
+                if (ultimoclickeado instanceof ClaseAbstracta){
                     String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
                     ((ClaseAbstracta) ultimoclickeado).getJl_nomclase().setText("Clase Abstracta "+ax);
                     for (FiguraGeneral obj : ((ClaseAbstracta) ultimoclickeado).getHijos()) {
@@ -85,7 +87,7 @@ public class FiguraGeneral extends JPanel implements MouseListener, MouseMotionL
                         
                     }
                 }
-                if (componenteClickeado instanceof ClaseHerencia){
+                if (ultimoclickeado instanceof ClaseHerencia){
                     String ax = JOptionPane.showInputDialog(null, "Ingrese nuevo nombre: ");
                     ((ClaseHerencia) ultimoclickeado).getNomclase().setText("Clase "+ax);
                     for (FiguraGeneral obj : ((ClaseHerencia) ultimoclickeado).getHijos()) {

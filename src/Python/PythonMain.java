@@ -2073,7 +2073,7 @@ public class PythonMain extends javax.swing.JFrame {
         
         
         ClaseHerencia claseher = new ClaseHerencia(temppadre);
-        claseher.setPadre(((FiguraGeneral) cb_dialogherencia.getSelectedItem()));
+        claseher.setPadre(temppadre);
         
         if (temppadre instanceof ClaseGnrl){
             ((ClaseGnrl) temppadre).getHijos().add(claseher);
@@ -3363,6 +3363,8 @@ public class PythonMain extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(this, "Guardado exitosamente!");
+                clasesUML.clear();
+                jp_umlWork.removeAll();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error");
                 e.printStackTrace();
@@ -3398,21 +3400,22 @@ public class PythonMain extends javax.swing.JFrame {
             int sel = jfc.showOpenDialog(this);
 
             if (sel == JFileChooser.APPROVE_OPTION) {
-                jp_umlWork.removeAll();
+                
                 file = jfc.getSelectedFile();
                 input = new FileInputStream(file);
                 obj = new ObjectInputStream(input);
                 
                 
-                /*
-                ESTO PARA COPIAR PARTE DE UN DIAGRAMA A OTRO
+                
+                
                 
                 int wannaCopy = JOptionPane.showConfirmDialog(this, "Desea copiar el diagrama seleccionado a este proyecto?");
                 
                 if(wannaCopy != JOptionPane.YES_OPTION){
-                    jp_workArea.removeAll();
+                    jp_umlWork.removeAll();
+                    clasesUML.clear();
                 }
-                */
+                
 
                 try {
                     //continuar deserializando
@@ -3432,35 +3435,27 @@ public class PythonMain extends javax.swing.JFrame {
                            
                             DatosCA tempClass = (DatosCA) objectDeserializado;
                             ClaseAbstracta clas = DatostogenCA(tempClass);
-                            //clas.setLocation(ajustarPosicion(clas.getLocation(), jp_umlWork.getSize(), clas.getSize()));
+                            
 
 
                             deserializadas.add(clas);
-                            //jp_umlWork.add(clas);
-//                            jp_workArea.add(clas);
-                        } /*else if (objectDeserializado instanceof DatosInterfaz) {
-                            JOptionPane.showMessageDialog(this, "Deserializando Interfazfigura....");
-                            DatosInterfaz tempClass = (DatosInterfaz) objectDeserializado;
-                            InterfazFigura clas = datosToFigInt(tempClass);
-                            clas.setLocation(ajustarPosicion(clas.getLocation(), jp_workArea.getSize(), clas.getSize()));
+                        } else if (objectDeserializado instanceof DatosCH) {
+                            
+                            DatosCH tempClass = (DatosCH) objectDeserializado;
+                            ClaseHerencia clas = DatostogenCH(tempClass);
 
-                            clas.addMouseListener(this);
-                            clas.addMouseMotionListener(this);
 
-                            deserializedFiguras.add(clas);
-//                            jp_workArea.add(clas);
-                        } else if (objectDeserializado instanceof DatosClasse) {
-                            JOptionPane.showMessageDialog(this, "Deserializando Simpfigura....");
-                            DatosClasse tempClass = (DatosClasse) objectDeserializado;
-                            ClasseFigura clas = datosToFig(tempClass);
-                            clas.setLocation(ajustarPosicion(clas.getLocation(), jp_workArea.getSize(), clas.getSize()));
+                            deserializadas.add(clas);
 
-                            clas.addMouseListener(this);
-                            clas.addMouseMotionListener(this);
+                        } else if (objectDeserializado instanceof DatosIF) {
+                            
+                            DatosIF tempClass = (DatosIF) objectDeserializado;
+                            Interfaz clas = DatostogenIF(tempClass);
+                           
 
-                            deserializedFiguras.add(clas);
-//                            jp_workArea.add(clas);
-                        }*/
+
+                            deserializadas.add(clas);
+                        }
                         
                     }
                 } catch (EOFException e) {
@@ -3469,8 +3464,8 @@ public class PythonMain extends javax.swing.JFrame {
                 for (Object desFig : deserializadas) {
                     if (desFig instanceof ClaseGnrl) {
                         ClaseGnrl temp = (ClaseGnrl) desFig;
-                        //temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
-
+                        
+                        clasesUML.add(temp);
                         jp_umlWork.add(temp);
                         temp.revalidate();
                         temp.repaint();
@@ -3479,44 +3474,40 @@ public class PythonMain extends javax.swing.JFrame {
                         jp_umlWork.repaint();
                     } else if (desFig instanceof ClaseAbstracta) {
                         ClaseAbstracta temp = (ClaseAbstracta) desFig;
-                        //temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
 
+                        clasesUML.add(temp);
                         jp_umlWork.add(temp);
                         temp.revalidate();
                         temp.repaint();
                         temp.setVisible(true);
                         jp_umlWork.revalidate();
                         jp_umlWork.repaint();
-                    } /*else if (desFig instanceof InterfazFigura) {
-                        InterfazFigura temp = (InterfazFigura) desFig;
-                        temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+                    } else if (desFig instanceof ClaseHerencia) {
+                        ClaseHerencia temp = (ClaseHerencia) desFig;
 
-                        jp_workArea.add(temp);
+                        clasesUML.add(temp);
+                        jp_umlWork.add(temp);
                         temp.revalidate();
                         temp.repaint();
                         temp.setVisible(true);
-                        jp_workArea.revalidate();
-                        jp_workArea.repaint();
-                    } else if (desFig instanceof ClasseFigura) {
-                        ClasseFigura temp = (ClasseFigura) desFig;
-                        temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+                        jp_umlWork.revalidate();
+                        jp_umlWork.repaint();
+                    } else if (desFig instanceof Interfaz) {
+                        Interfaz temp = (Interfaz) desFig;
 
-                        jp_workArea.add(temp);
+                        clasesUML.add(temp);
+                        jp_umlWork.add(temp);
                         temp.revalidate();
                         temp.repaint();
                         temp.setVisible(true);
-                        jp_workArea.revalidate();
-                        jp_workArea.repaint();
-                    }*/
+                        jp_umlWork.revalidate();
+                        jp_umlWork.repaint();
+                    }
                 }
 
                 System.out.println(deserializadas);
                 JOptionPane.showMessageDialog(this, jp_umlWork.getComponentCount());
-                /*
-                for (Component component : jp_workArea.getComponents()) {
-                    seleccion((ClasseFigura) component, true);
-                }
-                */
+
                 jp_umlWork.revalidate();
                 jp_umlWork.repaint();
 
@@ -4089,10 +4080,11 @@ public class PythonMain extends javax.swing.JFrame {
     //Metodos para Serializar
     
     public DatosCG genDatosCG (ClaseGnrl abc){
+        System.out.println("Hijos del parametro: "+ abc.getHijos());
         String nom = abc.getTitulo().getText();
-        
         DatosCG temp = new DatosCG(nom, abc.getWidth(), abc.getHeight(), abc.getAtributos().getText(), abc.getMetodos().getText(), abc.getAtributos().getFont(), abc.getBackground());
         temp.setHijos(abc.getHijos());
+        System.out.println("Hijos del serializable: "+temp.getHijos());
         return temp;
     }
     
@@ -4119,6 +4111,7 @@ public class PythonMain extends javax.swing.JFrame {
     
     public ClaseGnrl DatostogenCG (DatosCG abc){
         
+        System.out.println("Hijos del desempacador: "+abc.getHijos());
         System.out.println(abc.getNombre()+" Hola");
         ClaseGnrl temp = new ClaseGnrl(abc.getFontt());
         temp.getTitulo().setText(abc.getNombre());
@@ -4131,6 +4124,8 @@ public class PythonMain extends javax.swing.JFrame {
         temp.getPn_lblatributos().setBackground(abc.getBgc());
         temp.getPn_lblmetodos().setBackground(abc.getBgc());
         temp.setLocation(10, 10);
+        temp.setHijos(abc.getHijos());
+        System.out.println("Hijos del nuevo clasegnrl: "+temp.getHijos());
         
         
         return temp;
@@ -4138,17 +4133,77 @@ public class PythonMain extends javax.swing.JFrame {
     }
     
     public ClaseAbstracta DatostogenCA (DatosCA def){
-        ClaseAbstracta abs = new ClaseAbstracta();
+        ClaseAbstracta abs = new ClaseAbstracta(def.getFontt());
         abs.getJl_nomclase().setText(def.getNombre());
         abs.getTp_metodos().setText(def.getMetos());
         abs.getTp_metodos().setFont(def.getFontt());
+        abs.setHijos(def.getHijos());
+        
         abs.setBackground(def.getBgc());
         abs.getJp_nomclase().setBackground(def.getBgc());
         abs.getJp_metodos().setBackground(def.getBgc());
+        
         abs.setLocation(10,10);
         
         
         return abs;
+    }
+    
+    public ClaseHerencia DatostogenCH (DatosCH ghi){
+        ClaseHerencia her = new ClaseHerencia(ghi.getPadre());
+        her.getNomclase().setText(ghi.getNombre());
+        her.getTp_atributos().setText(ghi.getAtris());
+        her.getTp_atributos().setFont(ghi.getFontt());
+        her.getTp_metodos().setText(ghi.getMetos());
+        her.getTp_metodos().setFont(ghi.getFontt());
+        her.setHijos(ghi.getHijos());
+        
+        her.setBackground(ghi.getBgc());
+        her.getJp_extension().setBackground(ghi.getBgc());
+        her.getJp_nomclase().setBackground(ghi.getBgc());
+        her.getJp_atributos().setBackground(ghi.getBgc());
+        her.getJp_metodos().setBackground(ghi.getBgc());
+        
+        FiguraGeneral padre = ghi.getPadre();
+        
+        if (padre instanceof ClaseGnrl){
+            her.getExtension().setText("extends " + ((ClaseGnrl) padre).getTitulo().getText());
+            
+        }
+        if (padre instanceof ClaseAbstracta){
+            her.getExtension().setText("extends " + ((ClaseAbstracta) padre).getJl_nomclase().getText());
+            
+        }
+        if (padre instanceof ClaseHerencia){
+            her.getExtension().setText("extends " + ((ClaseHerencia) padre).getNomclase().getText());
+            
+        }
+        
+        her.setLocation(200,10);
+        
+        
+        
+        return her;
+    }
+    
+    public Interfaz DatostogenIF(DatosIF jkl){
+        
+        Interfaz inter = new Interfaz();
+        
+        inter.getNominter().setText(jkl.getNombre());
+        inter.getTp_metodos().setText(jkl.getMetos());
+        inter.getTp_metodos().setFont(jkl.getFontf());
+        
+        
+        inter.getJp_nominter().setBackground(jkl.getCol());
+        inter.getJp_metodos().setBackground(jkl.getCol());
+        
+        inter.setLocation(400, 10);
+        
+        
+        
+        return inter;
+        
     }
     
 }
