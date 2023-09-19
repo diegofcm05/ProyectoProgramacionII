@@ -120,6 +120,8 @@ public class ClaseGnrl extends FiguraGeneral{
         add(pnatributos);
         add(pn_lblmetodos);
         add(pnmetodos);
+        
+        repaint();
     }
 
     public JPanel getPn_nomclase() {

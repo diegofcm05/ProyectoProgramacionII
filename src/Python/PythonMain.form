@@ -884,11 +884,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Abrir archivo bin"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mi_abrirbinarioUMLActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mi_guardarbinarioUML">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Guardar archivo bin"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mi_guardarbinarioUMLActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mi_printUML">
                   <Properties>

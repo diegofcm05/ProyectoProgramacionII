@@ -4,6 +4,8 @@
  */
 package Python;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -18,8 +20,11 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,6 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -768,9 +774,19 @@ public class PythonMain extends javax.swing.JFrame {
         mn_archivoUML.add(mi_guardaPDF_UML);
 
         mi_abrirbinarioUML.setText("Abrir archivo bin");
+        mi_abrirbinarioUML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_abrirbinarioUMLActionPerformed(evt);
+            }
+        });
         mn_archivoUML.add(mi_abrirbinarioUML);
 
         mi_guardarbinarioUML.setText("Guardar archivo bin");
+        mi_guardarbinarioUML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardarbinarioUMLActionPerformed(evt);
+            }
+        });
         mn_archivoUML.add(mi_guardarbinarioUML);
 
         mi_printUML.setText("Imprimir Diagrama");
@@ -3289,6 +3305,235 @@ public class PythonMain extends javax.swing.JFrame {
         PrintRecord(jp_flujoWork);
     }//GEN-LAST:event_mi_printFLUJOActionPerformed
 
+    private void mi_guardarbinarioUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardarbinarioUMLActionPerformed
+        JFileChooser jfc = new JFileChooser();
+
+        jfc.setCurrentDirectory(new File("C:\\Users\\dfcm9\\OneDrive\\Desktop\\MP Proyectos"));
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter(
+                "Archivos dfcm",
+                "dfcm");
+        jfc.setFileFilter(filtro);
+        int seleccion = jfc.showSaveDialog(this);
+
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            try {
+                File file = null;
+                if (jfc.getFileFilter().getDescription().equals("Archivos dfcm")) {
+                    file = new File(jfc.getSelectedFile().getPath()+".dfcm");
+                } else {
+                    file = jfc.getSelectedFile();
+                }
+                fw = new FileOutputStream(file);
+                bw = new ObjectOutputStream(fw);
+
+                for (Object fig : clasesUML) {
+
+                    if (fig instanceof ClaseGnrl) {
+                        ClaseGnrl temp = (ClaseGnrl) fig;
+                        DatosCG dat = genDatosCG(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+                    } else if (fig instanceof ClaseAbstracta) {
+                        
+                        ClaseAbstracta temp = (ClaseAbstracta) fig;
+                        DatosCA dat = genDatosCA(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+
+                    } else if (fig instanceof ClaseHerencia) {
+                        
+                        ClaseHerencia temp = (ClaseHerencia) fig;
+                        DatosCH dat = genDatosCH(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+
+                    } else if (fig instanceof Interfaz) {
+                        
+                        Interfaz temp = (Interfaz) fig;
+                        DatosIF dat = genDatosIF(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+                    }
+
+                }
+
+                JOptionPane.showMessageDialog(this, "Guardado exitosamente!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error");
+                e.printStackTrace();
+            }
+            try {
+                bw.close();
+                fw.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+            
+        
+    }//GEN-LAST:event_mi_guardarbinarioUMLActionPerformed
+
+    private void mi_abrirbinarioUMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_abrirbinarioUMLActionPerformed
+        File file = null;
+        FileInputStream input = null;
+        ObjectInputStream obj = null;
+        ArrayList deserializadas = new ArrayList();
+
+        try {
+            JFileChooser jfc = new JFileChooser();
+
+            jfc.setCurrentDirectory(new File("C:\\Users\\dfcm9\\OneDrive\\Desktop\\MP Proyectos"));
+
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos dfcm", "dfcm");
+
+            jfc.setFileFilter(filtro);
+
+            int sel = jfc.showOpenDialog(this);
+
+            if (sel == JFileChooser.APPROVE_OPTION) {
+                jp_umlWork.removeAll();
+                file = jfc.getSelectedFile();
+                input = new FileInputStream(file);
+                obj = new ObjectInputStream(input);
+                
+                
+                /*
+                ESTO PARA COPIAR PARTE DE UN DIAGRAMA A OTRO
+                
+                int wannaCopy = JOptionPane.showConfirmDialog(this, "Desea copiar el diagrama seleccionado a este proyecto?");
+                
+                if(wannaCopy != JOptionPane.YES_OPTION){
+                    jp_workArea.removeAll();
+                }
+                */
+
+                try {
+                    //continuar deserializando
+                    while (true) {
+                        Object objectDeserializado = obj.readObject();
+
+                        if (objectDeserializado instanceof DatosCG) {
+                            
+                            DatosCG tempClass = (DatosCG) objectDeserializado;
+                            ClaseGnrl clas = DatostogenCG(tempClass);
+
+                            deserializadas.add(clas);
+                            //jp_umlWork.add(clas);
+                            
+
+                        } else if (objectDeserializado instanceof DatosCA) {
+                           
+                            DatosCA tempClass = (DatosCA) objectDeserializado;
+                            ClaseAbstracta clas = DatostogenCA(tempClass);
+                            //clas.setLocation(ajustarPosicion(clas.getLocation(), jp_umlWork.getSize(), clas.getSize()));
+
+
+                            deserializadas.add(clas);
+                            //jp_umlWork.add(clas);
+//                            jp_workArea.add(clas);
+                        } /*else if (objectDeserializado instanceof DatosInterfaz) {
+                            JOptionPane.showMessageDialog(this, "Deserializando Interfazfigura....");
+                            DatosInterfaz tempClass = (DatosInterfaz) objectDeserializado;
+                            InterfazFigura clas = datosToFigInt(tempClass);
+                            clas.setLocation(ajustarPosicion(clas.getLocation(), jp_workArea.getSize(), clas.getSize()));
+
+                            clas.addMouseListener(this);
+                            clas.addMouseMotionListener(this);
+
+                            deserializedFiguras.add(clas);
+//                            jp_workArea.add(clas);
+                        } else if (objectDeserializado instanceof DatosClasse) {
+                            JOptionPane.showMessageDialog(this, "Deserializando Simpfigura....");
+                            DatosClasse tempClass = (DatosClasse) objectDeserializado;
+                            ClasseFigura clas = datosToFig(tempClass);
+                            clas.setLocation(ajustarPosicion(clas.getLocation(), jp_workArea.getSize(), clas.getSize()));
+
+                            clas.addMouseListener(this);
+                            clas.addMouseMotionListener(this);
+
+                            deserializedFiguras.add(clas);
+//                            jp_workArea.add(clas);
+                        }*/
+                        
+                    }
+                } catch (EOFException e) {
+                    //llega al final del archivo
+                }
+                for (Object desFig : deserializadas) {
+                    if (desFig instanceof ClaseGnrl) {
+                        ClaseGnrl temp = (ClaseGnrl) desFig;
+                        //temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+
+                        jp_umlWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_umlWork.revalidate();
+                        jp_umlWork.repaint();
+                    } else if (desFig instanceof ClaseAbstracta) {
+                        ClaseAbstracta temp = (ClaseAbstracta) desFig;
+                        //temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+
+                        jp_umlWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_umlWork.revalidate();
+                        jp_umlWork.repaint();
+                    } /*else if (desFig instanceof InterfazFigura) {
+                        InterfazFigura temp = (InterfazFigura) desFig;
+                        temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+
+                        jp_workArea.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_workArea.revalidate();
+                        jp_workArea.repaint();
+                    } else if (desFig instanceof ClasseFigura) {
+                        ClasseFigura temp = (ClasseFigura) desFig;
+                        temp.setLocation(ajustarPosicion(temp.getLocation(), jp_workArea.getSize(), temp.getSize()));
+
+                        jp_workArea.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_workArea.revalidate();
+                        jp_workArea.repaint();
+                    }*/
+                }
+
+                System.out.println(deserializadas);
+                JOptionPane.showMessageDialog(this, jp_umlWork.getComponentCount());
+                /*
+                for (Component component : jp_workArea.getComponents()) {
+                    seleccion((ClasseFigura) component, true);
+                }
+                */
+                jp_umlWork.revalidate();
+                jp_umlWork.repaint();
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar archivo");
+            e.printStackTrace();
+        }
+
+        try {
+            input.close();
+            obj.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_mi_abrirbinarioUMLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3533,6 +3778,7 @@ public class PythonMain extends javax.swing.JFrame {
                     codeinstr+="\n";
                     
                 }
+                
                 else if (padtem instanceof ClaseHerencia){
                     codeinstr+="class "+((ClaseHerencia) piezauml).getNomclase().getText().substring(6)+" ("+((ClaseHerencia) padtem).getNomclase().getText().substring(6)+"):\n";
                     
@@ -3839,36 +4085,70 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JTextPane tp_finalcodeUML;
     // End of variables declaration//GEN-END:variables
     
-    StyledDocument doc;
-    Style estilo;
-    //Esto esta comentado como ultimo recurso
-        /*JPanel plol = new FiguraGeneral();
-        plol.setSize(80, 50);
-        plol.setBounds(340,100,200,95);
-        plol.setBackground(Color.blue);
-        plol.setVisible(true);
-        plol.setVisible(true);
-        JPanel paneldelabel = new JPanel();
-        paneldelabel.setBounds(0, 0, plol.getWidth(), 30);
+    
+    //Metodos para Serializar
+    
+    public DatosCG genDatosCG (ClaseGnrl abc){
+        String nom = abc.getTitulo().getText();
         
-        JLabel x = new JLabel("Prueba");
-        x.setForeground(Color.black);
-        Font boldFont = new Font(x.getFont().getName(), Font.BOLD, x.getFont().getSize());
-        x.setFont(boldFont);
-        JTextArea write = new JTextArea(1,10);
+        DatosCG temp = new DatosCG(nom, abc.getWidth(), abc.getHeight(), abc.getAtributos().getText(), abc.getMetodos().getText(), abc.getAtributos().getFont(), abc.getBackground());
+        temp.setHijos(abc.getHijos());
+        return temp;
+    }
+    
+    public DatosCA genDatosCA (ClaseAbstracta def){
+        DatosCA temp = new DatosCA(def.getJl_nomclase().getText(), def.getWidth(), def.getHeight(), def.getTp_metodos().getText(), def.getTp_metodos().getFont(), def.getBackground());
+        temp.setHijos(def.getHijos());
+        return temp;
+    }
+    
+    public DatosCH genDatosCH (ClaseHerencia ghi){
+        DatosCH temp = new DatosCH(ghi.getNomclase().getText(), ghi.getWidth(), ghi.getHeight(), ghi.getTp_atributos().getText(), ghi.getTp_metodos().getText(), ghi.getTp_atributos().getFont(), ghi.getBackground(), ghi.getPadre());
+        temp.setHijos(ghi.getHijos());
+        return temp;
+    }
+    
+    public DatosIF genDatosIF (Interfaz jkl){
+        DatosIF temp = new DatosIF(jkl.getNominter().getText(), jkl.getWidth(), jkl.getHeight(), jkl.getTp_metodos().getText(), jkl.getTp_metodos().getFont(), jkl.getBackground());
+        return temp;
+    }
+    
+    
+    
+    //Metodos para DeSerializar
+    
+    public ClaseGnrl DatostogenCG (DatosCG abc){
+        
+        System.out.println(abc.getNombre()+" Hola");
+        ClaseGnrl temp = new ClaseGnrl(abc.getFontt());
+        temp.getTitulo().setText(abc.getNombre());
+        temp.getAtributos().setText(abc.getAtris());
+        temp.getMetodos().setText(abc.getMetos());
+        temp.getAtributos().setFont(abc.getFontt());
+        temp.getMetodos().setFont(abc.getFontt());
+        temp.setBackground(abc.getBgc());
+        temp.getPn_nomclase().setBackground(abc.getBgc());
+        temp.getPn_lblatributos().setBackground(abc.getBgc());
+        temp.getPn_lblmetodos().setBackground(abc.getBgc());
+        temp.setLocation(10, 10);
         
         
-        paneldelabel.add(x);
-        plol.add(paneldelabel);
-        plol.add(write);
+        return temp;
+
+    }
+    
+    public ClaseAbstracta DatostogenCA (DatosCA def){
+        ClaseAbstracta abs = new ClaseAbstracta();
+        abs.getJl_nomclase().setText(def.getNombre());
+        abs.getTp_metodos().setText(def.getMetos());
+        abs.getTp_metodos().setFont(def.getFontt());
+        abs.setBackground(def.getBgc());
+        abs.getJp_nomclase().setBackground(def.getBgc());
+        abs.getJp_metodos().setBackground(def.getBgc());
+        abs.setLocation(10,10);
         
-        jPanel6.add(plol);
-        plol.setLocation(0,0);
         
-        
-        x.setBounds(0,0,plol.getWidth(),30);
-        write.setBounds(20, 35, plol.getWidth()-40, 50);
-        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        */
+        return abs;
+    }
     
 }
