@@ -7,6 +7,7 @@ package Python;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,6 +39,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Style;
@@ -58,7 +60,6 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 public class PythonMain extends javax.swing.JFrame {
     
     ArrayList <FiguraGeneral> clasesUML = new ArrayList();
-    ArrayList <FiguraFlujo> ordenflujo = new ArrayList();
     ArrayList <Interfaz> allinters = new ArrayList();
     ArrayList <Rombo> condiciones = new ArrayList();
     ArrayList <Ciclo> ciclos = new ArrayList();
@@ -78,7 +79,6 @@ public class PythonMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jp_flujodesc.setVisible(false);
         jp_umldesc.setVisible(false);
-        System.out.println(ax);
         
         
 
@@ -208,7 +208,7 @@ public class PythonMain extends javax.swing.JFrame {
         tf_nomclaseheren = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jb_crearher = new javax.swing.JButton();
-        JD_aquicode = new javax.swing.JDialog();
+        JD_aquicodeUML = new javax.swing.JDialog();
         jPanel7 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -217,12 +217,17 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jt_aquiarbflujo = new javax.swing.JTree();
-        jButton4 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         pop_agregar = new javax.swing.JPopupMenu();
         mi_addNod = new javax.swing.JMenuItem();
         pop_eliminar = new javax.swing.JPopupMenu();
         mi_deleteNod = new javax.swing.JMenuItem();
+        JD_aquicodeFLUJO = new javax.swing.JDialog();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        tp_finalcodeFLUJO = new javax.swing.JTextPane();
+        pop_addspecifically = new javax.swing.JPopupMenu();
+        mi_agregarEspe = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jb_diagramasflujo = new javax.swing.JPanel();
@@ -990,6 +995,7 @@ public class PythonMain extends javax.swing.JFrame {
         jb_applyfontFLUJO.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jb_applyfontFLUJO.setForeground(new java.awt.Color(255, 255, 255));
         jb_applyfontFLUJO.setText("Aplicar Cambios");
+        jb_applyfontFLUJO.setFocusable(false);
         jb_applyfontFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jb_applyfontFLUJOMouseClicked(evt);
@@ -1013,9 +1019,9 @@ public class PythonMain extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(412, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_fontsFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1034,7 +1040,6 @@ public class PythonMain extends javax.swing.JFrame {
                         .addComponent(jb_textcolorFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_applyfontFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(273, 273, 273)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1224,9 +1229,9 @@ public class PythonMain extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jp_flujoWork);
 
-        jb_addtotree.setBackground(new java.awt.Color(51, 51, 51));
+        jb_addtotree.setBackground(new java.awt.Color(153, 153, 255));
         jb_addtotree.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
-        jb_addtotree.setForeground(new java.awt.Color(153, 153, 255));
+        jb_addtotree.setForeground(new java.awt.Color(0, 0, 0));
         jb_addtotree.setText("Ver Arbol");
         jb_addtotree.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jb_addtotree.setFocusable(false);
@@ -1327,9 +1332,24 @@ public class PythonMain extends javax.swing.JFrame {
         mn_archivoFLUJO.add(mi_guardarPDFFLUJO);
 
         mi_abrirFLUJO.setText("Abrir archivo bin");
+        mi_abrirFLUJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_abrirFLUJOActionPerformed(evt);
+            }
+        });
         mn_archivoFLUJO.add(mi_abrirFLUJO);
 
         mi_guardarFLUJO.setText("Guardar archivo bin");
+        mi_guardarFLUJO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mi_guardarFLUJOMouseClicked(evt);
+            }
+        });
+        mi_guardarFLUJO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_guardarFLUJOActionPerformed(evt);
+            }
+        });
         mn_archivoFLUJO.add(mi_guardarFLUJO);
 
         mi_printFLUJO.setText("Imprmir Diagrama");
@@ -1445,7 +1465,7 @@ public class PythonMain extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel38.setText("Codigo Generado (Java UML --> Python)");
+        jLabel38.setText("Codigo Generado (UML Diagram to Python)");
 
         tp_finalcodeUML.setBackground(new java.awt.Color(204, 204, 204));
         tp_finalcodeUML.setBorder(null);
@@ -1474,14 +1494,14 @@ public class PythonMain extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout JD_aquicodeLayout = new javax.swing.GroupLayout(JD_aquicode.getContentPane());
-        JD_aquicode.getContentPane().setLayout(JD_aquicodeLayout);
-        JD_aquicodeLayout.setHorizontalGroup(
-            JD_aquicodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout JD_aquicodeUMLLayout = new javax.swing.GroupLayout(JD_aquicodeUML.getContentPane());
+        JD_aquicodeUML.getContentPane().setLayout(JD_aquicodeUMLLayout);
+        JD_aquicodeUMLLayout.setHorizontalGroup(
+            JD_aquicodeUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        JD_aquicodeLayout.setVerticalGroup(
-            JD_aquicodeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        JD_aquicodeUMLLayout.setVerticalGroup(
+            JD_aquicodeUMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1499,11 +1519,6 @@ public class PythonMain extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jt_aquiarbflujo);
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 102));
-        jButton4.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Salir");
-
         jLabel21.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1516,15 +1531,12 @@ public class PythonMain extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
+                        .addGap(142, 142, 142)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                        .addGap(102, 102, 102)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1532,17 +1544,15 @@ public class PythonMain extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout jd_arbolFlujoLayout = new javax.swing.GroupLayout(jd_arbolFlujo.getContentPane());
         jd_arbolFlujo.getContentPane().setLayout(jd_arbolFlujoLayout);
         jd_arbolFlujoLayout.setHorizontalGroup(
             jd_arbolFlujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jd_arbolFlujoLayout.setVerticalGroup(
             jd_arbolFlujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1557,13 +1567,65 @@ public class PythonMain extends javax.swing.JFrame {
         });
         pop_agregar.add(mi_addNod);
 
-        mi_deleteNod.setText("jMenuItem13");
+        mi_deleteNod.setText("Eliminar");
         mi_deleteNod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mi_deleteNodActionPerformed(evt);
             }
         });
         pop_eliminar.add(mi_deleteNod);
+
+        jPanel9.setBackground(new java.awt.Color(51, 0, 102));
+
+        jLabel40.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Codigo Generado (Flow Diagram to Python)");
+
+        tp_finalcodeFLUJO.setBackground(new java.awt.Color(204, 204, 204));
+        tp_finalcodeFLUJO.setBorder(null);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(tp_finalcodeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel40)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tp_finalcodeFLUJO, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JD_aquicodeFLUJOLayout = new javax.swing.GroupLayout(JD_aquicodeFLUJO.getContentPane());
+        JD_aquicodeFLUJO.getContentPane().setLayout(JD_aquicodeFLUJOLayout);
+        JD_aquicodeFLUJOLayout.setHorizontalGroup(
+            JD_aquicodeFLUJOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JD_aquicodeFLUJOLayout.setVerticalGroup(
+            JD_aquicodeFLUJOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        mi_agregarEspe.setText("Agregar a Condicion/Ciclo\n");
+        mi_agregarEspe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_agregarEspeActionPerformed(evt);
+            }
+        });
+        pop_addspecifically.add(mi_agregarEspe);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mini Python - Diagram Maker");
@@ -2126,10 +2188,10 @@ public class PythonMain extends javax.swing.JFrame {
         tp_finalcodeUML.setFont(new Font("Calibri Light", Font.BOLD, 14));
         tp_finalcodeUML.setText(codiguito);
         
-        JD_aquicode.pack();
-        JD_aquicode.setModal(true);
-        JD_aquicode.setLocationRelativeTo(this);
-        JD_aquicode.setVisible(true);
+        JD_aquicodeUML.pack();
+        JD_aquicodeUML.setModal(true);
+        JD_aquicodeUML.setLocationRelativeTo(this);
+        JD_aquicodeUML.setVisible(true);
         
     }//GEN-LAST:event_jb_generarcofdigoumlMouseClicked
 
@@ -2766,6 +2828,7 @@ public class PythonMain extends javax.swing.JFrame {
         jp_flujoWork.add(npro);
         npro.revalidate();
         jp_flujoWork.repaint();     
+
                 
     }//GEN-LAST:event_jb_spawnprocessMouseClicked
 
@@ -3226,9 +3289,26 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_addtotreeMouseClicked
 
     private void jb_gencodeFlujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_gencodeFlujoMouseClicked
-        Arbol arbflu = genarbolflujo();
-        String res = arbflu.recorrer(arbflu.getRaiz());
-        System.out.println(res);
+        try {
+
+            tp_finalcodeFLUJO.setText("");
+
+            DefaultTreeModel m = (DefaultTreeModel) jt_aquiarbflujo.getModel();
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) m.getRoot();
+
+            TreeAdmin arbolFlujo = new TreeAdmin();
+
+            arbolFlujo.translate(root, tp_finalcodeFLUJO);
+            
+            JD_aquicodeFLUJO.pack();
+            JD_aquicodeFLUJO.setModal(true);
+            JD_aquicodeFLUJO.setLocationRelativeTo(this);
+            JD_aquicodeFLUJO.setVisible(true);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al generar codigo");
+        }
         
     }//GEN-LAST:event_jb_gencodeFlujoMouseClicked
 
@@ -3506,6 +3586,7 @@ public class PythonMain extends javax.swing.JFrame {
                 
                 if(wannaCopy != JOptionPane.YES_OPTION){
                     jp_umlWork.removeAll();
+                    repaint();
                     clasesUML.clear();
                 }
                 
@@ -3623,13 +3704,19 @@ public class PythonMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_AddToArbolFlujoActionPerformed
 
     private void jb_AddToArbolFlujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AddToArbolFlujoMouseClicked
-        try {
+        if (evt.isMetaDown()){
+            pop_addspecifically.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+        else{
+            try {
             FiguraFlujo ult = FiguraFlujo.getUltimoclickeado();
             GenerarArb(ult);
             
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        
         
     }//GEN-LAST:event_jb_AddToArbolFlujoMouseClicked
 
@@ -3639,7 +3726,7 @@ public class PythonMain extends javax.swing.JFrame {
             selectedNode = (DefaultMutableTreeNode) jt_aquiarbflujo.getLastSelectedPathComponent();
             
             try {
-                if (selectedNode.getUserObject().equals("True") || selectedNode.getUserObject().equals("False")) {
+                if (selectedNode.getUserObject().equals("Camino IF") || selectedNode.getUserObject().equals("Camino ELSE")) {
                     pop_agregar.show(evt.getComponent(), evt.getX(), evt.getY());
                 } else {
                     pop_eliminar.show(evt.getComponent(), evt.getX(), evt.getY());
@@ -3712,6 +3799,268 @@ public class PythonMain extends javax.swing.JFrame {
         m.reload();
     }//GEN-LAST:event_mi_deleteNodActionPerformed
 
+    private void mi_agregarEspeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_agregarEspeActionPerformed
+       jd_arbolFlujo.pack();
+       jd_arbolFlujo.setModal(true);
+       jd_arbolFlujo.setLocationRelativeTo(this);
+       jd_arbolFlujo.setVisible(true);
+    }//GEN-LAST:event_mi_agregarEspeActionPerformed
+
+    private void mi_guardarFLUJOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mi_guardarFLUJOMouseClicked
+        //Aqui no va nada
+    }//GEN-LAST:event_mi_guardarFLUJOMouseClicked
+
+    private void mi_guardarFLUJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_guardarFLUJOActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        jfc.setCurrentDirectory(new File("C:\\Users\\dfcm9\\OneDrive\\Desktop\\MP Proyectos"));
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter(
+                "Archivos flux",
+                "flux");
+        jfc.setFileFilter(filtro);
+        int seleccion = jfc.showSaveDialog(jp_flujoWork);
+
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            
+            try {
+                File file = null;
+                if (jfc.getFileFilter().getDescription().equals("Archivos flux")) {
+                    file = new File(jfc.getSelectedFile().getPath()+".flux");
+                } else {
+                    file = jfc.getSelectedFile();
+                }
+                fw = new FileOutputStream(file);
+                bw = new ObjectOutputStream(fw);
+                
+                Component [] figuras = jp_flujoWork.getComponents();
+
+                for (Component fig : figuras) {
+
+                    if (fig instanceof InicioFin) {
+                        InicioFin temp = (InicioFin) fig;
+                        DatosInicioFin dat = genDatosIniFin(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+                    } else if (fig instanceof Datos) {
+                        
+                        Datos temp = (Datos) fig;
+                        DatosdeDatos dat = genDatosLit(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+
+                    } else if (fig instanceof Proceso) {
+                        
+                        Proceso temp = (Proceso) fig;
+                        DatosProceso dat = genDatosProceso(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+
+                    } else if (fig instanceof Rombo) {
+                        
+                        Rombo temp = (Rombo) fig;
+                        DatosRombo dat = genDatosRombo(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+                    }
+                    else if (fig instanceof Ciclo) {
+                        
+                        Ciclo temp = (Ciclo) fig;
+                        DatosCiclo dat = genDatosCiclo(temp);
+                        bw.writeObject(dat);
+                        bw.flush();
+                    }
+
+                }
+                TreeFlu arbx = new TreeFlu(jt_aquiarbflujo);
+                bw.writeObject(arbx);
+                bw.flush();
+
+                JOptionPane.showMessageDialog(this, "Guardado exitosamente!");
+                clasesUML.clear();
+                jp_umlWork.removeAll();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error");
+                e.printStackTrace();
+            }
+            try {
+                bw.close();
+                fw.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }//GEN-LAST:event_mi_guardarFLUJOActionPerformed
+
+    private void mi_abrirFLUJOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_abrirFLUJOActionPerformed
+        File file = null;
+        FileInputStream input = null;
+        ObjectInputStream obj = null;
+        ArrayList deserializadas = new ArrayList();
+
+        try {
+            JFileChooser jfc = new JFileChooser();
+
+            jfc.setCurrentDirectory(new File("C:\\Users\\dfcm9\\OneDrive\\Desktop\\MP Proyectos"));
+
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos flux", "flux");
+
+            jfc.setFileFilter(filtro);
+
+            int sel = jfc.showOpenDialog(this);
+
+            if (sel == JFileChooser.APPROVE_OPTION) {
+                
+                file = jfc.getSelectedFile();
+                input = new FileInputStream(file);
+                obj = new ObjectInputStream(input);
+                
+                
+                
+                
+                
+                int wannaCopy = JOptionPane.showConfirmDialog(this, "Desea copiar el diagrama seleccionado a este proyecto?");
+                
+                if(wannaCopy != JOptionPane.YES_OPTION){
+                    jp_flujoWork.removeAll();
+                    repaint();
+                }
+                
+
+                try {
+                    //continuar deserializando
+                    while (true) {
+                        Object objectDeserializado = obj.readObject();
+
+                        if (objectDeserializado instanceof DatosInicioFin) {
+                            
+                            DatosInicioFin tempClass = (DatosInicioFin) objectDeserializado;
+                            InicioFin clas = generarInicioFin(tempClass);
+
+                            deserializadas.add(clas);
+                            //jp_umlWork.add(clas);
+                            
+
+                        } else if (objectDeserializado instanceof DatosProceso) {
+                           
+                            DatosProceso tempClass = (DatosProceso) objectDeserializado;
+                            Proceso clas = generarProceso(tempClass);
+   
+                            deserializadas.add(clas);
+                            
+                        } else if (objectDeserializado instanceof DatosdeDatos) {
+                            
+                            DatosdeDatos tempClass = (DatosdeDatos) objectDeserializado;
+                            Datos clas = generarBlqDatos(tempClass);
+
+
+                            deserializadas.add(clas);
+
+                        } else if (objectDeserializado instanceof DatosRombo) {
+                            
+                            DatosRombo tempClass = (DatosRombo) objectDeserializado;
+                            Rombo clas = generarRombo(tempClass);
+                           
+
+
+                            deserializadas.add(clas);
+                        }
+                        else if (objectDeserializado instanceof DatosCiclo) {
+                            
+                            DatosCiclo tempClass = (DatosCiclo) objectDeserializado;
+                            Ciclo clas = generarCiclo(tempClass);
+                            deserializadas.add(clas);
+                        }
+                        
+                        else if (objectDeserializado instanceof TreeFlu){
+                            
+                            TreeFlu mod = (TreeFlu) objectDeserializado;
+                            DefaultTreeModel modelo = (DefaultTreeModel) mod.getDiag().getModel();
+                            jt_aquiarbflujo.setModel(modelo);
+                        }
+
+                        
+                    }
+                } catch (EOFException e) {
+                    //llega al final del archivo
+                }
+                for (Object desFig : deserializadas) {
+                    if (desFig instanceof InicioFin) {
+                        InicioFin temp = (InicioFin) desFig;
+                        
+
+                        jp_flujoWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_flujoWork.revalidate();
+                        jp_flujoWork.repaint();
+                        
+                    } else if (desFig instanceof Datos) {
+                        Datos temp = (Datos) desFig;
+
+                        jp_flujoWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_flujoWork.revalidate();
+                        jp_flujoWork.repaint();
+                    } else if (desFig instanceof Proceso) {
+                        Proceso temp = (Proceso) desFig;
+                        
+                        jp_flujoWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_flujoWork.revalidate();
+                        jp_flujoWork.repaint();
+                        
+                    } else if (desFig instanceof Rombo) {
+                        Rombo temp = (Rombo) desFig;
+
+                        jp_flujoWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_flujoWork.revalidate();
+                        jp_flujoWork.repaint();
+                    }
+                    else if (desFig instanceof Ciclo) {
+                        Ciclo temp = (Ciclo) desFig;
+
+                        jp_flujoWork.add(temp);
+                        temp.revalidate();
+                        temp.repaint();
+                        temp.setVisible(true);
+                        jp_flujoWork.revalidate();
+                        jp_flujoWork.repaint();
+                    }
+                }
+
+                System.out.println(deserializadas);
+                JOptionPane.showMessageDialog(this, jp_flujoWork.getComponentCount());
+
+                jp_flujoWork.revalidate();
+                jp_flujoWork.repaint();
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar archivo");
+            e.printStackTrace();
+        }
+
+        try {
+            input.close();
+            obj.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_mi_abrirFLUJOActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3748,7 +4097,7 @@ public class PythonMain extends javax.swing.JFrame {
     }
     
     
-    public Arbol genarbolflujo (){
+    /*public Arbol genarbolflujo (){
         
         
         Arbol flujograma = new Arbol();
@@ -3787,7 +4136,7 @@ public class PythonMain extends javax.swing.JFrame {
         return flujograma;
         
     }
-    
+    */
     
     public String generarfullcode(){
         String codeinstr = "";
@@ -3962,6 +4311,8 @@ public class PythonMain extends javax.swing.JFrame {
                     
                     codeinstr+="\tdef __init__ (self";
                     
+                    
+                    
                     String attpadre = ((ClaseHerencia) padtem).getTp_atributos().getText();
                     String [] attpadrespl = attpadre.split("\n");
                     
@@ -4103,7 +4454,8 @@ public class PythonMain extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog JD_aquicode;
+    private javax.swing.JDialog JD_aquicodeFLUJO;
+    private javax.swing.JDialog JD_aquicodeUML;
     private javax.swing.JDialog JD_herencia;
     private javax.swing.JComboBox<String> cb_dialogherencia;
     private javax.swing.JComboBox<String> cb_fontsFLUJO;
@@ -4116,7 +4468,6 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -4150,6 +4501,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4184,6 +4536,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -4256,6 +4609,7 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mi_abrirFLUJO;
     private javax.swing.JMenuItem mi_abrirbinarioUML;
     private javax.swing.JMenuItem mi_addNod;
+    private javax.swing.JMenuItem mi_agregarEspe;
     private javax.swing.JMenuItem mi_deleteNod;
     private javax.swing.JMenuItem mi_guardaPDF_UML;
     private javax.swing.JMenuItem mi_guardaPNG_UML;
@@ -4267,15 +4621,17 @@ public class PythonMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mi_printUML;
     private javax.swing.JMenu mn_archivoFLUJO;
     private javax.swing.JMenu mn_archivoUML;
+    private javax.swing.JPopupMenu pop_addspecifically;
     private javax.swing.JPopupMenu pop_agregar;
     private javax.swing.JPopupMenu pop_eliminar;
     private javax.swing.JTextField tf_nomclaseheren;
+    private javax.swing.JTextPane tp_finalcodeFLUJO;
     private javax.swing.JTextPane tp_finalcodeUML;
     // End of variables declaration//GEN-END:variables
     
     private DefaultMutableTreeNode selectedNode = null;
     
-    //Metodos para Serializar
+    //Metodos para Serializar UMLS
     
     public DatosCG genDatosCG (ClaseGnrl abc){
        
@@ -4305,7 +4661,7 @@ public class PythonMain extends javax.swing.JFrame {
     
     
     
-    //Metodos para DeSerializar
+    //Metodos para DeSerializar UMLS
     
     public ClaseGnrl DatostogenCG (DatosCG abc){
         
@@ -4468,8 +4824,8 @@ public class PythonMain extends javax.swing.JFrame {
 
         DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
 
-        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("True");
-        DefaultMutableTreeNode falso = new DefaultMutableTreeNode("False");
+        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("Camino IF");
+        DefaultMutableTreeNode falso = new DefaultMutableTreeNode("Camino ELSE");
 
         figName.add(verdadero);
         figName.add(falso);
@@ -4482,20 +4838,97 @@ public class PythonMain extends javax.swing.JFrame {
 
         DefaultMutableTreeNode figName = new DefaultMutableTreeNode(figTit);
 
-        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("True");
-        DefaultMutableTreeNode falso = new DefaultMutableTreeNode("False");
+        DefaultMutableTreeNode verdadero = new DefaultMutableTreeNode("Camino TRUE");
 
         figName.add(verdadero);
-        figName.add(falso);
-
+        
         c.add(figName);
     }
     
     
-    public void Agregarnodo(){
-        
     
+    //Metodos para Serializar FLUJOS
+    
+    public DatosInicioFin genDatosIniFin (InicioFin abc){
+        DatosInicioFin temp = new DatosInicioFin(abc.getColorInifin(), abc.getTextA().getFont(), abc.getTextA().getText(), abc.getWidth(), abc.getHeight());
+        return temp;
     }
+    
+    public DatosdeDatos genDatosLit (Datos def){
+        DatosdeDatos temp = new DatosdeDatos(def.getColordata(), def.getTextA().getFont(), def.getTextA().getText(), def.getWidth(), def.getHeight());
+        return temp;
+    }
+    
+    public DatosProceso genDatosProceso (Proceso ghi){
+        DatosProceso temp = new DatosProceso(ghi.getColorpro(), ghi.getTextA().getFont(), ghi.getTextA().getText(), ghi.getWidth(), ghi.getHeight());
+        return temp;
+    }
+    
+    public DatosRombo genDatosRombo (Rombo jkl){
+        DatosRombo temp = new DatosRombo(jkl.getRomboColor(), jkl.getTextA().getFont(), jkl.getTextA().getText(), jkl.getWidth(), jkl.getHeight());
+        return temp;
+    }
+    
+    public DatosCiclo genDatosCiclo (Ciclo mno){
+        DatosCiclo temp = new DatosCiclo(mno.getColorCirc(), mno.getTextA().getFont(), mno.getTextA().getText(), mno.getWidth(), mno.getHeight());
+        return temp;
+    }
+    
+    
+    //Metodos para DeSerializar FLUJO
+    
+    public InicioFin generarInicioFin (DatosInicioFin x){
+        InicioFin temp = new InicioFin();
+        temp.setInicioFinColor(x.getBgc());
+        temp.getTextA().setText(x.getInst());
+        temp.getTextA().setFont(x.getFontf());
+        temp.setBounds(10, 10, x.getWidth(), x.getHeight());
+        
+        return temp;
+                
+    }
+    
+    public Datos generarBlqDatos (DatosdeDatos ab){
+        Datos temp = new Datos();
+        temp.setDataColor(ab.getBgc());
+        temp.getTextA().setText(ab.getInst());
+        temp.getTextA().setFont(ab.getFontf());
+        temp.setBounds(100, 10, ab.getWidth(), ab.getHeight());
+        
+        return temp;
+    }
+    
+    public Proceso generarProceso (DatosProceso x){
+        Proceso temp = new Proceso();
+        temp.setColorpro(x.getBgc());
+        temp.getTextA().setText(x.getInst());
+        temp.getTextA().setFont(x.getFontf());
+        temp.setBounds(200, 10, x.getWidth(), x.getHeight());
+        
+        return temp;
+    }
+    
+    public Rombo generarRombo (DatosRombo ab){
+        Rombo temp = new Rombo();
+        temp.setRomboColor(ab.getBgc());
+        temp.getTextA().setText(ab.getInst());
+        temp.getTextA().setFont(ab.getFontf());
+        temp.setBounds(300, 10, ab.getWidth(), ab.getHeight());
+        
+        return temp;
+        
+    }
+    
+    public Ciclo generarCiclo (DatosCiclo x){
+        Ciclo temp = new Ciclo();
+        temp.setColorCirc(x.getBgc());
+        temp.getTextA().setText(x.getInst());
+        temp.getTextA().setFont(x.getFontf());
+        temp.setBounds(400, 10, x.getWidth(), x.getHeight());
+        
+        return temp;
+    }
+  
     
     
     

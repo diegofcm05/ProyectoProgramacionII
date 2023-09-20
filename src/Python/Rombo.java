@@ -118,7 +118,11 @@ public class Rombo extends FiguraFlujo{
         this.eliminar = eliminar;
     }
 
+    public Color getRomboColor() {
+        return romboColor;
+    }
 
+    
 
     public JMenuItem getColortext() {
         return colortext;
